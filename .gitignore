@@ -37,6 +37,52 @@ bld/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
+## --- Visual Studio ---
+## Ignorar la carpeta oculta de configuración del IDE
+.vs/
+
+## --- Build Output (Compilación) ---
+## Ignorar los ejecutables y archivos temporales generados al compilar
+[Bb]in/
+[Oo]bj/
+[Aa]rm/
+[Aa]rm64/
+[Xx]64/
+[Xx]86/
+
+## --- Archivos de Usuario ---
+## Configuraciones específicas de tu monitor, ventanas abiertas y preferencias locales
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+## --- NuGet Packages ---
+## Los paquetes se restauran automáticamente, no hace falta subirlos
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+## --- Windows Forms & ResX ---
+## Archivos temporales generados por el diseñador de Windows Forms
+*.resx.log
+
+## --- Otros (Logs, Cache, etc.) ---
+*.log
+*.cache
+*.tmp
+*.bak
+*.swp
+*.[Ll]og
+*.[Cc]ache
+
+## --- Test Results ---
+## Resultados de pruebas unitarias
+[Tt]est[Rr]esults/
+
+## --- Publish Assets (ClickOnce u otros) ---
+app.publish/
+
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
