@@ -1,0 +1,110 @@
+﻿using BE;
+using SERVICIO;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAL
+{
+    public class MAPPER_USUARIO
+    {
+        ACCESO acceso = new ACCESO();
+
+        public int RegistrarUsuario(BE.USUARIO Usuario)
+        {
+            string NombreSp = "AltaUsuario";
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@CorreoElectronico", Usuario.CorreoElectronico));
+            // Guardar la contraseña hasheada
+            parametros.Add(acceso.CrearParametro("@ContraseñaUsuario", ENCRIPTADOR.Hash(Usuario.ContraseñaUsuario)));
+            parametros.Add(acceso.CrearParametro("@NombreUsuario", Usuario.NombreUsuario));
+            parametros.Add(acceso.CrearParametro("@ApellidoUsuario", Usuario.ApellidoUsuario));
+            parametros.Add(acceso.CrearParametro("@Dni", Usuario.Dni));
+
+            int filas = acceso.Escribir(NombreSp, parametros);
+            acceso.Cerrar();
+            return filas;
+        }
+
+        /* A IMPLEMENTAR BM USUARIO
+        public void EliminarUsuario(BE.USUARIO Usuario)
+        {
+            string NombreSp = "EliminarUsuario";
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@IdUsuario", Usuario.IdUsuario));
+            int filas = acceso.Escribir(NombreSp, parametros);
+            acceso.Cerrar();
+        }
+
+        public void ModificarUsuario(BE.USUARIO Usuario)
+        {
+            string NombreSp = "ModificarUsuario";
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@CorreoElectronico", Usuario.CorreoElectronico));
+            // Guardar la contraseña hasheada
+            parametros.Add(acceso.CrearParametro("@ContraseñaUsuario", ENCRIPTADOR.Hash(Usuario.ContraseñaUsuario)));
+            parametros.Add(acceso.CrearParametro("@NombreUsuario", Usuario.NombreUsuario));
+            parametros.Add(acceso.CrearParametro("@ApellidoUsuario", Usuario.ApellidoUsuario));
+            parametros.Add(acceso.CrearParametro("@Dni", Usuario.Dni));
+            int filas = acceso.Escribir(NombreSp, parametros);
+            acceso.Cerrar();
+        }
+        */
+
+        public BE.USUARIO ValidarUsuario(BE.USUARIO usuario)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@CorreoElectronico", usuario.CorreoElectronico));
+            parametros.Add(acceso.CrearParametro("@ContraseñaUsuario", ENCRIPTADOR.Hash(usuario.ContraseñaUsuario)));
+
+            DataTable tabla = acceso.Leer("LeerUsuario", parametros);
+            acceso.Cerrar();
+            if (tabla.Rows.Count > 0)
+            {
+                DataRow u = tabla.Rows[0];
+                BE.USUARIO C = new BE.USUARIO();
+                C.CorreoElectronico = u["CorreoElectronico"].ToString();
+                C.ContraseñaUsuario = u["ContraseñaUsuario"].ToString();
+                return C;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /*
+        //A IMPLEMENTAR L USUARIO
+        
+        public List<BE.USUARIO> ListarUsuarios()
+        {
+            acceso.Abrir();
+            string NombreSp = "ListarUsuarios";
+
+            DataTable tabla = new DataTable();
+            tabla = acceso.Leer(NombreSp);
+
+            BE.USUARIO.listaUsuarios.Clear();
+
+            foreach (DataRow u in tabla.Rows)
+            {
+                BE.USUARIO usuario = new BE.USUARIO();
+
+                usuario.IdUsuario = Convert.ToInt32(u["IdUsuario"].ToString());
+                usuario.CorreoElectronico = (u["CorreoElectronico"].ToString());
+
+                BE.USUARIO.listaUsuarios.Add(usuario);
+            }
+            return BE.USUARIO.listaUsuarios;
+        }
+        */
+    }
+}
