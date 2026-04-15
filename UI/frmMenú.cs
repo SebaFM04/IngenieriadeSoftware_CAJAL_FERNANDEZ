@@ -15,6 +15,13 @@ namespace UI
         public frmMenú()
         {
             InitializeComponent();
+            SERVICIO.SessionManager session = SERVICIO.SessionManager.GetInstance;
+            label1.Text = $"Bienvenido {session.Usuario.CorreoElectronico}\n {session.Usuario.NombreUsuario} {session.Usuario.ApellidoUsuario}";
+        }
+        private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
+        {
+            SERVICIO.SessionManager.Logout();
+            this.Close();
         }
     }
 }
