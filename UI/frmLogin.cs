@@ -23,13 +23,14 @@ namespace UI
         {
             try
             {
+                #region VALIDACIONES DE CAMPOS
                 // Validar que el nombre de usuario tenga formato de correo electrónico
                 var email = textBox1.Text?.Trim();
                 if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 {
                     MessageBox.Show("Ingrese un correo electrónico válido para el nombre de usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox1.Focus();
-                    return; // No continuar con el inicio de sesión
+                    return; 
                 }
 
                 // Validar que se ingrese una contraseña
@@ -40,26 +41,31 @@ namespace UI
                     textBox2.Focus();
                     return;
                 }
+                #endregion
+
 
                 BLL.USUARIO_BLL GestorUsuario = new BLL.USUARIO_BLL();
 
                 usuario.CorreoElectronico = email;
                 usuario.ContraseñaUsuario = textBox2.Text;
 
-                BE.USUARIO UserfromBd = GestorUsuario.ConfirmarLogueo(usuario);
+                BE.USUARIO UserfromBd = GestorUsuario.BuscarUsuarioEnBD(usuario);
+
 
                 if (UserfromBd == null)
                 {
-                    MessageBox.Show("NO EXISTEN USUARIOS EN LA BASE DE DATOS", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (UserfromBd.CorreoElectronico != usuario.CorreoElectronico && UserfromBd.ContraseñaUsuario != usuario.ContraseñaUsuario)
-                {
-                    MessageBox.Show("USUARIO NO COINCIDE CON LA BASE DE DATOS", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    MessageBox.Show("NO EXISTE EL USUARIO INGRESADO", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
+                    SERVICIO.SessionManager.Login(UserfromBd);
+                    //SERVICIO.SessionManager u = SERVICIO.SessionManager.GetInstance;
+
                     MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    frmMenú frmMenu = new frmMenú();
+                    frmMenu.MdiParent = MdiParent;
+                    frmMenu.ShowDialog();
                 }
 
                 textBox1.Text = "";
@@ -75,7 +81,7 @@ namespace UI
         {
             frmRegistro frmReg = new frmRegistro();
             frmReg.MdiParent = MdiParent;            
-            frmReg.Show();
+            frmReg.ShowDialog();
         }
     }
 }

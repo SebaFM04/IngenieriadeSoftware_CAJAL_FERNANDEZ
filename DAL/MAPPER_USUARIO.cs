@@ -58,7 +58,7 @@ namespace DAL
         }
         */
 
-        public BE.USUARIO ValidarUsuario(BE.USUARIO usuario)
+        public BE.USUARIO BuscarUsuario(BE.USUARIO usuario)
         {
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
@@ -73,6 +73,10 @@ namespace DAL
                 BE.USUARIO C = new BE.USUARIO();
                 C.CorreoElectronico = u["CorreoElectronico"].ToString();
                 C.ContraseñaUsuario = u["ContraseñaUsuario"].ToString();
+                C.NombreUsuario = u["NombreUsuario"].ToString();
+                C.ApellidoUsuario = u["ApellidoUsuario"].ToString();
+                C.Dni = int.Parse(u["Dni"].ToString());
+                C.IdUsuario = int.Parse(u["IdUsuario"].ToString());
                 return C;
             }
             else

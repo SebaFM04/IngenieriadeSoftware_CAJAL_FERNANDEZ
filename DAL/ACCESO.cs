@@ -14,7 +14,9 @@ namespace DAL
         public void Abrir()
         {
             Conexion = new SqlConnection();
-            Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=ACERNOTEBOOK-MC\\SQLEXPRESS";
+            //Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=ACERNOTEBOOK-MC\\SQLEXPRESS";
+            Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=.";
+
             Conexion.Open();
         }
         public void Cerrar()
@@ -73,7 +75,7 @@ namespace DAL
         }
         public DataTable Leer(string nombreSP, List<SqlParameter> parametros = null)
         {
-            DataTable tabla = new DataTable();            
+            DataTable tabla = new DataTable();
             SqlDataAdapter adaptador = new SqlDataAdapter();
             adaptador.SelectCommand = CrearComando(nombreSP, parametros);
             adaptador.Fill(tabla);

@@ -58,14 +58,6 @@ namespace BE
             set { rol = value; }
         }
 
-        private bool usuarioLogueado;
-        public bool UsuarioLogueado
-        {
-            get { return usuarioLogueado; }
-            set { usuarioLogueado = value; }
-        }
-
-
         public static List<USUARIO> listaUsuarios = new List<USUARIO>();
         
         public override string ToString()

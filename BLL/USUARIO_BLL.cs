@@ -11,9 +11,9 @@ namespace BLL
     {
         MAPPER_USUARIO GestorUsuario = new MAPPER_USUARIO();
 
-        public BE.USUARIO ConfirmarLogueo(BE.USUARIO usuario)
+        public BE.USUARIO BuscarUsuarioEnBD(BE.USUARIO usuario)
         {
-            return GestorUsuario.ValidarUsuario(usuario);
+            return GestorUsuario.BuscarUsuario(usuario);
         }
 
         public void RegistrarUsuario(BE.USUARIO usuario)
