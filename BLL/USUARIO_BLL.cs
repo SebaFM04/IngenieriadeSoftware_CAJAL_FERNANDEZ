@@ -21,6 +21,16 @@ namespace BLL
             GestorUsuario.RegistrarUsuario(usuario);
         }
 
+        public void BorrarUsuario(BE.USUARIO usuario)
+        {
+            //GestorUsuario.EliminarUsuario(usuario);
+        }
+
+        public void ModificarUsuario(BE.USUARIO usuario)
+        {
+            //GestorUsuario.ModificarUsuario(usuario);
+        }
+
         /*A IMPLEMENTAR LlamarListado
         public List<BE.USUARIO> LlamarListado()
         {
