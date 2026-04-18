@@ -20,8 +20,21 @@ namespace UI
         }
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
         {
-            SERVICIO.SessionManager.GetInstance().Logout();
+            var result = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                SERVICIO.SessionManager.GetInstance().Logout();
+                this.Close();
+            }
+        }
+
+        private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Close();
+
+            frmUsuario frmUsuario = new frmUsuario();
+            frmUsuario.MdiParent = MdiParent;
+            frmUsuario.Show();
         }
     }
 }

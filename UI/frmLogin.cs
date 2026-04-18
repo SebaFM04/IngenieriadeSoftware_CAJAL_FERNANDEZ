@@ -28,7 +28,7 @@ namespace UI
                 var email = textBox1.Text?.Trim();
                 if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 {
-                    MessageBox.Show("Ingrese un correo electrónico válido para el nombre de usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ingrese un correo electrónico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox1.Focus();
                     return; 
                 }
@@ -54,19 +54,20 @@ namespace UI
 
                 if (UserfromBd == null)
                 {
-                    MessageBox.Show("NO EXISTE EL USUARIO INGRESADO", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No existe el usuario ingresado.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     // Iniciar sesión y guardar el usuario en la sesión actual!!
                     SERVICIO.SessionManager.GetInstance().Login(UserfromBd);
-                    //SERVICIO.SessionManager u = SERVICIO.SessionManager.GetInstance;
 
                     MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    frmMenú frmMenu = new frmMenú();
-                    frmMenu.MdiParent = MdiParent;
-                    frmMenu.ShowDialog();
+                    #region SALTO AL MENU PRINCIPAL
+                    this.Hide();
+                    frmMenú frmMenú = new frmMenú();
+                    frmMenú.MdiParent = MdiParent;
+                    frmMenú.Show();
+                    #endregion  
                 }
 
                 textBox1.Text = "";

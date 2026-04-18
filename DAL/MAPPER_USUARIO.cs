@@ -32,7 +32,7 @@ namespace DAL
         }
 
         /* A IMPLEMENTAR BM USUARIO
-        public void EliminarUsuario(BE.USUARIO Usuario)
+        public int EliminarUsuario(BE.USUARIO Usuario)
         {
             string NombreSp = "EliminarUsuario";
             acceso.Abrir();
@@ -40,9 +40,10 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@IdUsuario", Usuario.IdUsuario));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
+            retunr filas;
         }
 
-        public void ModificarUsuario(BE.USUARIO Usuario)
+        public int ModificarUsuario(BE.USUARIO Usuario)
         {
             string NombreSp = "ModificarUsuario";
             acceso.Abrir();
@@ -55,6 +56,7 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@Dni", Usuario.Dni));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
+            return filas;
         }
         */
 
@@ -86,29 +88,29 @@ namespace DAL
         }
 
         /*
-        //A IMPLEMENTAR L USUARIO
-        
-        public List<BE.USUARIO> ListarUsuarios()
-        {
-            acceso.Abrir();
-            string NombreSp = "ListarUsuarios";
+         //A IMPLEMENTAR L USUARIO
 
-            DataTable tabla = new DataTable();
-            tabla = acceso.Leer(NombreSp);
+                public void ListarUsuarios()
+                {
+                    string NombreSp = "ListarUsuarios";
+                    acceso.Abrir();
 
-            BE.USUARIO.listaUsuarios.Clear();
+                    DataTable tabla = new DataTable();
+                    tabla = acceso.Leer(NombreSp);
+                    acceso.Cerrar();
 
-            foreach (DataRow u in tabla.Rows)
-            {
-                BE.USUARIO usuario = new BE.USUARIO();
+                    BE.USUARIO.listaUsuarios.Clear();
 
-                usuario.IdUsuario = Convert.ToInt32(u["IdUsuario"].ToString());
-                usuario.CorreoElectronico = (u["CorreoElectronico"].ToString());
+                    foreach (DataRow u in tabla.Rows)
+                    {
+                        BE.USUARIO usuario = new BE.USUARIO();
 
-                BE.USUARIO.listaUsuarios.Add(usuario);
-            }
-            return BE.USUARIO.listaUsuarios;
-        }
-        */
+                        usuario.IdUsuario = Convert.ToInt32(u["IdUsuario"].ToString());
+                        usuario.CorreoElectronico = (u["CorreoElectronico"].ToString());
+
+                        BE.USUARIO.listaUsuarios.Add(usuario);
+                    }
+                }
+         */
     }
 }
