@@ -58,7 +58,8 @@ namespace UI
                 }
                 else
                 {
-                    SERVICIO.SessionManager.Login(UserfromBd);
+                    // Iniciar sesión y guardar el usuario en la sesión actual!!
+                    SERVICIO.SessionManager.GetInstance().Login(UserfromBd);
                     //SERVICIO.SessionManager u = SERVICIO.SessionManager.GetInstance;
 
                     MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
