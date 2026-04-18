@@ -10,52 +10,33 @@ namespace SERVICIO
     public class SessionManager
     {
         private static object _lock = new Object();
-        private static SessionManager _session;
+        private static SessionManager _instance;
+        public Sesion sesionActual { get; private set; }
 
-        public BE.USUARIO Usuario { get; set; }
-        public DateTime FechaInicio { get; set; }
-
-        public static SessionManager GetInstance
-        {
-            get
-            {
-                if (_session == null) throw new Exception("Sesión no iniciada");
-
-                return _session;
-            }
-        }
-
-        public static void Login(USUARIO usuario)
-        {
-
-            lock (_lock)
-            {
-                if (_session == null)
-                {
-                    _session = new SessionManager();
-                    _session.Usuario = usuario;
-                    _session.FechaInicio = DateTime.Now;
-                }
-                else
-                {
-                    throw new Exception("Sesión ya iniciada");
-                }
-            }
-        }
-
-        public static void Logout()
+        public static SessionManager GetInstance()
         {
             lock (_lock)
             {
-                if (_session != null)
+                if (_instance == null)
                 {
-                    _session = null;
-                }
-                else
-                {
-                    throw new Exception("Sesión no iniciada");
-                }
+                    _instance = new SessionManager();
+                } 
+                return _instance;
             }
+        }
+
+        public void Login(BE.USUARIO usuario)
+        {
+            this.sesionActual = new Sesion
+            {
+                Usuario = usuario,
+                FechaInicio = DateTime.Now
+            };
+        }
+
+        public void Logout()
+        {
+            this.sesionActual = null;
         }
 
         private SessionManager()
