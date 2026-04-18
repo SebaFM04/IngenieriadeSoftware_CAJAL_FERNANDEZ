@@ -16,7 +16,7 @@ namespace UI
         {
             InitializeComponent();
             SERVICIO.SessionManager Sesion = SERVICIO.SessionManager.GetInstance();
-            label1.Text = $"Bienvenido {Sesion.sesionActual.Usuario.CorreoElectronico}\n {Sesion.sesionActual.Usuario.NombreUsuario} {Sesion.sesionActual.Usuario.ApellidoUsuario}";
+            label1.Text = $"CorreoElectronico: {Sesion.sesionActual.Usuario.CorreoElectronico}\nNombre y Apellido: {Sesion.sesionActual.Usuario.NombreUsuario} {Sesion.sesionActual.Usuario.ApellidoUsuario}";
         }
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
         {
@@ -24,17 +24,19 @@ namespace UI
             if (result == DialogResult.Yes)
             {
                 SERVICIO.SessionManager.GetInstance().Logout();
-                this.Close();
             }
+            this.Close();
         }
 
         private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
 
             frmUsuario frmUsuario = new frmUsuario();
             frmUsuario.MdiParent = MdiParent;
-            frmUsuario.Show();
+            frmUsuario.ShowDialog();
+
+            this.Show();    
         }
     }
 }

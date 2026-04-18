@@ -30,24 +30,25 @@
         {
             this.btnCerrarSesionfrmMenu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnstripMenu = new System.Windows.Forms.MenuStrip();
             this.gestiónUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formularioUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formularioProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminitraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.lblUsuarioLog = new System.Windows.Forms.Label();
+            this.mnstripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCerrarSesionfrmMenu
             // 
             this.btnCerrarSesionfrmMenu.BackColor = System.Drawing.Color.SandyBrown;
             this.btnCerrarSesionfrmMenu.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesionfrmMenu.Location = new System.Drawing.Point(145, 302);
-            this.btnCerrarSesionfrmMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCerrarSesionfrmMenu.Location = new System.Drawing.Point(287, 367);
+            this.btnCerrarSesionfrmMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCerrarSesionfrmMenu.Name = "btnCerrarSesionfrmMenu";
-            this.btnCerrarSesionfrmMenu.Size = new System.Drawing.Size(162, 38);
+            this.btnCerrarSesionfrmMenu.Size = new System.Drawing.Size(216, 47);
             this.btnCerrarSesionfrmMenu.TabIndex = 17;
             this.btnCerrarSesionfrmMenu.Text = "Cerrar Sesión";
             this.btnCerrarSesionfrmMenu.UseVisualStyleBackColor = false;
@@ -56,36 +57,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(75, 76);
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 107);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(22, 16);
             this.label1.TabIndex = 18;
-            this.label1.Text = "label1";
+            this.label1.Text = "...";
             // 
-            // menuStrip1
+            // mnstripMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnstripMenu.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnstripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mnstripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestiónUsuariosToolStripMenuItem,
             this.gestiónProductosToolStripMenuItem,
             this.adminitraciónToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
-            this.menuStrip1.TabIndex = 19;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mnstripMenu.Location = new System.Drawing.Point(0, 0);
+            this.mnstripMenu.Name = "mnstripMenu";
+            this.mnstripMenu.Size = new System.Drawing.Size(800, 27);
+            this.mnstripMenu.TabIndex = 19;
+            this.mnstripMenu.Text = "menuStrip1";
             // 
             // gestiónUsuariosToolStripMenuItem
             // 
             this.gestiónUsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formularioUsuariosToolStripMenuItem});
             this.gestiónUsuariosToolStripMenuItem.Name = "gestiónUsuariosToolStripMenuItem";
-            this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(149, 23);
             this.gestiónUsuariosToolStripMenuItem.Text = "Gestión Usuarios";
             // 
             // formularioUsuariosToolStripMenuItem
             // 
             this.formularioUsuariosToolStripMenuItem.Name = "formularioUsuariosToolStripMenuItem";
-            this.formularioUsuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.formularioUsuariosToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
             this.formularioUsuariosToolStripMenuItem.Text = "Formulario Usuarios";
             this.formularioUsuariosToolStripMenuItem.Click += new System.EventHandler(this.formularioUsuariosToolStripMenuItem_Click);
             // 
@@ -94,13 +99,13 @@
             this.gestiónProductosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formularioProductosToolStripMenuItem});
             this.gestiónProductosToolStripMenuItem.Name = "gestiónProductosToolStripMenuItem";
-            this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(160, 23);
             this.gestiónProductosToolStripMenuItem.Text = "Gestión Productos";
             // 
             // formularioProductosToolStripMenuItem
             // 
             this.formularioProductosToolStripMenuItem.Name = "formularioProductosToolStripMenuItem";
-            this.formularioProductosToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.formularioProductosToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.formularioProductosToolStripMenuItem.Text = "Formulario Productos";
             // 
             // adminitraciónToolStripMenuItem
@@ -108,31 +113,46 @@
             this.adminitraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bitacoraToolStripMenuItem});
             this.adminitraciónToolStripMenuItem.Name = "adminitraciónToolStripMenuItem";
-            this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(123, 23);
             this.adminitraciónToolStripMenuItem.Text = "Adminitración";
             // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
+            // 
+            // lblUsuarioLog
+            // 
+            this.lblUsuarioLog.AutoSize = true;
+            this.lblUsuarioLog.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblUsuarioLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUsuarioLog.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblUsuarioLog.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarioLog.Location = new System.Drawing.Point(12, 72);
+            this.lblUsuarioLog.Name = "lblUsuarioLog";
+            this.lblUsuarioLog.Size = new System.Drawing.Size(248, 24);
+            this.lblUsuarioLog.TabIndex = 20;
+            this.lblUsuarioLog.Text = "El usuario Logueado es: ";
             // 
             // frmMenú
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblUsuarioLog);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCerrarSesionfrmMenu);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.mnstripMenu);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.MainMenuStrip = this.mnstripMenu;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMenú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenú";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mnstripMenu.ResumeLayout(false);
+            this.mnstripMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,12 +162,13 @@
 
         private System.Windows.Forms.Button btnCerrarSesionfrmMenu;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mnstripMenu;
         private System.Windows.Forms.ToolStripMenuItem gestiónUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formularioUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestiónProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formularioProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminitraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitacoraToolStripMenuItem;
+        private System.Windows.Forms.Label lblUsuarioLog;
     }
 }

@@ -53,7 +53,7 @@
             this.btnModificacionfrmUsuario.Name = "btnModificacionfrmUsuario";
             this.btnModificacionfrmUsuario.Size = new System.Drawing.Size(146, 47);
             this.btnModificacionfrmUsuario.TabIndex = 54;
-            this.btnModificacionfrmUsuario.Text = "Modificación";
+            this.btnModificacionfrmUsuario.Text = "Modificar";
             this.btnModificacionfrmUsuario.UseVisualStyleBackColor = false;
             // 
             // btnBajafrmUsuario
@@ -64,7 +64,7 @@
             this.btnBajafrmUsuario.Name = "btnBajafrmUsuario";
             this.btnBajafrmUsuario.Size = new System.Drawing.Size(146, 47);
             this.btnBajafrmUsuario.TabIndex = 53;
-            this.btnBajafrmUsuario.Text = "Baja";
+            this.btnBajafrmUsuario.Text = "Borrar";
             this.btnBajafrmUsuario.UseVisualStyleBackColor = false;
             // 
             // btnAltafrmUsuario
@@ -75,8 +75,9 @@
             this.btnAltafrmUsuario.Name = "btnAltafrmUsuario";
             this.btnAltafrmUsuario.Size = new System.Drawing.Size(146, 47);
             this.btnAltafrmUsuario.TabIndex = 52;
-            this.btnAltafrmUsuario.Text = "Alta";
+            this.btnAltafrmUsuario.Text = "Registrar";
             this.btnAltafrmUsuario.UseVisualStyleBackColor = false;
+            this.btnAltafrmUsuario.Click += new System.EventHandler(this.btnAltafrmUsuario_Click);
             // 
             // dataGridView1
             // 

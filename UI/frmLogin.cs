@@ -66,7 +66,8 @@ namespace UI
                     this.Hide();
                     frmMenú frmMenú = new frmMenú();
                     frmMenú.MdiParent = MdiParent;
-                    frmMenú.Show();
+                    frmMenú.ShowDialog();
+                    this.Close();
                     #endregion  
                 }
 
@@ -77,13 +78,6 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void llRegistresefrmLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            frmRegistro frmReg = new frmRegistro();
-            frmReg.MdiParent = MdiParent;            
-            frmReg.ShowDialog();
         }
     }
 }

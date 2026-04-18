@@ -53,7 +53,7 @@
             this.btnModificacionfrmProducto.Name = "btnModificacionfrmProducto";
             this.btnModificacionfrmProducto.Size = new System.Drawing.Size(146, 47);
             this.btnModificacionfrmProducto.TabIndex = 68;
-            this.btnModificacionfrmProducto.Text = "Modificación";
+            this.btnModificacionfrmProducto.Text = "Modificar";
             this.btnModificacionfrmProducto.UseVisualStyleBackColor = false;
             // 
             // btnBajafrmProducto
@@ -64,7 +64,7 @@
             this.btnBajafrmProducto.Name = "btnBajafrmProducto";
             this.btnBajafrmProducto.Size = new System.Drawing.Size(146, 47);
             this.btnBajafrmProducto.TabIndex = 67;
-            this.btnBajafrmProducto.Text = "Baja";
+            this.btnBajafrmProducto.Text = "Borrar";
             this.btnBajafrmProducto.UseVisualStyleBackColor = false;
             // 
             // btnAltafrmProducto
@@ -75,7 +75,7 @@
             this.btnAltafrmProducto.Name = "btnAltafrmProducto";
             this.btnAltafrmProducto.Size = new System.Drawing.Size(146, 47);
             this.btnAltafrmProducto.TabIndex = 66;
-            this.btnAltafrmProducto.Text = "Alta";
+            this.btnAltafrmProducto.Text = "Agregar";
             this.btnAltafrmProducto.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
@@ -183,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(1398, 450);
+            this.ClientSize = new System.Drawing.Size(1398, 507);
             this.Controls.Add(this.btnModificacionfrmProducto);
             this.Controls.Add(this.btnBajafrmProducto);
             this.Controls.Add(this.btnAltafrmProducto);
