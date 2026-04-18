@@ -90,7 +90,7 @@ namespace DAL
         /*
          //A IMPLEMENTAR L USUARIO
 
-                public void ListarUsuarios()
+                public void LlamarListado()
                 {
                     string NombreSp = "ListarUsuarios";
                     acceso.Abrir();

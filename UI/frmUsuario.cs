@@ -31,7 +31,7 @@ namespace UI
 
             if (usuario != null)
             {
-                GestorUsuario.RegistrarUsuario(usuario);
+                GestorUsuario.AltaUsuario(usuario);
                 MessageBox.Show("Usuario registrado exitosamente.");
                 this.Close();
                 frmLogin frmLog = new frmLogin();

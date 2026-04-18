@@ -16,7 +16,7 @@ namespace BLL
             return GestorUsuario.BuscarUsuario(usuario);
         }
 
-        public void RegistrarUsuario(BE.USUARIO usuario)
+        public void AltaUsuario(BE.USUARIO usuario)
         {
             GestorUsuario.RegistrarUsuario(usuario);
         }
@@ -26,15 +26,15 @@ namespace BLL
             //GestorUsuario.EliminarUsuario(usuario);
         }
 
-        public void ModificarUsuario(BE.USUARIO usuario)
+        public void EditarUsuario(BE.USUARIO usuario)
         {
             //GestorUsuario.ModificarUsuario(usuario);
         }
 
         /*A IMPLEMENTAR LlamarListado
-        public List<BE.USUARIO> LlamarListado()
+        public List<BE.USUARIO> ListarUsuarios()
         {
-            return GestorUsuario.ListarUsuarios();
+            return GestorUsuario.LlamarListado();
         }
         */
 
