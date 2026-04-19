@@ -43,7 +43,6 @@ namespace UI
                 }
                 #endregion
 
-
                 BLL.USUARIO_BLL GestorUsuario = new BLL.USUARIO_BLL();
 
                 usuario.CorreoElectronico = email;
