@@ -45,10 +45,10 @@
             // 
             this.btnCerrarSesionfrmMenu.BackColor = System.Drawing.Color.SandyBrown;
             this.btnCerrarSesionfrmMenu.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesionfrmMenu.Location = new System.Drawing.Point(287, 367);
-            this.btnCerrarSesionfrmMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCerrarSesionfrmMenu.Location = new System.Drawing.Point(215, 298);
+            this.btnCerrarSesionfrmMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrarSesionfrmMenu.Name = "btnCerrarSesionfrmMenu";
-            this.btnCerrarSesionfrmMenu.Size = new System.Drawing.Size(216, 47);
+            this.btnCerrarSesionfrmMenu.Size = new System.Drawing.Size(162, 38);
             this.btnCerrarSesionfrmMenu.TabIndex = 17;
             this.btnCerrarSesionfrmMenu.Text = "Cerrar Sesión";
             this.btnCerrarSesionfrmMenu.UseVisualStyleBackColor = false;
@@ -58,10 +58,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 107);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(10, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 16);
+            this.label1.Size = new System.Drawing.Size(19, 15);
             this.label1.TabIndex = 18;
             this.label1.Text = "...";
             // 
@@ -75,7 +74,8 @@
             this.adminitraciónToolStripMenuItem});
             this.mnstripMenu.Location = new System.Drawing.Point(0, 0);
             this.mnstripMenu.Name = "mnstripMenu";
-            this.mnstripMenu.Size = new System.Drawing.Size(800, 27);
+            this.mnstripMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.mnstripMenu.Size = new System.Drawing.Size(600, 24);
             this.mnstripMenu.TabIndex = 19;
             this.mnstripMenu.Text = "menuStrip1";
             // 
@@ -84,13 +84,13 @@
             this.gestiónUsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formularioUsuariosToolStripMenuItem});
             this.gestiónUsuariosToolStripMenuItem.Name = "gestiónUsuariosToolStripMenuItem";
-            this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(149, 23);
+            this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.gestiónUsuariosToolStripMenuItem.Text = "Gestión Usuarios";
             // 
             // formularioUsuariosToolStripMenuItem
             // 
             this.formularioUsuariosToolStripMenuItem.Name = "formularioUsuariosToolStripMenuItem";
-            this.formularioUsuariosToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.formularioUsuariosToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.formularioUsuariosToolStripMenuItem.Text = "Formulario Usuarios";
             this.formularioUsuariosToolStripMenuItem.Click += new System.EventHandler(this.formularioUsuariosToolStripMenuItem_Click);
             // 
@@ -99,13 +99,13 @@
             this.gestiónProductosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formularioProductosToolStripMenuItem});
             this.gestiónProductosToolStripMenuItem.Name = "gestiónProductosToolStripMenuItem";
-            this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(160, 23);
+            this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(134, 20);
             this.gestiónProductosToolStripMenuItem.Text = "Gestión Productos";
             // 
             // formularioProductosToolStripMenuItem
             // 
             this.formularioProductosToolStripMenuItem.Name = "formularioProductosToolStripMenuItem";
-            this.formularioProductosToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.formularioProductosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.formularioProductosToolStripMenuItem.Text = "Formulario Productos";
             // 
             // adminitraciónToolStripMenuItem
@@ -113,14 +113,15 @@
             this.adminitraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bitacoraToolStripMenuItem});
             this.adminitraciónToolStripMenuItem.Name = "adminitraciónToolStripMenuItem";
-            this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(123, 23);
+            this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.adminitraciónToolStripMenuItem.Text = "Adminitración";
             // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
+            this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
             // lblUsuarioLog
             // 
@@ -129,25 +130,26 @@
             this.lblUsuarioLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblUsuarioLog.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUsuarioLog.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioLog.Location = new System.Drawing.Point(12, 72);
+            this.lblUsuarioLog.Location = new System.Drawing.Point(9, 58);
+            this.lblUsuarioLog.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsuarioLog.Name = "lblUsuarioLog";
-            this.lblUsuarioLog.Size = new System.Drawing.Size(248, 24);
+            this.lblUsuarioLog.Size = new System.Drawing.Size(209, 20);
             this.lblUsuarioLog.TabIndex = 20;
             this.lblUsuarioLog.Text = "El usuario Logueado es: ";
             // 
             // frmMenú
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.lblUsuarioLog);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCerrarSesionfrmMenu);
             this.Controls.Add(this.mnstripMenu);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.mnstripMenu;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmMenú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenú";

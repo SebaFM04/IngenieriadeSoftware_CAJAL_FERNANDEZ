@@ -51,14 +51,13 @@ namespace BE
             set { contraseñaUsuario = value; }
         }
 
-        private string rol;
-        public string Rol
-        {
-            get { return rol; }
-            set { rol = value; }
-        }
+        //private string rol;
+        //public string Rol
+        //{
+        //    get { return rol; }
+        //    set { rol = value; }
+        //}
 
-        public static List<USUARIO> listaUsuarios = new List<USUARIO>();
         
         public override string ToString()
         {

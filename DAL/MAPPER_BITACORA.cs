@@ -59,7 +59,7 @@ namespace DAL
                     {
                         registros.Add(new BITACORA()
                         {
-                            IdBitacora = Convert.ToInt32(reader["Id"]),
+                            IdBitacora = Convert.ToInt32(reader["IdBitacora"]),
                             FechaHora = Convert.ToDateTime(reader["FechaHora"]),
                             IdUsuario = Convert.ToInt32(reader["IdUsuario"]),
                             Actividad = reader["Actividad"].ToString(),

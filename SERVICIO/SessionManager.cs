@@ -1,4 +1,5 @@
 ﻿using BE;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,35 +10,42 @@ namespace SERVICIO
 {
     public class SessionManager
     {
-        private static object _lock = new Object();
-        private static SessionManager _instance;
-        public Sesion sesionActual { get; private set; }
 
-        public static SessionManager GetInstance()
+        private static SessionManager _instancia;
+        private Sesion _sesion;
+
+        private SessionManager()
         {
-            lock (_lock)
+            _sesion = new Sesion();
+        }
+
+        public static SessionManager Instancia
+        {
+            get
             {
-                if (_instance == null)
-                {
-                    _instance = new SessionManager();
-                } 
-                return _instance;
+                if (_instancia == null)
+                    _instancia = new SessionManager();
+                return _instancia;
             }
         }
 
-        public void Login(BE.USUARIO usuario)
+        public void Login(USUARIO usuario)
         {
-            this.sesionActual = new Sesion
-            {
-                Usuario = usuario,
-                FechaInicio = DateTime.Now
-            };
+            _sesion.Login(usuario);
         }
 
         public void Logout()
         {
-            this.sesionActual = null;
+            _sesion.Logout();
         }
+
+        public bool IsLogged()
+        {
+            return _sesion.IsLogged();
+        }
+
+        public USUARIO UsuarioActual => _sesion.UsuarioLogueado;
+
 
         /*
         //Esto que parece 
@@ -66,9 +74,7 @@ namespace SERVICIO
                 StringComparison.OrdinalIgnoreCase);
         }
         */
-        private SessionManager()
-        {
 
-        }
+
     }
 }

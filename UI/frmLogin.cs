@@ -30,7 +30,7 @@ namespace UI
                 {
                     MessageBox.Show("Ingrese un correo electrónico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox1.Focus();
-                    return; 
+                    return;
                 }
 
                 // Validar que se ingrese una contraseña
@@ -44,32 +44,17 @@ namespace UI
                 #endregion
 
                 BLL.USUARIO_BLL GestorUsuario = new BLL.USUARIO_BLL();
+                // Iniciar sesión y guardar el usuario de la sesión actual!!
+                BE.USUARIO UserfromBd = GestorUsuario.LoginUsuario(email, password);
 
-                usuario.CorreoElectronico = email;
-                usuario.ContraseñaUsuario = textBox2.Text;
-
-                BE.USUARIO UserfromBd = GestorUsuario.BuscarUsuarioEnBD(usuario);
-
-
-                if (UserfromBd == null)
-                {
-                    MessageBox.Show("No existe el usuario ingresado.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    // Iniciar sesión y guardar el usuario en la sesión actual!!
-                    SERVICIO.SessionManager.GetInstance().Login(UserfromBd);
-
-                    MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    #region SALTO AL MENU PRINCIPAL
-                    this.Hide();
-                    frmMenú frmMenú = new frmMenú();
-                    frmMenú.MdiParent = MdiParent;
-                    frmMenú.ShowDialog();
-                    this.Close();
-                    #endregion  
-                }
-
+                MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                #region SALTO AL MENU PRINCIPAL
+                this.Hide();
+                frmMenú frmMenú = new frmMenú();
+                frmMenú.MdiParent = MdiParent;
+                frmMenú.ShowDialog();
+                this.Close();
+                #endregion
                 textBox1.Text = "";
                 textBox2.Text = "";
             }

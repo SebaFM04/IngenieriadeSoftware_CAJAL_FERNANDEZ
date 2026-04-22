@@ -60,12 +60,12 @@ namespace DAL
         }
         */
 
-        public BE.USUARIO BuscarUsuario(BE.USUARIO usuario)
+        public BE.USUARIO BuscarUsuario(string CorreoElectronico, string ContraseñaUsuario)
         {
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("@CorreoElectronico", usuario.CorreoElectronico));
-            parametros.Add(acceso.CrearParametro("@ContraseñaUsuario", ENCRIPTADOR.Hash(usuario.ContraseñaUsuario)));
+            parametros.Add(acceso.CrearParametro("@CorreoElectronico", CorreoElectronico));
+            parametros.Add(acceso.CrearParametro("@ContraseñaUsuario", ENCRIPTADOR.Hash(ContraseñaUsuario)));
 
             DataTable tabla = acceso.Leer("LeerUsuario", parametros);
             acceso.Cerrar();
@@ -87,30 +87,31 @@ namespace DAL
             }
         }
 
-        /*
-         //A IMPLEMENTAR L USUARIO
 
-                public void LlamarListado()
-                {
-                    string NombreSp = "ListarUsuarios";
-                    acceso.Abrir();
+        //A IMPLEMENTAR L USUARIO
 
-                    DataTable tabla = new DataTable();
-                    tabla = acceso.Leer(NombreSp);
-                    acceso.Cerrar();
+        public List<BE.USUARIO> ListarUsuarios()
+        {
+            List<BE.USUARIO> listaUsuarios = new List<BE.USUARIO>();
+            string NombreSp = "ListarUsuarios";
+            acceso.Abrir();
 
-                    BE.USUARIO.listaUsuarios.Clear();
+            DataTable tabla = new DataTable();
+            tabla = acceso.Leer(NombreSp);
+            acceso.Cerrar();
+            foreach (DataRow u in tabla.Rows)
+            {
+                BE.USUARIO usuario = new BE.USUARIO();
 
-                    foreach (DataRow u in tabla.Rows)
-                    {
-                        BE.USUARIO usuario = new BE.USUARIO();
+                usuario.IdUsuario = Convert.ToInt32(u["IdUsuario"].ToString());
+                usuario.CorreoElectronico = (u["CorreoElectronico"].ToString());
+                usuario.NombreUsuario = u["NombreUsuario"].ToString();
+                usuario.ApellidoUsuario = u["ApellidoUsuario"].ToString();
+                usuario.Dni = int.Parse(u["Dni"].ToString());
+                listaUsuarios.Add(usuario);
+            }
+            return  listaUsuarios;
+        }
 
-                        usuario.IdUsuario = Convert.ToInt32(u["IdUsuario"].ToString());
-                        usuario.CorreoElectronico = (u["CorreoElectronico"].ToString());
-
-                        BE.USUARIO.listaUsuarios.Add(usuario);
-                    }
-                }
-         */
     }
 }
