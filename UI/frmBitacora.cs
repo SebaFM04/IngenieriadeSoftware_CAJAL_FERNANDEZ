@@ -19,18 +19,14 @@ namespace UI
         public frmBitacora()
         {
             InitializeComponent();
-
-
         }
         private void frmBitacora_Load(object sender, EventArgs e)
         {
             CargarUsuario();
             Enlazar();
-
         }
         private void Enlazar()
         {
-
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("Id", "ID");
             dataGridView1.Columns.Add("Usuario", "Usuario");

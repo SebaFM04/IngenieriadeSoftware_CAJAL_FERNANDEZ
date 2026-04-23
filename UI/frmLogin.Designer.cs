@@ -39,10 +39,10 @@
             // lblLeyendaIniciofrmLogin
             // 
             this.lblLeyendaIniciofrmLogin.AutoSize = true;
-            this.lblLeyendaIniciofrmLogin.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLeyendaIniciofrmLogin.Location = new System.Drawing.Point(233, 48);
+            this.lblLeyendaIniciofrmLogin.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLeyendaIniciofrmLogin.Location = new System.Drawing.Point(216, 47);
             this.lblLeyendaIniciofrmLogin.Name = "lblLeyendaIniciofrmLogin";
-            this.lblLeyendaIniciofrmLogin.Size = new System.Drawing.Size(245, 19);
+            this.lblLeyendaIniciofrmLogin.Size = new System.Drawing.Size(334, 26);
             this.lblLeyendaIniciofrmLogin.TabIndex = 28;
             this.lblLeyendaIniciofrmLogin.Text = "¡Bienvenido a nuestro sistema! ";
             // 
@@ -104,7 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(722, 434);
             this.Controls.Add(this.lblLeyendaIniciofrmLogin);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
