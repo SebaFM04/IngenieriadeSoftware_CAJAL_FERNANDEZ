@@ -66,9 +66,9 @@ namespace UI
             }
 
             // Validación básica de contraseña
-            if (!string.IsNullOrWhiteSpace(contraseña) && contraseña.Length < 6)
+            if (!string.IsNullOrWhiteSpace(contraseña) && contraseña.Length < 4)
             {
-                errores.Add("La contraseña debe tener al menos 6 caracteres.");
+                errores.Add("La contraseña debe tener al menos 4 caracteres.");
             }
 
             // Si hay errores, mostrarlos, limpiar campos y abortar

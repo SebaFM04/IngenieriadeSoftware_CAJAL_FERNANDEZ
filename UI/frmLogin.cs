@@ -35,9 +35,9 @@ namespace UI
 
                 // Validar que se ingrese una contraseña
                 var password = textBox2.Text ?? string.Empty;
-                if (string.IsNullOrEmpty(password))
+                if (!string.IsNullOrWhiteSpace(password) && password.Length < 4)
                 {
-                    MessageBox.Show("Ingrese una contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ingrese una contraseña válida (Debe tener al menos 4 caracteres)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox2.Focus();
                     return;
                 }
@@ -57,6 +57,28 @@ namespace UI
                 #endregion
                 textBox1.Text = "";
                 textBox2.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        bool oculto = true;
+        private void btnMostrarContraseñafrmLogIn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (oculto == true)
+                {
+                    textBox2.PasswordChar = '\0';
+                    oculto = false;
+                }
+                else
+                {
+                    textBox2.PasswordChar = '*';
+                    oculto = true;
+                }
             }
             catch (Exception ex)
             {

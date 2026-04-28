@@ -34,6 +34,7 @@
             this.btnlniciarSesionfrmLogin = new System.Windows.Forms.Button();
             this.lblContraseñafrmLogin = new System.Windows.Forms.Label();
             this.lblCorreoElectronicofrmLogin = new System.Windows.Forms.Label();
+            this.btnMostrarContraseñafrmLogIn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblLeyendaIniciofrmLogin
@@ -53,6 +54,7 @@
             this.textBox2.Location = new System.Drawing.Point(221, 209);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(324, 29);
             this.textBox2.TabIndex = 26;
             // 
@@ -99,12 +101,25 @@
             this.lblCorreoElectronicofrmLogin.TabIndex = 21;
             this.lblCorreoElectronicofrmLogin.Text = "Correo Electrónico";
             // 
+            // btnMostrarContraseñafrmLogIn
+            // 
+            this.btnMostrarContraseñafrmLogIn.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnMostrarContraseñafrmLogIn.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrarContraseñafrmLogIn.Location = new System.Drawing.Point(562, 209);
+            this.btnMostrarContraseñafrmLogIn.Name = "btnMostrarContraseñafrmLogIn";
+            this.btnMostrarContraseñafrmLogIn.Size = new System.Drawing.Size(98, 31);
+            this.btnMostrarContraseñafrmLogIn.TabIndex = 29;
+            this.btnMostrarContraseñafrmLogIn.Text = "Mostrar";
+            this.btnMostrarContraseñafrmLogIn.UseVisualStyleBackColor = false;
+            this.btnMostrarContraseñafrmLogIn.Click += new System.EventHandler(this.btnMostrarContraseñafrmLogIn_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(722, 434);
+            this.Controls.Add(this.btnMostrarContraseñafrmLogIn);
             this.Controls.Add(this.lblLeyendaIniciofrmLogin);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -128,6 +143,7 @@
         private System.Windows.Forms.Button btnlniciarSesionfrmLogin;
         private System.Windows.Forms.Label lblContraseñafrmLogin;
         private System.Windows.Forms.Label lblCorreoElectronicofrmLogin;
+        private System.Windows.Forms.Button btnMostrarContraseñafrmLogIn;
     }
 }
 
