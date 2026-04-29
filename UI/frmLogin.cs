@@ -35,7 +35,7 @@ namespace UI
 
                 // Validar que se ingrese una contraseña
                 var password = textBox2.Text ?? string.Empty;
-                if (!string.IsNullOrWhiteSpace(password) && password.Length < 4)
+                if (string.IsNullOrWhiteSpace(password) || password.Length < 4)
                 {
                     MessageBox.Show("Ingrese una contraseña válida (Debe tener al menos 4 caracteres)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox2.Focus();
@@ -48,6 +48,7 @@ namespace UI
                 BE.USUARIO UserfromBd = GestorUsuario.LoginUsuario(email, password);
 
                 MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 #region SALTO AL MENU PRINCIPAL
                 this.Hide();
                 frmMenú frmMenú = new frmMenú();
@@ -55,6 +56,7 @@ namespace UI
                 frmMenú.ShowDialog();
                 this.Close();
                 #endregion
+
                 textBox1.Text = "";
                 textBox2.Text = "";
             }

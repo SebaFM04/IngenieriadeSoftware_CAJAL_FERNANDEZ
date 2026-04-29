@@ -44,10 +44,9 @@
             // 
             this.lblUsuarioBitacora.AutoSize = true;
             this.lblUsuarioBitacora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioBitacora.Location = new System.Drawing.Point(19, 20);
-            this.lblUsuarioBitacora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuarioBitacora.Location = new System.Drawing.Point(14, 16);
             this.lblUsuarioBitacora.Name = "lblUsuarioBitacora";
-            this.lblUsuarioBitacora.Size = new System.Drawing.Size(72, 22);
+            this.lblUsuarioBitacora.Size = new System.Drawing.Size(60, 18);
             this.lblUsuarioBitacora.TabIndex = 0;
             this.lblUsuarioBitacora.Text = "Usuario";
             // 
@@ -55,10 +54,9 @@
             // 
             this.lblDesdeBitacora.AutoSize = true;
             this.lblDesdeBitacora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesdeBitacora.Location = new System.Drawing.Point(19, 61);
-            this.lblDesdeBitacora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDesdeBitacora.Location = new System.Drawing.Point(14, 50);
             this.lblDesdeBitacora.Name = "lblDesdeBitacora";
-            this.lblDesdeBitacora.Size = new System.Drawing.Size(62, 22);
+            this.lblDesdeBitacora.Size = new System.Drawing.Size(51, 18);
             this.lblDesdeBitacora.TabIndex = 1;
             this.lblDesdeBitacora.Text = "Desde";
             // 
@@ -66,10 +64,9 @@
             // 
             this.lblHastaBitacora.AutoSize = true;
             this.lblHastaBitacora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHastaBitacora.Location = new System.Drawing.Point(19, 97);
-            this.lblHastaBitacora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHastaBitacora.Location = new System.Drawing.Point(14, 79);
             this.lblHastaBitacora.Name = "lblHastaBitacora";
-            this.lblHastaBitacora.Size = new System.Drawing.Size(57, 22);
+            this.lblHastaBitacora.Size = new System.Drawing.Size(47, 18);
             this.lblHastaBitacora.TabIndex = 2;
             this.lblHastaBitacora.Text = "Hasta";
             // 
@@ -77,38 +74,34 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(99, 12);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(74, 10);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(205, 30);
+            this.comboBox1.Size = new System.Drawing.Size(155, 25);
             this.comboBox1.TabIndex = 3;
             // 
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaDesde.Location = new System.Drawing.Point(99, 55);
-            this.dtpFechaDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(74, 45);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(343, 28);
+            this.dtpFechaDesde.Size = new System.Drawing.Size(258, 24);
             this.dtpFechaDesde.TabIndex = 4;
             // 
             // dtpFechaHasta
             // 
             this.dtpFechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaHasta.Location = new System.Drawing.Point(99, 91);
-            this.dtpFechaHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(74, 74);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
-            this.dtpFechaHasta.Size = new System.Drawing.Size(343, 28);
+            this.dtpFechaHasta.Size = new System.Drawing.Size(258, 24);
             this.dtpFechaHasta.TabIndex = 5;
             // 
             // btnBuscarBitacora
             // 
             this.btnBuscarBitacora.BackColor = System.Drawing.Color.SandyBrown;
             this.btnBuscarBitacora.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarBitacora.Location = new System.Drawing.Point(490, 12);
-            this.btnBuscarBitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscarBitacora.Location = new System.Drawing.Point(368, 10);
             this.btnBuscarBitacora.Name = "btnBuscarBitacora";
-            this.btnBuscarBitacora.Size = new System.Drawing.Size(135, 44);
+            this.btnBuscarBitacora.Size = new System.Drawing.Size(101, 36);
             this.btnBuscarBitacora.TabIndex = 6;
             this.btnBuscarBitacora.Text = "Buscar";
             this.btnBuscarBitacora.UseVisualStyleBackColor = false;
@@ -118,10 +111,9 @@
             // 
             this.btnLimpiarBitacora.BackColor = System.Drawing.Color.SandyBrown;
             this.btnLimpiarBitacora.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiarBitacora.Location = new System.Drawing.Point(490, 76);
-            this.btnLimpiarBitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiarBitacora.Location = new System.Drawing.Point(368, 62);
             this.btnLimpiarBitacora.Name = "btnLimpiarBitacora";
-            this.btnLimpiarBitacora.Size = new System.Drawing.Size(135, 45);
+            this.btnLimpiarBitacora.Size = new System.Drawing.Size(101, 37);
             this.btnLimpiarBitacora.TabIndex = 7;
             this.btnLimpiarBitacora.Text = "Limpiar";
             this.btnLimpiarBitacora.UseVisualStyleBackColor = false;
@@ -132,20 +124,19 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 129);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 105);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(930, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(698, 297);
             this.dataGridView1.TabIndex = 8;
             // 
             // frmBitacora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(969, 554);
+            this.ClientSize = new System.Drawing.Size(727, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnLimpiarBitacora);
             this.Controls.Add(this.btnBuscarBitacora);
@@ -155,8 +146,8 @@
             this.Controls.Add(this.lblHastaBitacora);
             this.Controls.Add(this.lblDesdeBitacora);
             this.Controls.Add(this.lblUsuarioBitacora);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmBitacora";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBitácora";
             this.Load += new System.EventHandler(this.frmBitacora_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

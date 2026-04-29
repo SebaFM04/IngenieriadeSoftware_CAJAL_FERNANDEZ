@@ -25,8 +25,8 @@ namespace UI
             {
                 BLL.USUARIO_BLL Usuario = new BLL.USUARIO_BLL();
                 Usuario.LogoutUsuario();
+                this.Close();
             }
-            this.Close();
         }
 
         private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
