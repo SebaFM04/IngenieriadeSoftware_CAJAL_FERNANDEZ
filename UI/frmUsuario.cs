@@ -104,10 +104,7 @@ namespace UI
             {
                 GestorUsuario.AltaUsuario(usuario);
                 MessageBox.Show("Usuario registrado exitosamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                frmLogin frmLog = new frmLogin();
-                frmLog.MdiParent = MdiParent;
-                frmLog.Show();
+                this.Close();                
             }
             catch (Exception ex)
             {
