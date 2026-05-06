@@ -446,3 +446,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 *.ini
+*.zip
