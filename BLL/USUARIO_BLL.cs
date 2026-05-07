@@ -41,12 +41,13 @@ namespace BLL
 
         public int EliminarUsuario(BE.USUARIO usuario)
         {
+            BE.USUARIO usuarioBorrado = usuario;
             int filas = GestorUsuario.BajaUsuario(usuario);
             try
             {
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
                 {
-                    new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Baja de usuario", $"Se eliminó el usuario: {usuario.CorreoElectronico}");
+                    new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Baja de usuario", $"Se eliminó el usuario: {usuarioBorrado.CorreoElectronico}");
                 }
             }
             catch

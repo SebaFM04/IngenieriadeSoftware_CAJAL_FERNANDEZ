@@ -14,8 +14,8 @@ namespace DAL
         public void Abrir()
         {
             Conexion = new SqlConnection();
-            Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=ACERNOTEBOOK-MC\\SQLEXPRESS";
-            //Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=.";
+            //Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=ACERNOTEBOOK-MC\\SQLEXPRESS";
+            Conexion.ConnectionString = "Integrated Security=SSPI;Initial Catalog=TpIngSoftware_2026 ;Data Source=.";
 
             Conexion.Open();
         }
@@ -95,6 +95,14 @@ namespace DAL
             p.ParameterName = nombre;
             p.Value = valor;
             p.DbType = DbType.String;
+            return p;
+        }
+        public SqlParameter CrearParametro(string nombre, decimal valor)
+        {
+            SqlParameter p = new SqlParameter();
+            p.ParameterName = nombre;
+            p.Value = valor;
+            p.DbType = DbType.Decimal;
             return p;
         }
         public SqlParameter CrearParametro(string nombre, DateTime valor)

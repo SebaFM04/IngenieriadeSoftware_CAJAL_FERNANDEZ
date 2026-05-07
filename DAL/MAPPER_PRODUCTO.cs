@@ -19,12 +19,12 @@ namespace DAL
             string NombreSp = "AltaProducto";
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("@Nombre", Producto.NombreProducto));
-            parametros.Add(acceso.CrearParametro("@Precio", Producto.PrecioProducto.ToString()));
-            parametros.Add(acceso.CrearParametro("@Tipo", Producto.TipoProducto));
+            parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
+            parametros.Add(acceso.CrearParametro("@NombreProducto", Producto.NombreProducto));
+            parametros.Add(acceso.CrearParametro("@PrecioProducto", Producto.PrecioProducto));
+            parametros.Add(acceso.CrearParametro("@TipoProducto", Producto.TipoProducto));
             parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
             parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad.ToString()));
-            parametros.Add(acceso.CrearParametro("@Codigo", Producto.CodigoProducto.ToString()));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
             return filas;
