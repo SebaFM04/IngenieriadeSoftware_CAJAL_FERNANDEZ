@@ -2,6 +2,7 @@
 using SERVICIO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace DAL
     {
         ACCESO acceso = new ACCESO();
 
-        public int InsertarProducto(BE.PRODUCTO Producto)
+        public int AltaProducto(BE.PRODUCTO Producto)
         {
             string NombreSp = "AltaProducto";
             acceso.Abrir();
@@ -30,7 +31,7 @@ namespace DAL
         }
 
 
-        public int EliminarProducto(BE.PRODUCTO Producto)
+        public int BajaProducto(BE.PRODUCTO Producto)
         {
             string NombreSp = "BajaProducto";
             acceso.Abrir();
@@ -41,7 +42,7 @@ namespace DAL
             return filas;
         }
 
-        public int ModificarProducto(BE.PRODUCTO Producto)
+        public int EditarProducto(BE.PRODUCTO Producto)
         {
             string NombreSp = "ModificarProducto";
             acceso.Abrir();
@@ -56,6 +57,31 @@ namespace DAL
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
             return filas;
+        }
+
+        public List<BE.PRODUCTO> ListarProductos()
+        {
+            List<BE.PRODUCTO> listaProductos = new List<BE.PRODUCTO>();
+            string NombreSp = "ListarProducto";
+            acceso.Abrir();
+
+            DataTable tabla = new DataTable();
+            tabla = acceso.Leer(NombreSp);
+            acceso.Cerrar();
+            foreach (DataRow u in tabla.Rows)
+            {
+                BE.PRODUCTO producto = new BE.PRODUCTO();
+
+                producto.IdProducto = Convert.ToInt32(u["IdProducto"].ToString());
+                producto.TipoProducto = u["TipoProducto"].ToString();
+                producto.NombreProducto = u["NombreProducto"].ToString();
+                producto.PrecioProducto = Convert.ToDecimal(u["PrecioProducto"].ToString());
+                producto.Descripcion = u["Descripcion"].ToString();
+                producto.Cantidad = Convert.ToInt32(u["Cantidad"].ToString());
+                producto.CodigoProducto = Convert.ToInt32(u["CodigoProducto"].ToString());
+                listaProductos.Add(producto);
+            }
+            return listaProductos;
         }
     }
 }

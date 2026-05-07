@@ -14,7 +14,7 @@ namespace DAL
     {
         ACCESO acceso = new ACCESO();
 
-        public int RegistrarUsuario(BE.USUARIO Usuario)
+        public int AltaUsuario(BE.USUARIO Usuario)
         {
             string NombreSp = "AltaUsuario";
             acceso.Abrir();
@@ -32,7 +32,7 @@ namespace DAL
         }
 
         
-        public int EliminarUsuario(BE.USUARIO Usuario)
+        public int BajaUsuario(BE.USUARIO Usuario)
         {
             string NombreSp = "BajaUsuario";
             acceso.Abrir();
@@ -43,7 +43,7 @@ namespace DAL
             return filas;
         }
 
-        public int ModificarUsuario(BE.USUARIO Usuario)
+        public int EditarUsuario(BE.USUARIO Usuario)
         {
             string NombreSp = "ModificarUsuario";
             acceso.Abrir();

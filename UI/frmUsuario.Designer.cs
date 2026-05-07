@@ -101,7 +101,7 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(237, 265);
+            this.textBox5.Location = new System.Drawing.Point(237, 260);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(360, 29);
@@ -111,7 +111,7 @@
             // 
             this.lblContraseñafrmUsuario.AutoSize = true;
             this.lblContraseñafrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseñafrmUsuario.Location = new System.Drawing.Point(35, 265);
+            this.lblContraseñafrmUsuario.Location = new System.Drawing.Point(35, 260);
             this.lblContraseñafrmUsuario.Name = "lblContraseñafrmUsuario";
             this.lblContraseñafrmUsuario.Size = new System.Drawing.Size(113, 23);
             this.lblContraseñafrmUsuario.TabIndex = 49;
@@ -120,7 +120,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(237, 210);
+            this.textBox4.Location = new System.Drawing.Point(237, 205);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(360, 29);
@@ -130,7 +130,7 @@
             // 
             this.lblCorreoElectronicofrmUsuario.AutoSize = true;
             this.lblCorreoElectronicofrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorreoElectronicofrmUsuario.Location = new System.Drawing.Point(35, 217);
+            this.lblCorreoElectronicofrmUsuario.Location = new System.Drawing.Point(35, 212);
             this.lblCorreoElectronicofrmUsuario.Name = "lblCorreoElectronicofrmUsuario";
             this.lblCorreoElectronicofrmUsuario.Size = new System.Drawing.Size(176, 23);
             this.lblCorreoElectronicofrmUsuario.TabIndex = 47;
@@ -139,7 +139,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(237, 156);
+            this.textBox3.Location = new System.Drawing.Point(237, 151);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(360, 29);
@@ -149,7 +149,7 @@
             // 
             this.lblDnifrmUsuario.AutoSize = true;
             this.lblDnifrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDnifrmUsuario.Location = new System.Drawing.Point(35, 162);
+            this.lblDnifrmUsuario.Location = new System.Drawing.Point(35, 157);
             this.lblDnifrmUsuario.Name = "lblDnifrmUsuario";
             this.lblDnifrmUsuario.Size = new System.Drawing.Size(45, 23);
             this.lblDnifrmUsuario.TabIndex = 45;
@@ -158,7 +158,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(237, 101);
+            this.textBox2.Location = new System.Drawing.Point(237, 96);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(360, 29);
@@ -177,7 +177,7 @@
             // 
             this.lblApellidofrmUsuario.AutoSize = true;
             this.lblApellidofrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidofrmUsuario.Location = new System.Drawing.Point(35, 107);
+            this.lblApellidofrmUsuario.Location = new System.Drawing.Point(35, 102);
             this.lblApellidofrmUsuario.Name = "lblApellidofrmUsuario";
             this.lblApellidofrmUsuario.Size = new System.Drawing.Size(81, 23);
             this.lblApellidofrmUsuario.TabIndex = 42;
@@ -198,7 +198,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(1469, 526);
+            this.ClientSize = new System.Drawing.Size(1398, 526);
             this.Controls.Add(this.btnModificacionfrmUsuario);
             this.Controls.Add(this.btnBajafrmUsuario);
             this.Controls.Add(this.btnAltafrmUsuario);

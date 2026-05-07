@@ -28,9 +28,9 @@ namespace BLL
             new BITACORA_BLL().RegistrarEvento(user.IdUsuario, "Cierre de sesion", $"El Usuario: {user.CorreoElectronico} Cerró la sesion.");
         }
 
-        public void AltaUsuario(BE.USUARIO usuario)
+        public void RegistrarUsuario(BE.USUARIO usuario)
         {
-            GestorUsuario.RegistrarUsuario(usuario);
+            GestorUsuario.AltaUsuario(usuario);
             new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Alta de usuario", $"Se agrego el usuario: {usuario.CorreoElectronico}");
         }
 
@@ -39,9 +39,9 @@ namespace BLL
             return new MAPPER_USUARIO().BuscarUsuario(Correo, Contraseña);
         }
 
-        public int BorrarUsuario(BE.USUARIO usuario)
+        public int EliminarUsuario(BE.USUARIO usuario)
         {
-            int filas = GestorUsuario.EliminarUsuario(usuario);
+            int filas = GestorUsuario.BajaUsuario(usuario);
             try
             {
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
@@ -56,9 +56,9 @@ namespace BLL
             return filas;
         }
 
-        public int EditarUsuario(BE.USUARIO usuario)
+        public int ModificarUsuario(BE.USUARIO usuario)
         {
-            int filas = GestorUsuario.ModificarUsuario(usuario);
+            int filas = GestorUsuario.EditarUsuario(usuario);
             try
             {
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())

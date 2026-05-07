@@ -13,15 +13,15 @@ namespace BLL
     {
         MAPPER_PRODUCTO GestorProducto = new MAPPER_PRODUCTO();
 
-        public void AltaProducto(BE.PRODUCTO producto)
+        public void InsertarProducto(BE.PRODUCTO producto)
         {
-            GestorProducto.InsertarProducto(producto);
+            GestorProducto.AltaProducto(producto);
             new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Alta de producto", $"Se agrego el producto: {producto.NombreProducto}");
         }
 
-        public int BorrarProducto(BE.PRODUCTO producto)
+        public int EliminarProducto(BE.PRODUCTO producto)
         {
-            int filas = GestorProducto.EliminarProducto(producto);
+            int filas = GestorProducto.BajaProducto(producto);
             try
             {
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
@@ -38,9 +38,9 @@ namespace BLL
 
         }
 
-        public int EditarProducto(BE.PRODUCTO producto)
+        public int ModificarProducto(BE.PRODUCTO producto)
         {
-            int filas = GestorProducto.ModificarProducto(producto);
+            int filas = GestorProducto.EditarProducto(producto);
             try
             {
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
@@ -54,6 +54,11 @@ namespace BLL
                 // No interrumpir por fallos en bitácora
             }
             return filas;
+        }
+
+        public List<BE.PRODUCTO> ListarProductos()
+        {
+            return GestorProducto.ListarProductos();
         }
     }
 }

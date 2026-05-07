@@ -16,8 +16,8 @@ namespace UI
 {
     public partial class frmUsuario : Form
     {
-
-        USUARIO_BLL Usariobll = new USUARIO_BLL();
+        BE.USUARIO usuario = new BE.USUARIO();
+        USUARIO_BLL GestorUsuario = new USUARIO_BLL();
 
         public frmUsuario()
         {
@@ -31,10 +31,10 @@ namespace UI
         private void Enlazar()
         {
             dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Id", "ID");
-            dataGridView1.Columns.Add("NombreUsuario", "NombreUsuario");
-            dataGridView1.Columns.Add("ApellidoUsuario", "ApellidoUsuario");
-            dataGridView1.Columns.Add("Dni", "DNI");
+            dataGridView1.Columns.Add("Id", "Id");
+            dataGridView1.Columns.Add("Nombre", "Nombre");
+            dataGridView1.Columns.Add("Apellido", "Apellido");
+            dataGridView1.Columns.Add("Dni", "Dni");
             dataGridView1.Columns.Add("CorreoElectronico", "Correo Electronico");
             dataGridView1.Columns.Add("ContraseñaUsuario", "Contraseña");
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -45,7 +45,7 @@ namespace UI
             dataGridView1.Rows.Clear();
 
             // 1. Obtener diccionario de usuarios para el mapeo de nombres
-            var users = Usariobll.ListarUsuarios();
+            var users = GestorUsuario.ListarUsuarios();
             Dictionary<int, string> dictUsuarios = users.ToDictionary(u => u.IdUsuario, u => u.NombreUsuario);
 
             // 2. Cargar los datos fila por fila
@@ -137,8 +137,6 @@ namespace UI
             }
             #endregion  
 
-            BE.USUARIO usuario = new BE.USUARIO();
-
             usuario.NombreUsuario = nombre;
             usuario.ApellidoUsuario = apellido;
             usuario.Dni = dniParsed;
@@ -149,7 +147,7 @@ namespace UI
 
             try
             {
-                GestorUsuario.AltaUsuario(usuario);
+                GestorUsuario.RegistrarUsuario(usuario);
                 MessageBox.Show("Usuario registrado exitosamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -186,7 +184,7 @@ namespace UI
             {
                 BE.USUARIO u = new BE.USUARIO();
                 u.IdUsuario = id;
-                int filas = Usariobll.BorrarUsuario(u);
+                int filas = GestorUsuario.EliminarUsuario(u);
                 if (filas > 0)
                 {
                     MessageBox.Show("Usuario borrado correctamente.", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -258,7 +256,7 @@ namespace UI
                 usuario.CorreoElectronico = correo;
                 usuario.ContraseñaUsuario = contraseña;
 
-                int filas = Usariobll.EditarUsuario(usuario);
+                int filas = GestorUsuario.ModificarUsuario(usuario);
                 if (filas > 0)
                 {
                     MessageBox.Show("Usuario modificado correctamente.", "Edición", MessageBoxButtons.OK, MessageBoxIcon.Information);
