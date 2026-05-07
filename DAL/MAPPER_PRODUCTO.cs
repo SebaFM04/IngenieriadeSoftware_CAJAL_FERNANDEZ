@@ -19,12 +19,12 @@ namespace DAL
             string NombreSp = "AltaProducto";
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
             parametros.Add(acceso.CrearParametro("@NombreProducto", Producto.NombreProducto));
             parametros.Add(acceso.CrearParametro("@PrecioProducto", Producto.PrecioProducto));
             parametros.Add(acceso.CrearParametro("@TipoProducto", Producto.TipoProducto));
-            parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
             parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad.ToString()));
+            parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
+            parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
             return filas;
@@ -48,12 +48,12 @@ namespace DAL
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@IdProducto", Producto.IdProducto));
-            parametros.Add(acceso.CrearParametro("@Nombre", Producto.NombreProducto));
-            parametros.Add(acceso.CrearParametro("@Precio", Producto.PrecioProducto.ToString()));
-            parametros.Add(acceso.CrearParametro("@Tipo", Producto.TipoProducto));
-            parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
+            parametros.Add(acceso.CrearParametro("@NombreProducto", Producto.NombreProducto));
+            parametros.Add(acceso.CrearParametro("@PrecioProducto", Producto.PrecioProducto));
+            parametros.Add(acceso.CrearParametro("@TipoProducto", Producto.TipoProducto));
             parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad.ToString()));
-            parametros.Add(acceso.CrearParametro("@Codigo", Producto.CodigoProducto.ToString()));
+            parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
+            parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
             return filas;
@@ -73,9 +73,9 @@ namespace DAL
                 BE.PRODUCTO producto = new BE.PRODUCTO();
 
                 producto.IdProducto = Convert.ToInt32(u["IdProducto"].ToString());
-                producto.TipoProducto = u["TipoProducto"].ToString();
                 producto.NombreProducto = u["NombreProducto"].ToString();
                 producto.PrecioProducto = Convert.ToDecimal(u["PrecioProducto"].ToString());
+                producto.TipoProducto = u["TipoProducto"].ToString();               
                 producto.Descripcion = u["Descripcion"].ToString();
                 producto.Cantidad = Convert.ToInt32(u["Cantidad"].ToString());
                 producto.CodigoProducto = Convert.ToInt32(u["CodigoProducto"].ToString());
