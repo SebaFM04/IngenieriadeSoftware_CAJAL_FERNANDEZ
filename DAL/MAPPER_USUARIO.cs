@@ -31,16 +31,16 @@ namespace DAL
             return filas;
         }
 
-        /* A IMPLEMENTAR BM USUARIO
+        
         public int EliminarUsuario(BE.USUARIO Usuario)
         {
-            string NombreSp = "EliminarUsuario";
+            string NombreSp = "BajaUsuario";
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@IdUsuario", Usuario.IdUsuario));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
-            retunr filas;
+            return filas;
         }
 
         public int ModificarUsuario(BE.USUARIO Usuario)
@@ -58,7 +58,7 @@ namespace DAL
             acceso.Cerrar();
             return filas;
         }
-        */
+        
 
         public BE.USUARIO BuscarUsuario(string CorreoElectronico, string ContraseñaUsuario)
         {
@@ -88,12 +88,10 @@ namespace DAL
         }
 
 
-        //A IMPLEMENTAR L USUARIO
-
         public List<BE.USUARIO> ListarUsuarios()
         {
             List<BE.USUARIO> listaUsuarios = new List<BE.USUARIO>();
-            string NombreSp = "ListarUsuarios";
+            string NombreSp = "ListarUsuario";
             acceso.Abrir();
 
             DataTable tabla = new DataTable();
@@ -105,6 +103,7 @@ namespace DAL
 
                 usuario.IdUsuario = Convert.ToInt32(u["IdUsuario"].ToString());
                 usuario.CorreoElectronico = (u["CorreoElectronico"].ToString());
+                usuario.ContraseñaUsuario = (u["ContraseñaUsuario"].ToString());
                 usuario.NombreUsuario = u["NombreUsuario"].ToString();
                 usuario.ApellidoUsuario = u["ApellidoUsuario"].ToString();
                 usuario.Dni = int.Parse(u["Dni"].ToString());

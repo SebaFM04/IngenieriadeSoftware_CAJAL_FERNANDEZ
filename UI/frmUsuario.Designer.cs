@@ -50,7 +50,7 @@
             this.btnModificacionfrmUsuario.BackColor = System.Drawing.Color.SandyBrown;
             this.btnModificacionfrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificacionfrmUsuario.Location = new System.Drawing.Point(339, 288);
-            this.btnModificacionfrmUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificacionfrmUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificacionfrmUsuario.Name = "btnModificacionfrmUsuario";
             this.btnModificacionfrmUsuario.Size = new System.Drawing.Size(110, 38);
             this.btnModificacionfrmUsuario.TabIndex = 54;
@@ -62,7 +62,7 @@
             this.btnBajafrmUsuario.BackColor = System.Drawing.Color.SandyBrown;
             this.btnBajafrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBajafrmUsuario.Location = new System.Drawing.Point(191, 288);
-            this.btnBajafrmUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBajafrmUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnBajafrmUsuario.Name = "btnBajafrmUsuario";
             this.btnBajafrmUsuario.Size = new System.Drawing.Size(110, 38);
             this.btnBajafrmUsuario.TabIndex = 53;
@@ -74,7 +74,7 @@
             this.btnAltafrmUsuario.BackColor = System.Drawing.Color.SandyBrown;
             this.btnAltafrmUsuario.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAltafrmUsuario.Location = new System.Drawing.Point(48, 288);
-            this.btnAltafrmUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAltafrmUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnAltafrmUsuario.Name = "btnAltafrmUsuario";
             this.btnAltafrmUsuario.Size = new System.Drawing.Size(110, 38);
             this.btnAltafrmUsuario.TabIndex = 52;
@@ -84,10 +84,13 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(484, 39);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(532, 311);
@@ -97,7 +100,7 @@
             // 
             this.textBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(178, 215);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(271, 25);
             this.textBox5.TabIndex = 50;
@@ -117,7 +120,7 @@
             // 
             this.textBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(178, 171);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(271, 25);
             this.textBox4.TabIndex = 48;
@@ -137,7 +140,7 @@
             // 
             this.textBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(178, 127);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(271, 25);
             this.textBox3.TabIndex = 46;
@@ -157,7 +160,7 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(178, 82);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(271, 25);
             this.textBox2.TabIndex = 44;
@@ -166,7 +169,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(178, 39);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(271, 25);
             this.textBox1.TabIndex = 43;
@@ -213,10 +216,11 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblApellidofrmUsuario);
             this.Controls.Add(this.lblNombrefrmUsuario);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUsuario";
+            this.Load += new System.EventHandler(this.frmUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

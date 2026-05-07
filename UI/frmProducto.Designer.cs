@@ -50,7 +50,7 @@
             this.btnModificacionfrmProducto.BackColor = System.Drawing.Color.SandyBrown;
             this.btnModificacionfrmProducto.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificacionfrmProducto.Location = new System.Drawing.Point(343, 277);
-            this.btnModificacionfrmProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificacionfrmProducto.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificacionfrmProducto.Name = "btnModificacionfrmProducto";
             this.btnModificacionfrmProducto.Size = new System.Drawing.Size(110, 38);
             this.btnModificacionfrmProducto.TabIndex = 68;
@@ -62,7 +62,7 @@
             this.btnBajafrmProducto.BackColor = System.Drawing.Color.SandyBrown;
             this.btnBajafrmProducto.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBajafrmProducto.Location = new System.Drawing.Point(190, 277);
-            this.btnBajafrmProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBajafrmProducto.Margin = new System.Windows.Forms.Padding(2);
             this.btnBajafrmProducto.Name = "btnBajafrmProducto";
             this.btnBajafrmProducto.Size = new System.Drawing.Size(110, 38);
             this.btnBajafrmProducto.TabIndex = 67;
@@ -74,7 +74,7 @@
             this.btnAltafrmProducto.BackColor = System.Drawing.Color.SandyBrown;
             this.btnAltafrmProducto.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAltafrmProducto.Location = new System.Drawing.Point(47, 277);
-            this.btnAltafrmProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAltafrmProducto.Margin = new System.Windows.Forms.Padding(2);
             this.btnAltafrmProducto.Name = "btnAltafrmProducto";
             this.btnAltafrmProducto.Size = new System.Drawing.Size(110, 38);
             this.btnAltafrmProducto.TabIndex = 66;
@@ -85,7 +85,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(467, 28);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -96,7 +96,7 @@
             // 
             this.textBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(144, 204);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(271, 25);
             this.textBox5.TabIndex = 64;
@@ -116,7 +116,7 @@
             // 
             this.textBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(144, 159);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(271, 25);
             this.textBox4.TabIndex = 62;
@@ -136,7 +136,7 @@
             // 
             this.textBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(144, 115);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(271, 25);
             this.textBox3.TabIndex = 60;
@@ -156,7 +156,7 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(144, 71);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(271, 25);
             this.textBox2.TabIndex = 58;
@@ -165,7 +165,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(144, 28);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(271, 25);
             this.textBox1.TabIndex = 57;
@@ -212,10 +212,11 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblPreciofrmProducto);
             this.Controls.Add(this.lblNombrefrmProducto);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmProducto";
+            this.Load += new System.EventHandler(this.frmProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

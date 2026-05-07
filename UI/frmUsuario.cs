@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,17 +7,62 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 namespace UI
 {
     public partial class frmUsuario : Form
     {
+
+        USUARIO_BLL Usariobll = new USUARIO_BLL();
+
         public frmUsuario()
         {
             InitializeComponent();
+        }
+        private void frmUsuario_Load(object sender, EventArgs e)
+        {
+            Enlazar();
+            CargarUsuarios();
+        }
+        private void Enlazar()
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("Id", "ID");
+            dataGridView1.Columns.Add("NombreUsuario", "Nombre");
+            dataGridView1.Columns.Add("ApellidoUsuario", "Apellido");
+            dataGridView1.Columns.Add("Dni", "DNI");
+            dataGridView1.Columns.Add("CorreoElectronico", "Correo Electronico");
+            dataGridView1.Columns.Add("ContraseñaUsuario", "Contraseña");
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void CargarUsuarios()
+        {
+            dataGridView1.Rows.Clear();
+
+            // 1. Obtener diccionario de usuarios para el mapeo de nombres
+            var users = Usariobll.ListarUsuarios();
+            Dictionary<int, string> dictUsuarios = users.ToDictionary(u => u.IdUsuario, u => u.CorreoElectronico);
+
+            // 2. Cargar los datos fila por fila
+            foreach (var registro in users)
+            {
+                // Buscamos el nombre del usuario en el diccionario usando el ID que viene en la bitácora
+                string nombreUsuario = dictUsuarios.ContainsKey(registro.IdUsuario)
+                                       ? dictUsuarios[registro.IdUsuario]
+                                       : "Desconocido";
+                dataGridView1.Rows.Add(
+                    registro.IdUsuario,
+                    nombreUsuario,
+                    registro.ApellidoUsuario,
+                    registro.Dni,
+                    registro.CorreoElectronico,
+                    registro.ContraseñaUsuario  
+                );
+            }
         }
 
         private void btnAltafrmUsuario_Click(object sender, EventArgs e)
@@ -104,12 +150,19 @@ namespace UI
             {
                 GestorUsuario.AltaUsuario(usuario);
                 MessageBox.Show("Usuario registrado exitosamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();                
+                this.Close();
+            }
+            catch (System.Data.SqlClient.SqlException sqlEx)
+            {
+                // RAISERROR con severidad 16 tira una SqlException. 
+                // sqlEx.Message contendrá el texto: "Ya existe un usuario con ese..."
+                MessageBox.Show(sqlEx.Message, "Aviso de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el usuario. Verifique los datos ingresados." + Environment.NewLine + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al registrar el usuario. Verifique los datos:" + Environment.NewLine + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
