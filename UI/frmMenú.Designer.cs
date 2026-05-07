@@ -108,6 +108,7 @@
             this.formularioProductosToolStripMenuItem.Name = "formularioProductosToolStripMenuItem";
             this.formularioProductosToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.formularioProductosToolStripMenuItem.Text = "Formulario Productos";
+            this.formularioProductosToolStripMenuItem.Click += new System.EventHandler(this.formularioProductosToolStripMenuItem_Click);
             // 
             // adminitraciónToolStripMenuItem
             // 
@@ -120,7 +121,7 @@
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.bitacoraToolStripMenuItem.Text = "Bitácora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 

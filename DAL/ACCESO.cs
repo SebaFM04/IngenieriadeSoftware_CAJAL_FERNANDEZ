@@ -67,9 +67,9 @@ namespace DAL
             {
                 FilasAfectadas = comando.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (SqlException)
             {
-                FilasAfectadas = -1;
+                throw;
             }
             return FilasAfectadas;
         }

@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,8 +32,8 @@ namespace UI
         {
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("Id", "ID");
-            dataGridView1.Columns.Add("NombreUsuario", "Nombre");
-            dataGridView1.Columns.Add("ApellidoUsuario", "Apellido");
+            dataGridView1.Columns.Add("NombreUsuario", "NombreUsuario");
+            dataGridView1.Columns.Add("ApellidoUsuario", "ApellidoUsuario");
             dataGridView1.Columns.Add("Dni", "DNI");
             dataGridView1.Columns.Add("CorreoElectronico", "Correo Electronico");
             dataGridView1.Columns.Add("ContraseñaUsuario", "Contraseña");
@@ -45,7 +46,7 @@ namespace UI
 
             // 1. Obtener diccionario de usuarios para el mapeo de nombres
             var users = Usariobll.ListarUsuarios();
-            Dictionary<int, string> dictUsuarios = users.ToDictionary(u => u.IdUsuario, u => u.CorreoElectronico);
+            Dictionary<int, string> dictUsuarios = users.ToDictionary(u => u.IdUsuario, u => u.NombreUsuario);
 
             // 2. Cargar los datos fila por fila
             foreach (var registro in users)
@@ -158,11 +159,120 @@ namespace UI
                 // sqlEx.Message contendrá el texto: "Ya existe un usuario con ese..."
                 MessageBox.Show(sqlEx.Message, "Aviso de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnBajafrmUsuario_Click(object sender, EventArgs e)
+        {
+            // Borrar usuario seleccionado
+            if (dataGridView1.SelectedRows == null || dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un usuario para borrar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var row = dataGridView1.SelectedRows[0];
+            int id;
+            if (!int.TryParse(row.Cells[0].Value?.ToString(), out id))
+            {
+                MessageBox.Show("ID de usuario inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string correo = row.Cells[4].Value?.ToString() ?? "";
+            var confirm = MessageBox.Show($"¿Confirma que desea borrar el usuario '{correo}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                BE.USUARIO u = new BE.USUARIO();
+                u.IdUsuario = id;
+                int filas = Usariobll.BorrarUsuario(u);
+                if (filas > 0)
+                {
+                    MessageBox.Show("Usuario borrado correctamente.", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarUsuarios();
+                    // Limpiar campos
+                    textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = string.Empty;
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo borrar el usuario.", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el usuario. Verifique los datos:" + Environment.NewLine + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al borrar el usuario: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void btnModificacionfrmUsuario_Click(object sender, EventArgs e)
+        {
+            // Modificar usuario seleccionado con datos de los TextBox
+            if (dataGridView1.SelectedRows == null || dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un usuario para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var row = dataGridView1.SelectedRows[0];
+            int id;
+            if (!int.TryParse(row.Cells[0].Value?.ToString(), out id))
+            {
+                MessageBox.Show("ID de usuario inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Recolectar y validar campos (puede reutilizar la validación del alta)
+            string nombre = textBox1.Text?.Trim();
+            string apellido = textBox2.Text?.Trim();
+            string dniText = textBox3.Text?.Trim();
+            string correo = textBox4.Text?.Trim();
+            string contraseña = textBox5.Text ?? string.Empty;
+
+            var errores = new List<string>();
+            if (string.IsNullOrWhiteSpace(nombre)) errores.Add("El campo Nombre es obligatorio.");
+            if (string.IsNullOrWhiteSpace(apellido)) errores.Add("El campo Apellido es obligatorio.");
+            if (string.IsNullOrWhiteSpace(dniText)) errores.Add("El campo DNI es obligatorio.");
+            if (string.IsNullOrWhiteSpace(correo)) errores.Add("El campo Correo Electrónico es obligatorio.");
+            if (string.IsNullOrWhiteSpace(contraseña)) errores.Add("El campo Contraseña es obligatorio.");
+
+            int dniParsed = 0;
+            if (!int.TryParse(dniText, out dniParsed)) errores.Add("DNI debe tener un rango númerico válido.");
+
+            if (!string.IsNullOrWhiteSpace(correo) && !Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")) errores.Add("Formato de Correo Electrónico inválido.");
+            if (!string.IsNullOrWhiteSpace(contraseña) && contraseña.Length < 4) errores.Add("La contraseña debe tener al menos 4 caracteres.");
+
+            if (errores.Any())
+            {
+                MessageBox.Show(string.Join(Environment.NewLine, errores), "Errores de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                BE.USUARIO usuario = new BE.USUARIO();
+                usuario.IdUsuario = id;
+                usuario.NombreUsuario = nombre;
+                usuario.ApellidoUsuario = apellido;
+                usuario.Dni = dniParsed;
+                usuario.CorreoElectronico = correo;
+                usuario.ContraseñaUsuario = contraseña;
+
+                int filas = Usariobll.EditarUsuario(usuario);
+                if (filas > 0)
+                {
+                    MessageBox.Show("Usuario modificado correctamente.", "Edición", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarUsuarios();
+                }
+                else
+                {
+                    MessageBox.Show("No se realizaron cambios o no se pudo modificar el usuario.", "Edición", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el usuario: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

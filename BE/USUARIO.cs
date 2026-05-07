@@ -50,14 +50,6 @@ namespace BE
             get { return contraseñaUsuario; }
             set { contraseñaUsuario = value; }
         }
-
-        //private string rol;
-        //public string Rol
-        //{
-        //    get { return rol; }
-        //    set { rol = value; }
-        //}
-
         
         public override string ToString()
         {

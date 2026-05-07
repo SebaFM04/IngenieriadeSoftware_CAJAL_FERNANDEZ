@@ -12,7 +12,6 @@ namespace BLL
     {
         MAPPER_USUARIO GestorUsuario = new MAPPER_USUARIO();
         
-
         public BE.USUARIO LoginUsuario(string Correo, string contraseña)
         {
             if (SessionManager.Instancia.IsLogged()) throw new Exception("Ya hay una sesión iniciada.");
@@ -40,15 +39,38 @@ namespace BLL
             return new MAPPER_USUARIO().BuscarUsuario(Correo, Contraseña);
         }
 
-        public void BorrarUsuario(BE.USUARIO usuario)
+        public int BorrarUsuario(BE.USUARIO usuario)
         {
-            //GestorUsuario.EliminarUsuario(usuario);
-            new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Baja de usuario", $"Se eliminó el usuario: {usuario.CorreoElectronico}");
+            int filas = GestorUsuario.EliminarUsuario(usuario);
+            try
+            {
+                if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
+                {
+                    new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Baja de usuario", $"Se eliminó el usuario: {usuario.CorreoElectronico}");
+                }
+            }
+            catch
+            {
+                // No interrumpir por fallos en bitácora
+            }
+            return filas;
         }
-        public void EditarUsuario(BE.USUARIO usuario)
+
+        public int EditarUsuario(BE.USUARIO usuario)
         {
-            //GestorUsuario.ModificarUsuario(usuario);
-            new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Edición de usuario", $"Se modificó el usuario: {usuario.CorreoElectronico}");
+            int filas = GestorUsuario.ModificarUsuario(usuario);
+            try
+            {
+                if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
+                {
+                    new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Edición de usuario", $"Se modificó el usuario: {usuario.CorreoElectronico}");
+                }
+            }
+            catch
+            {
+                // No interrumpir por fallos en bitácora
+            }
+            return filas;
         }
 
         public List<BE.USUARIO> ListarUsuarios()

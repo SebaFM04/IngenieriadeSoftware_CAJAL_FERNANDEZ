@@ -50,5 +50,17 @@ namespace UI
 
             this.Show();
         }
+
+        private void formularioProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+
+            frmProducto frmProducto = new frmProducto();
+            frmProducto.MdiParent = MdiParent;
+            frmProducto.ShowDialog();
+
+            this.Show();
+        }
     }
 }

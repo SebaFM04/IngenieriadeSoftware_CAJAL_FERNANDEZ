@@ -48,6 +48,7 @@ namespace DAL
             string NombreSp = "ModificarUsuario";
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@IdUsuario", Usuario.IdUsuario));
             parametros.Add(acceso.CrearParametro("@CorreoElectronico", Usuario.CorreoElectronico));
             // Guardar la contraseña hasheada
             parametros.Add(acceso.CrearParametro("@ContraseñaUsuario", ENCRIPTADOR.Hash(Usuario.ContraseñaUsuario)));
