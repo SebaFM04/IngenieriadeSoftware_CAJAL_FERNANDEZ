@@ -62,5 +62,16 @@ namespace UI
 
             this.Show();
         }
+
+        private void admRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            frmRolesyPermisos frmRolesyPermisos = new frmRolesyPermisos();
+            frmRolesyPermisos.MdiParent = MdiParent;
+            frmRolesyPermisos.ShowDialog();
+
+            this.Show();
+        }
     }
 }

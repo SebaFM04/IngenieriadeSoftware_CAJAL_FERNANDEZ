@@ -38,6 +38,10 @@
             this.adminitraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuarioLog = new System.Windows.Forms.Label();
+            this.admRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.admIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnstripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +62,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 107);
+            this.label1.Location = new System.Drawing.Point(13, 88);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(22, 16);
@@ -72,7 +76,9 @@
             this.mnstripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestiónUsuariosToolStripMenuItem,
             this.gestiónProductosToolStripMenuItem,
-            this.adminitraciónToolStripMenuItem});
+            this.adminitraciónToolStripMenuItem,
+            this.idiomaToolStripMenuItem,
+            this.backUpToolStripMenuItem});
             this.mnstripMenu.Location = new System.Drawing.Point(0, 0);
             this.mnstripMenu.Name = "mnstripMenu";
             this.mnstripMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -83,7 +89,8 @@
             // gestiónUsuariosToolStripMenuItem
             // 
             this.gestiónUsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.formularioUsuariosToolStripMenuItem});
+            this.formularioUsuariosToolStripMenuItem,
+            this.admRolesToolStripMenuItem});
             this.gestiónUsuariosToolStripMenuItem.Name = "gestiónUsuariosToolStripMenuItem";
             this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.gestiónUsuariosToolStripMenuItem.Text = "Gestión Usuarios";
@@ -132,11 +139,38 @@
             this.lblUsuarioLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblUsuarioLog.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUsuarioLog.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioLog.Location = new System.Drawing.Point(12, 71);
+            this.lblUsuarioLog.Location = new System.Drawing.Point(12, 49);
             this.lblUsuarioLog.Name = "lblUsuarioLog";
             this.lblUsuarioLog.Size = new System.Drawing.Size(248, 24);
             this.lblUsuarioLog.TabIndex = 20;
             this.lblUsuarioLog.Text = "El usuario Logueado es: ";
+            // 
+            // admRolesToolStripMenuItem
+            // 
+            this.admRolesToolStripMenuItem.Name = "admRolesToolStripMenuItem";
+            this.admRolesToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.admRolesToolStripMenuItem.Text = "Adm Roles";
+            this.admRolesToolStripMenuItem.Click += new System.EventHandler(this.admRolesToolStripMenuItem_Click);
+            // 
+            // idiomaToolStripMenuItem
+            // 
+            this.idiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.admIdiomasToolStripMenuItem});
+            this.idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
+            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.idiomaToolStripMenuItem.Text = "Idioma";
+            // 
+            // admIdiomasToolStripMenuItem
+            // 
+            this.admIdiomasToolStripMenuItem.Name = "admIdiomasToolStripMenuItem";
+            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.admIdiomasToolStripMenuItem.Text = "Adm Idiomas";
+            // 
+            // backUpToolStripMenuItem
+            // 
+            this.backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
+            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.backUpToolStripMenuItem.Text = "BackUp";
             // 
             // frmMenú
             // 
@@ -173,5 +207,9 @@
         private System.Windows.Forms.ToolStripMenuItem adminitraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitacoraToolStripMenuItem;
         private System.Windows.Forms.Label lblUsuarioLog;
+        private System.Windows.Forms.ToolStripMenuItem admRolesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem admIdiomasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backUpToolStripMenuItem;
     }
 }
