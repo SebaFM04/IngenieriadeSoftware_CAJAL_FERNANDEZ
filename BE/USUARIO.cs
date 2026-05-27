@@ -50,7 +50,14 @@ namespace BE
             get { return contraseñaUsuario; }
             set { contraseñaUsuario = value; }
         }
-        
+
+        private List<PERMISOCOMPONENT> permisosAsignados;
+        public List<PERMISOCOMPONENT> PermisosAsignados
+        {
+            get { return permisosAsignados; }
+            set { permisosAsignados = value; }
+        }
+
         public override string ToString()
         {
             return IdUsuario.ToString();
