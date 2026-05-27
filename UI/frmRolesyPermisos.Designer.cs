@@ -42,6 +42,11 @@
             this.lblfrmRolyPerNombrePer = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ChBxfrmRolyPer = new System.Windows.Forms.CheckBox();
+            this.lblUsuariofrmRolyPer = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.lblRolAsigfrmRolyPer = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.btn6frmRolyPer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblRolesfrmRolyPer
@@ -189,12 +194,65 @@
             this.ChBxfrmRolyPer.Text = "Es Familia";
             this.ChBxfrmRolyPer.UseVisualStyleBackColor = true;
             // 
+            // lblUsuariofrmRolyPer
+            // 
+            this.lblUsuariofrmRolyPer.AutoSize = true;
+            this.lblUsuariofrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuariofrmRolyPer.Location = new System.Drawing.Point(895, 12);
+            this.lblUsuariofrmRolyPer.Name = "lblUsuariofrmRolyPer";
+            this.lblUsuariofrmRolyPer.Size = new System.Drawing.Size(88, 22);
+            this.lblUsuariofrmRolyPer.TabIndex = 14;
+            this.lblUsuariofrmRolyPer.Text = "Usuario: ";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(899, 36);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(193, 24);
+            this.comboBox2.TabIndex = 15;
+            // 
+            // lblRolAsigfrmRolyPer
+            // 
+            this.lblRolAsigfrmRolyPer.AutoSize = true;
+            this.lblRolAsigfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolAsigfrmRolyPer.Location = new System.Drawing.Point(895, 85);
+            this.lblRolAsigfrmRolyPer.Name = "lblRolAsigfrmRolyPer";
+            this.lblRolAsigfrmRolyPer.Size = new System.Drawing.Size(136, 22);
+            this.lblRolAsigfrmRolyPer.TabIndex = 16;
+            this.lblRolAsigfrmRolyPer.Text = "Rol a asignar: ";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(899, 110);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(193, 24);
+            this.comboBox3.TabIndex = 17;
+            // 
+            // btn6frmRolyPer
+            // 
+            this.btn6frmRolyPer.BackColor = System.Drawing.Color.SandyBrown;
+            this.btn6frmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn6frmRolyPer.Location = new System.Drawing.Point(963, 140);
+            this.btn6frmRolyPer.Name = "btn6frmRolyPer";
+            this.btn6frmRolyPer.Size = new System.Drawing.Size(129, 37);
+            this.btn6frmRolyPer.TabIndex = 18;
+            this.btn6frmRolyPer.Text = "Asignar Rol";
+            this.btn6frmRolyPer.UseVisualStyleBackColor = false;
+            this.btn6frmRolyPer.Click += new System.EventHandler(this.btn6frmRolyPer_Click);
+            // 
             // frmRolesyPermisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(949, 522);
+            this.ClientSize = new System.Drawing.Size(1104, 522);
+            this.Controls.Add(this.btn6frmRolyPer);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.lblRolAsigfrmRolyPer);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.lblUsuariofrmRolyPer);
             this.Controls.Add(this.ChBxfrmRolyPer);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblfrmRolyPerNombrePer);
@@ -233,5 +291,10 @@
         private System.Windows.Forms.Label lblfrmRolyPerNombrePer;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox ChBxfrmRolyPer;
+        private System.Windows.Forms.Label lblUsuariofrmRolyPer;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label lblRolAsigfrmRolyPer;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button btn6frmRolyPer;
     }
 }

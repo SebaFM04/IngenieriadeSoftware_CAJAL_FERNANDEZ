@@ -15,6 +15,7 @@ namespace UI
     public partial class frmRolesyPermisos : Form
     {
         PERMISO_BLL permisoBLL = new PERMISO_BLL();
+        USUARIO_BLL usuarioBLL = new USUARIO_BLL();
         public frmRolesyPermisos()
         {
             InitializeComponent();
@@ -25,6 +26,56 @@ namespace UI
             CargarComboRoles();
             CargarArbol();
             CargarPermisosDisponibles();
+            CargarComboUsuarios();
+            CargarComboRolAsignar();
+        }
+
+        private void CargarComboUsuarios()
+        {
+            comboBox2.Items.Clear();
+            var usuarios = usuarioBLL.ListarUsuarios();
+            foreach (var u in usuarios)
+                comboBox2.Items.Add(u);
+            if (comboBox2.Items.Count > 0)
+                comboBox2.SelectedIndex = 0;
+        }
+
+        // ── Combo Rol a asignar ──────────────────────────────────
+        private void CargarComboRolAsignar()
+        {
+            comboBox3.Items.Clear();
+            var roles = permisoBLL.ObtenerPermisosCompuestosRaiz();
+            foreach (var r in roles)
+                comboBox3.Items.Add(r);
+            if (comboBox3.Items.Count > 0)
+                comboBox3.SelectedIndex = 0;
+        }
+
+        // ── Botón Asignar Rol ────────────────────────────────────
+        private void btn6frmRolyPer_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem == null || comboBox3.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione un usuario y un rol.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var usuario = (BE.USUARIO)comboBox2.SelectedItem;
+            var rol = (PERMISOCOMPONENT)comboBox3.SelectedItem;
+
+            try
+            {
+                permisoBLL.AsignarPermisoAUsuario(usuario.IdUsuario, rol.Id);
+                MessageBox.Show(
+                    $"Rol '{rol.NombrePermiso}' asignado a '{usuario.IdUsuario}' correctamente.",
+                    "Asignación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.GetBaseException().Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CargarComboRoles()
@@ -103,8 +154,7 @@ namespace UI
             string nombre = textBox1.Text.Trim();
             if (string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("Ingrese un nombre para el permiso.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un nombre para el permiso.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -113,8 +163,7 @@ namespace UI
             try
             {
                 permisoBLL.CrearPermiso(nombre, esFamilia);
-                MessageBox.Show("Permiso agregado correctamente.", "Alta",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Permiso agregado correctamente.", "Alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
                 Refrescar();
             }
@@ -236,6 +285,7 @@ namespace UI
             CargarComboRoles();
             CargarArbol();
             CargarPermisosDisponibles();
+            CargarComboRolAsignar();
         }
 
         private void LimpiarCampos()
@@ -243,5 +293,6 @@ namespace UI
             textBox1.Text = string.Empty;
             ChBxfrmRolyPer.Checked = false;
         }
+
     }
 }

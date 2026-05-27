@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using SERVICIO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +16,25 @@ namespace UI
     {
         public frmMenú()
         {
-            InitializeComponent();
+            InitializeComponent();            
             SERVICIO.SessionManager Sesion = SERVICIO.SessionManager.Instancia;
-            label1.Text = $"CorreoElectronico: {Sesion.UsuarioActual.CorreoElectronico}\nNombre y Apellido: {Sesion.UsuarioActual.NombreUsuario} {Sesion.UsuarioActual.ApellidoUsuario}";
+            label1.Text = $"CorreoElectronico: {Sesion.UsuarioActual.CorreoElectronico}\nNombre y Apellido: {Sesion.UsuarioActual.NombreUsuario} {Sesion.UsuarioActual.ApellidoUsuario}";          
         }
+        private void AplicarPermisos()
+        {
+            var usuario = SERVICIO.SessionManager.Instancia.UsuarioActual;
+
+            // Sin permisos asignados → muestra todo
+            if (usuario.PermisosAsignados == null || usuario.PermisosAsignados.Count == 0)
+                return;
+
+            gestiónUsuariosToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Usuarios");
+            gestiónProductosToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Productos");
+            adminitraciónToolStripMenuItem.Visible = usuario.TienePermiso("Administracion");
+            idiomaToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Idiomas");
+            backUpToolStripMenuItem.Visible = usuario.TienePermiso("BackUp");
+        }
+
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -72,6 +89,11 @@ namespace UI
             frmRolesyPermisos.ShowDialog();
 
             this.Show();
+        }
+
+        private void frmMenú_Load(object sender, EventArgs e)
+        {
+            AplicarPermisos();
         }
     }
 }

@@ -17,6 +17,10 @@ namespace BLL
             if (SessionManager.Instancia.IsLogged()) throw new Exception("Ya hay una sesión iniciada.");
             var user  = GestorUsuario.BuscarUsuario( Correo, contraseña );
             if (user == null) throw new Exception("Usuario no encontrado.");
+            
+            // Cargar permisos del usuario antes de guardarlo en sesión
+            user.PermisosAsignados = new PERMISO_BLL().ListarPermisosJerarquicosPorUsuarioId(user.IdUsuario);
+            
             SessionManager.Instancia.Login(user);
             new BITACORA_BLL().RegistrarEvento(user.IdUsuario, "Inicio de sesion", $"Usuario: {user.CorreoElectronico}");
             return user;

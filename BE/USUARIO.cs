@@ -58,6 +58,19 @@ namespace BE
             set { permisosAsignados = value; }
         }
 
+        public bool TienePermiso(string nombrePermiso)
+        {
+            if (PermisosAsignados == null) return false;
+
+            foreach (var permiso in PermisosAsignados)
+            {
+                if (permiso.ContienePermiso(nombrePermiso))
+                    return true;
+            }
+
+            return false;
+        }
+
         public override string ToString()
         {
             return IdUsuario.ToString();

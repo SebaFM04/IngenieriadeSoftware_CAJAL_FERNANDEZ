@@ -164,21 +164,26 @@ namespace DAL
 
         public List<PERMISOCOMPONENT> ListarPermisosJerarquicosPorUsuarioId(int idUsuario)
         {
-            var lista = new List<PERMISOCOMPONENT>();
+            // 1. Obtener IDs de permisos del usuario
+            var idsPermiso = new List<int>();
             acceso.Abrir();
             var parametros = new List<SqlParameter>
-            {
-                acceso.CrearParametro("@IdUsuario", idUsuario)
-            };
+    {
+        acceso.CrearParametro("@IdUsuario", idUsuario)
+    };
             DataTable tabla = acceso.Leer("ListarPermisosPorUsuario", parametros);
             acceso.Cerrar();
 
-            var relaciones = ObtenerRelaciones();
-            var todos = ObtenerTodosLosPermisos();
-
             foreach (DataRow row in tabla.Rows)
+                idsPermiso.Add((int)row["IdPermiso"]);
+
+            // 2. Construir árboles para cada permiso encontrado
+            var todos = ObtenerTodosLosPermisos();
+            var relaciones = ObtenerRelaciones();
+            var lista = new List<PERMISOCOMPONENT>();
+
+            foreach (int id in idsPermiso)
             {
-                int id = (int)row["IdPermiso"];
                 var arbol = ConstruirArbol(id, todos, relaciones);
                 if (arbol != null) lista.Add(arbol);
             }

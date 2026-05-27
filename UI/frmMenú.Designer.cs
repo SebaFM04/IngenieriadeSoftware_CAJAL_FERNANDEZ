@@ -135,7 +135,7 @@
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.bitacoraToolStripMenuItem.Text = "Bitácora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
@@ -150,7 +150,7 @@
             // admIdiomasToolStripMenuItem
             // 
             this.admIdiomasToolStripMenuItem.Name = "admIdiomasToolStripMenuItem";
-            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.admIdiomasToolStripMenuItem.Text = "Adm Idiomas";
             // 
             // backUpToolStripMenuItem
@@ -188,6 +188,7 @@
             this.Name = "frmMenú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenú";
+            this.Load += new System.EventHandler(this.frmMenú_Load);
             this.mnstripMenu.ResumeLayout(false);
             this.mnstripMenu.PerformLayout();
             this.ResumeLayout(false);
