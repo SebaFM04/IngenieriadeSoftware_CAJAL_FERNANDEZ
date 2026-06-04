@@ -279,7 +279,6 @@ namespace UI
             }
         }
 
-        // ── Helpers ──────────────────────────────────────────────
         private void Refrescar()
         {
             CargarComboRoles();
@@ -293,6 +292,5 @@ namespace UI
             textBox1.Text = string.Empty;
             ChBxfrmRolyPer.Checked = false;
         }
-
     }
 }

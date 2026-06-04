@@ -25,6 +25,7 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad.ToString()));
             parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
             parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
+            parametros.Add(acceso.CrearParametro("@DVH", Producto.DVH));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
             return filas;
@@ -54,6 +55,7 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad.ToString()));
             parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
             parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
+            parametros.Add(acceso.CrearParametro("@DVH", Producto.DVH));
             int filas = acceso.Escribir(NombreSp, parametros);
             acceso.Cerrar();
             return filas;
@@ -79,9 +81,23 @@ namespace DAL
                 producto.Descripcion = u["Descripcion"].ToString();
                 producto.Cantidad = Convert.ToInt32(u["Cantidad"].ToString());
                 producto.CodigoProducto = Convert.ToInt32(u["CodigoProducto"].ToString());
+                producto.DVH = u["DVH"] == DBNull.Value ? null : u["DVH"].ToString();
                 listaProductos.Add(producto);
             }
             return listaProductos;
         }
+
+        public void ActualizarDVH(int idProducto, string dvh)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@IdProducto", idProducto),
+                acceso.CrearParametro("@DVH", dvh)
+            };
+            acceso.Escribir("ActualizarDVHProducto", parametros);
+            acceso.Cerrar();
+        }
+
     }
 }

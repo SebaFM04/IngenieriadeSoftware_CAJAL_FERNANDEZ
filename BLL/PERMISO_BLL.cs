@@ -60,16 +60,12 @@ namespace BLL
                 throw new Exception($"No se admite Referencia circular! No se puede asignar '{hijo.NombrePermiso}' a '{padre.NombrePermiso}' porque '{hijo.NombrePermiso}' ya contiene a '{padre.NombrePermiso}' en su jerarquía.");
             }
 
-
             if (padre.ContienePermiso(hijo.NombrePermiso))
             {
                 Console.WriteLine($"Advertencia: El rol '{padre.NombrePermiso}' (ID: {idPadre}) ya contiene a '{hijo.NombrePermiso}' (ID: {idHijo}). No se realizará la asignación duplicada.");
                 return;
             }
-
-
             GestorPermiso.AgregarRelacion(idPadre, idHijo);
-
         }
 
         public void QuitarRelacion(int idPadre, int idHijo)

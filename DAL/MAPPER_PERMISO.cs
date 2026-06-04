@@ -29,7 +29,6 @@ namespace DAL
             return lista;
         }
 
-        // Renombrado para coincidir con BLL
         public PERMISOCOMPONENT ObtenerPermisoConJerarquiaPorId(int idRaiz)
         {
             var todos = ObtenerTodosLosPermisos();
@@ -37,9 +36,7 @@ namespace DAL
             return ConstruirArbol(idRaiz, todos, relaciones);
         }
 
-        private PERMISOCOMPONENT ConstruirArbol(int idNodo,
-            List<PERMISOCOMPONENT> todos,
-            List<(int padre, int hijo)> relaciones)
+        private PERMISOCOMPONENT ConstruirArbol(int idNodo, List<PERMISOCOMPONENT> todos, List<(int padre, int hijo)> relaciones)
         {
             var nodo = todos.Find(p => p.Id == idNodo);
             if (nodo == null)
@@ -74,7 +71,6 @@ namespace DAL
             return lista;
         }
 
-        // Renombrado de AltaPermiso → CrearPermiso para coincidir con BLL
         public void CrearPermiso(string nombre, bool esFamilia)
         {
             acceso.Abrir();
@@ -87,7 +83,6 @@ namespace DAL
             acceso.Cerrar();
         }
 
-        // Firma ajustada para coincidir con BLL
         public void ModificarPermiso(int id, string nuevoNombre, bool esFamilia)
         {
             acceso.Abrir();
@@ -112,7 +107,6 @@ namespace DAL
             acceso.Cerrar();
         }
 
-        // Renombrado de AgregarHijo → AgregarRelacion
         public void AgregarRelacion(int idPadre, int idHijo)
         {
             acceso.Abrir();
@@ -125,7 +119,6 @@ namespace DAL
             acceso.Cerrar();
         }
 
-        // Renombrado de QuitarHijo → QuitarRelacion
         public void QuitarRelacion(int idPadre, int idHijo)
         {
             acceso.Abrir();

@@ -12,10 +12,13 @@ namespace BLL
     public class PRODUCTO_BLL
     {
         MAPPER_PRODUCTO GestorProducto = new MAPPER_PRODUCTO();
+        DIGITOVERIFICADOR_BLL dvBLL = new DIGITOVERIFICADOR_BLL();
 
         public void InsertarProducto(BE.PRODUCTO producto)
         {
+            producto.DVH = dvBLL.CalcularDVH(producto);
             GestorProducto.AltaProducto(producto);
+            dvBLL.RecalcularDV();
             new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Alta de producto", $"Se agrego el producto: {producto.NombreProducto}");
         }
 
@@ -24,9 +27,9 @@ namespace BLL
             int filas = GestorProducto.BajaProducto(producto);
             try
             {
+                dvBLL.RecalcularDV();
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
                 {
-
                     new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Baja de producto", $"Se eliminó el producto: {producto.NombreProducto}");
                 }
             }
@@ -40,12 +43,13 @@ namespace BLL
 
         public int ModificarProducto(BE.PRODUCTO producto)
         {
+            producto.DVH = dvBLL.CalcularDVH(producto);
             int filas = GestorProducto.EditarProducto(producto);
             try
             {
+                dvBLL.RecalcularDV();
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
                 {
-
                     new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Modificación de producto", $"Se modificó el producto: {producto.NombreProducto}");
                 }
             }
@@ -59,6 +63,15 @@ namespace BLL
         public List<BE.PRODUCTO> ListarProductos()
         {
             return GestorProducto.ListarProductos();
+        }
+        public List<string> VerificarIntegridad()
+        {
+            return dvBLL.VerificarIntegridad();
+        }
+
+        public void RecalcularDV()
+        {
+            dvBLL.RecalcularDV();
         }
     }
 }

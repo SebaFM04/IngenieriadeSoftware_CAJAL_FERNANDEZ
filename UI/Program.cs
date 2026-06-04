@@ -16,6 +16,19 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+
+            // Verificar integridad ANTES del login
+            var errores = new BLL.PRODUCTO_BLL().VerificarIntegridad();
+            if (errores.Count > 0)
+            {
+                string mensaje = "Se detectaron errores de integridad:\n\n" +
+                                 string.Join("\n", errores) +
+                                 "\n\nContacte al administrador.";
+                MessageBox.Show(mensaje, "Error de Integridad",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             Application.Run(new frmLogin());
         }
     }

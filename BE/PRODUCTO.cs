@@ -59,6 +59,12 @@ namespace BE
             set { codigoProducto = value; }
         }
 
+        private string dvh;
+        public string DVH
+        {
+            get { return dvh; }
+            set { dvh = value; }
+        }
 
 
         public override string ToString()
