@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmRolesyPermisos : Form
+    public partial class frmRolesyPermisos : Form, IObserver
     {
         PERMISO_BLL permisoBLL = new PERMISO_BLL();
         USUARIO_BLL usuarioBLL = new USUARIO_BLL();
@@ -291,6 +292,24 @@ namespace UI
         {
             textBox1.Text = string.Empty;
             ChBxfrmRolyPer.Checked = false;
+        }
+
+        public void ActualizarLenguaje()
+        {
+            var t = Traductor.ObtenerInstancia();
+            lblRolesfrmRolyPer.Text = t.Traducir("frmRolesyPermisos", "lblRolesfrmRolyPer");
+            lblPermisosfrmRolyPer.Text = t.Traducir("frmRolesyPermisos", "lblPermisosfrmRolyPer");
+            lblfrmRolyPer.Text = t.Traducir("frmRolesyPermisos", "lblfrmRolyPer");
+            lblfrmRolyPerNombrePer.Text = t.Traducir("frmRolesyPermisos", "lblfrmRolyPerNombrePer");
+            lblUsuariofrmRolyPer.Text = t.Traducir("frmRolesyPermisos", "lblUsuariofrmRolyPer");
+            lblRolAsigfrmRolyPer.Text = t.Traducir("frmRolesyPermisos", "lblRolAsigfrmRolyPer");
+            btn1frmRolyPer.Text = t.Traducir("frmRolesyPermisos", "btn1frmRolyPer");
+            btn2frmRolyPer.Text = t.Traducir("frmRolesyPermisos", "btn2frmRolyPer");
+            btn3frmRolyPer.Text = t.Traducir("frmRolesyPermisos", "btn3frmRolyPer");
+            btn4frmRolyPer.Text = t.Traducir("frmRolesyPermisos", "btn4frmRolyPer");
+            btn5frmRolyPer.Text = t.Traducir("frmRolesyPermisos", "btn5frmRolyPer");
+            btn6frmRolyPer.Text = t.Traducir("frmRolesyPermisos", "btn6frmRolyPer");
+
         }
     }
 }

@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="BITACORA.cs" />
     <Compile Include="DIGITOVERIFICADOR.cs" />
+    <Compile Include="IDIOMA.cs" />
     <Compile Include="PERMISOATOMICO.cs" />
     <Compile Include="PERMISOCOMPONENT.cs" />
     <Compile Include="PERMISOCOMPOSITE.cs" />
     <Compile Include="PRODUCTO.cs" />
+    <Compile Include="TRADUCCION.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
