@@ -40,8 +40,8 @@
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.admIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuarioLog = new System.Windows.Forms.Label();
+            this.backUpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnstripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,12 +77,11 @@
             this.gestiónUsuariosToolStripMenuItem,
             this.gestiónProductosToolStripMenuItem,
             this.adminitraciónToolStripMenuItem,
-            this.idiomaToolStripMenuItem,
-            this.backUpToolStripMenuItem});
+            this.idiomaToolStripMenuItem});
             this.mnstripMenu.Location = new System.Drawing.Point(0, 0);
             this.mnstripMenu.Name = "mnstripMenu";
             this.mnstripMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.mnstripMenu.Size = new System.Drawing.Size(800, 27);
+            this.mnstripMenu.Size = new System.Drawing.Size(800, 28);
             this.mnstripMenu.TabIndex = 19;
             this.mnstripMenu.Text = "menuStrip1";
             // 
@@ -92,7 +91,7 @@
             this.formularioUsuariosToolStripMenuItem,
             this.admRolesToolStripMenuItem});
             this.gestiónUsuariosToolStripMenuItem.Name = "gestiónUsuariosToolStripMenuItem";
-            this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(149, 23);
+            this.gestiónUsuariosToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.gestiónUsuariosToolStripMenuItem.Text = "Gestión Usuarios";
             // 
             // formularioUsuariosToolStripMenuItem
@@ -114,7 +113,7 @@
             this.gestiónProductosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formularioProductosToolStripMenuItem});
             this.gestiónProductosToolStripMenuItem.Name = "gestiónProductosToolStripMenuItem";
-            this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(160, 23);
+            this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(160, 24);
             this.gestiónProductosToolStripMenuItem.Text = "Gestión Productos";
             // 
             // formularioProductosToolStripMenuItem
@@ -127,15 +126,16 @@
             // adminitraciónToolStripMenuItem
             // 
             this.adminitraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bitacoraToolStripMenuItem});
+            this.bitacoraToolStripMenuItem,
+            this.backUpToolStripMenuItem1});
             this.adminitraciónToolStripMenuItem.Name = "adminitraciónToolStripMenuItem";
-            this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(123, 23);
-            this.adminitraciónToolStripMenuItem.Text = "Adminitración";
+            this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.adminitraciónToolStripMenuItem.Text = "Auditoria";
             // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.bitacoraToolStripMenuItem.Text = "Bitácora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
@@ -144,20 +144,14 @@
             this.idiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.admIdiomasToolStripMenuItem});
             this.idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
-            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(144, 23);
+            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.idiomaToolStripMenuItem.Text = "Gestión Idiomas";
             // 
             // admIdiomasToolStripMenuItem
             // 
             this.admIdiomasToolStripMenuItem.Name = "admIdiomasToolStripMenuItem";
-            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.admIdiomasToolStripMenuItem.Text = "Adm Idiomas";
-            // 
-            // backUpToolStripMenuItem
-            // 
-            this.backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
-            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(79, 23);
-            this.backUpToolStripMenuItem.Text = "BackUp";
             // 
             // lblUsuarioLog
             // 
@@ -171,6 +165,13 @@
             this.lblUsuarioLog.Size = new System.Drawing.Size(248, 24);
             this.lblUsuarioLog.TabIndex = 20;
             this.lblUsuarioLog.Text = "El usuario Logueado es: ";
+            // 
+            // backUpToolStripMenuItem1
+            // 
+            this.backUpToolStripMenuItem1.Name = "backUpToolStripMenuItem1";
+            this.backUpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.backUpToolStripMenuItem1.Text = "BackUp";
+            this.backUpToolStripMenuItem1.Click += new System.EventHandler(this.backUpToolStripMenuItem1_Click);
             // 
             // frmMenú
             // 
@@ -211,6 +212,6 @@
         private System.Windows.Forms.ToolStripMenuItem admRolesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem admIdiomasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backUpToolStripMenuItem1;
     }
 }

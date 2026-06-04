@@ -52,10 +52,10 @@
             // lblRolesfrmRolyPer
             // 
             this.lblRolesfrmRolyPer.AutoSize = true;
-            this.lblRolesfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolesfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRolesfrmRolyPer.Location = new System.Drawing.Point(12, 11);
             this.lblRolesfrmRolyPer.Name = "lblRolesfrmRolyPer";
-            this.lblRolesfrmRolyPer.Size = new System.Drawing.Size(70, 22);
+            this.lblRolesfrmRolyPer.Size = new System.Drawing.Size(73, 23);
             this.lblRolesfrmRolyPer.TabIndex = 0;
             this.lblRolesfrmRolyPer.Text = "Roles: ";
             // 
@@ -71,10 +71,10 @@
             // lblPermisosfrmRolyPer
             // 
             this.lblPermisosfrmRolyPer.AutoSize = true;
-            this.lblPermisosfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPermisosfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPermisosfrmRolyPer.Location = new System.Drawing.Point(12, 155);
             this.lblPermisosfrmRolyPer.Name = "lblPermisosfrmRolyPer";
-            this.lblPermisosfrmRolyPer.Size = new System.Drawing.Size(95, 22);
+            this.lblPermisosfrmRolyPer.Size = new System.Drawing.Size(100, 23);
             this.lblPermisosfrmRolyPer.TabIndex = 2;
             this.lblPermisosfrmRolyPer.Text = "Permisos:";
             // 
@@ -98,10 +98,10 @@
             // lblfrmRolyPer
             // 
             this.lblfrmRolyPer.AutoSize = true;
-            this.lblfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfrmRolyPer.Location = new System.Drawing.Point(433, 155);
             this.lblfrmRolyPer.Name = "lblfrmRolyPer";
-            this.lblfrmRolyPer.Size = new System.Drawing.Size(206, 22);
+            this.lblfrmRolyPer.Size = new System.Drawing.Size(214, 23);
             this.lblfrmRolyPer.TabIndex = 5;
             this.lblfrmRolyPer.Text = "Permisos Disponibles: ";
             // 
@@ -168,10 +168,10 @@
             // lblfrmRolyPerNombrePer
             // 
             this.lblfrmRolyPerNombrePer.AutoSize = true;
-            this.lblfrmRolyPerNombrePer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfrmRolyPerNombrePer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfrmRolyPerNombrePer.Location = new System.Drawing.Point(11, 86);
             this.lblfrmRolyPerNombrePer.Name = "lblfrmRolyPerNombrePer";
-            this.lblfrmRolyPerNombrePer.Size = new System.Drawing.Size(160, 22);
+            this.lblfrmRolyPerNombrePer.Size = new System.Drawing.Size(169, 23);
             this.lblfrmRolyPerNombrePer.TabIndex = 11;
             this.lblfrmRolyPerNombrePer.Text = "Nombre Permiso:";
             // 
@@ -186,10 +186,10 @@
             // ChBxfrmRolyPer
             // 
             this.ChBxfrmRolyPer.AutoSize = true;
-            this.ChBxfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChBxfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChBxfrmRolyPer.Location = new System.Drawing.Point(408, 86);
             this.ChBxfrmRolyPer.Name = "ChBxfrmRolyPer";
-            this.ChBxfrmRolyPer.Size = new System.Drawing.Size(120, 26);
+            this.ChBxfrmRolyPer.Size = new System.Drawing.Size(123, 27);
             this.ChBxfrmRolyPer.TabIndex = 13;
             this.ChBxfrmRolyPer.Text = "Es Familia";
             this.ChBxfrmRolyPer.UseVisualStyleBackColor = true;
@@ -197,10 +197,10 @@
             // lblUsuariofrmRolyPer
             // 
             this.lblUsuariofrmRolyPer.AutoSize = true;
-            this.lblUsuariofrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuariofrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuariofrmRolyPer.Location = new System.Drawing.Point(895, 12);
             this.lblUsuariofrmRolyPer.Name = "lblUsuariofrmRolyPer";
-            this.lblUsuariofrmRolyPer.Size = new System.Drawing.Size(88, 22);
+            this.lblUsuariofrmRolyPer.Size = new System.Drawing.Size(92, 23);
             this.lblUsuariofrmRolyPer.TabIndex = 14;
             this.lblUsuariofrmRolyPer.Text = "Usuario: ";
             // 
@@ -215,10 +215,10 @@
             // lblRolAsigfrmRolyPer
             // 
             this.lblRolAsigfrmRolyPer.AutoSize = true;
-            this.lblRolAsigfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolAsigfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRolAsigfrmRolyPer.Location = new System.Drawing.Point(895, 85);
             this.lblRolAsigfrmRolyPer.Name = "lblRolAsigfrmRolyPer";
-            this.lblRolAsigfrmRolyPer.Size = new System.Drawing.Size(136, 22);
+            this.lblRolAsigfrmRolyPer.Size = new System.Drawing.Size(142, 23);
             this.lblRolAsigfrmRolyPer.TabIndex = 16;
             this.lblRolAsigfrmRolyPer.Text = "Rol a asignar: ";
             // 
@@ -234,7 +234,7 @@
             // 
             this.btn6frmRolyPer.BackColor = System.Drawing.Color.SandyBrown;
             this.btn6frmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn6frmRolyPer.Location = new System.Drawing.Point(963, 140);
+            this.btn6frmRolyPer.Location = new System.Drawing.Point(963, 149);
             this.btn6frmRolyPer.Name = "btn6frmRolyPer";
             this.btn6frmRolyPer.Size = new System.Drawing.Size(129, 37);
             this.btn6frmRolyPer.TabIndex = 18;

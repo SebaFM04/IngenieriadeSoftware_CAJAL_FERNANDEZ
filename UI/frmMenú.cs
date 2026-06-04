@@ -32,7 +32,7 @@ namespace UI
             gestiónProductosToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Productos");
             adminitraciónToolStripMenuItem.Visible = usuario.TienePermiso("Administracion");
             idiomaToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Idiomas");
-            backUpToolStripMenuItem.Visible = usuario.TienePermiso("BackUp");
+            backUpToolStripMenuItem1.Visible = usuario.TienePermiso("BackUp");
         }
 
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
@@ -70,7 +70,6 @@ namespace UI
 
         private void formularioProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             this.Hide();
 
             frmProducto frmProducto = new frmProducto();
@@ -94,6 +93,17 @@ namespace UI
         private void frmMenú_Load(object sender, EventArgs e)
         {
             AplicarPermisos();
+        }
+
+        private void backUpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            frmBackUp_Restore frmBackUp_Restore = new frmBackUp_Restore();
+            frmBackUp_Restore.MdiParent = MdiParent;
+            frmBackUp_Restore.ShowDialog();
+
+            this.Show();
         }
     }
 }
