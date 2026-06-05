@@ -38,7 +38,9 @@ namespace DAL
             acceso.Cerrar();
 
             foreach (DataRow row in tabla.Rows)
+            {
                 lista.Add(MapearFila(row));
+            }
 
             return lista;
         }

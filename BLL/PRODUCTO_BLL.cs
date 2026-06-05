@@ -41,10 +41,7 @@ namespace BLL
             {
                 dvBLL.RecalcularDV();
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
-                    new BITACORA_BLL().RegistrarEvento(
-                        SessionManager.Instancia.UsuarioActual.IdUsuario,
-                        "Baja de producto",
-                        $"Se eliminó el producto: {producto.NombreProducto}");
+                new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario,"Baja de producto",$"Se eliminó el producto: {producto.NombreProducto}");
             }
             catch { }
             return filas;
@@ -56,34 +53,29 @@ namespace BLL
             int idUsuario = SessionManager.Instancia.UsuarioActual.IdUsuario;
 
             if (productoAnterior.NombreProducto != producto.NombreProducto)
-                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto,
-                    "NombreProducto", productoAnterior.NombreProducto,
-                    producto.NombreProducto, "Modificación");
-
+            {
+                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto, "NombreProducto", productoAnterior.NombreProducto, producto.NombreProducto, "Modificación");
+            }
             if (productoAnterior.PrecioProducto != producto.PrecioProducto)
-                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto,
-                    "PrecioProducto", productoAnterior.PrecioProducto.ToString(),
-                    producto.PrecioProducto.ToString(), "Modificación");
-
+            {
+                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto, "PrecioProducto", productoAnterior.PrecioProducto.ToString(), producto.PrecioProducto.ToString(), "Modificación");
+            }
             if (productoAnterior.TipoProducto != producto.TipoProducto)
-                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto,
-                    "TipoProducto", productoAnterior.TipoProducto,
-                    producto.TipoProducto, "Modificación");
-
+            {
+                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto, "TipoProducto", productoAnterior.TipoProducto, producto.TipoProducto, "Modificación");
+            }         
             if (productoAnterior.Descripcion != producto.Descripcion)
-                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto,
-                    "Descripcion", productoAnterior.Descripcion,
-                    producto.Descripcion, "Modificación");
-
+            {
+                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto, "Descripcion", productoAnterior.Descripcion, producto.Descripcion, "Modificación");
+            }
             if (productoAnterior.Cantidad != producto.Cantidad)
-                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto,
-                    "Cantidad", productoAnterior.Cantidad.ToString(),
-                    producto.Cantidad.ToString(), "Modificación");
-
+            {
+                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto, "Cantidad", productoAnterior.Cantidad.ToString(), producto.Cantidad.ToString(), "Modificación");
+            }
             if (productoAnterior.CodigoProducto != producto.CodigoProducto)
-                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto,
-                    "CodigoProducto", productoAnterior.CodigoProducto.ToString(),
-                    producto.CodigoProducto.ToString(), "Modificación");
+            {
+                cambiosBLL.RegistrarCambio(idUsuario, producto.IdProducto, "CodigoProducto", productoAnterior.CodigoProducto.ToString(), producto.CodigoProducto.ToString(), "Modificación");
+            }
 
             producto.DVH = dvBLL.CalcularDVH(producto);
             int filas = GestorProducto.EditarProducto(producto);
@@ -91,10 +83,9 @@ namespace BLL
             {
                 dvBLL.RecalcularDV();
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
-                    new BITACORA_BLL().RegistrarEvento(
-                        idUsuario,
-                        "Modificación de producto",
-                        $"Se modificó el producto: {producto.NombreProducto}");
+                {
+                    new BITACORA_BLL().RegistrarEvento(idUsuario, "Modificación de producto", $"Se modificó el producto: {producto.NombreProducto}");
+                }
             }
             catch { }
             return filas;

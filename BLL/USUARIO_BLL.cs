@@ -82,7 +82,5 @@ namespace BLL
         {
             return GestorUsuario.ListarUsuarios();
         }
-        
-
     }
 }

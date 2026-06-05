@@ -37,7 +37,6 @@ namespace BLL
             PERMISOCOMPONENT padre = GestorPermiso.ObtenerPermisoConJerarquiaPorId(idPadre);
             PERMISOCOMPONENT hijo = GestorPermiso.ObtenerPermisoConJerarquiaPorId(idHijo);
 
-
             if (padre == null)
             {
                 throw new Exception($"El permiso padre con ID {idPadre} no existe.");
