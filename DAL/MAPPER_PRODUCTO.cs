@@ -99,5 +99,31 @@ namespace DAL
             acceso.Cerrar();
         }
 
+        public BE.PRODUCTO ObtenerPorId(int idProducto)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>
+    {
+        acceso.CrearParametro("@IdProducto", idProducto)
+    };
+            DataTable tabla = acceso.Leer("ObtenerProductoPorId", parametros);
+            acceso.Cerrar();
+
+            if (tabla.Rows.Count == 0) return null;
+
+            DataRow u = tabla.Rows[0];
+            return new BE.PRODUCTO
+            {
+                IdProducto = Convert.ToInt32(u["IdProducto"]),
+                NombreProducto = u["NombreProducto"].ToString(),
+                PrecioProducto = Convert.ToDecimal(u["PrecioProducto"]),
+                TipoProducto = u["TipoProducto"].ToString(),
+                Descripcion = u["Descripcion"].ToString(),
+                Cantidad = Convert.ToInt32(u["Cantidad"]),
+                CodigoProducto = Convert.ToInt32(u["CodigoProducto"]),
+                DVH = u["DVH"] == DBNull.Value ? null : u["DVH"].ToString()
+            };
+        }
+
     }
 }

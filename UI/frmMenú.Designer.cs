@@ -38,10 +38,12 @@
             this.formularioProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminitraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backUpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.recalcularDVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.admIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsuarioLog = new System.Windows.Forms.Label();
-            this.backUpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnstripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,7 +129,9 @@
             // 
             this.adminitraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bitacoraToolStripMenuItem,
-            this.backUpToolStripMenuItem1});
+            this.backUpToolStripMenuItem1,
+            this.recalcularDVToolStripMenuItem,
+            this.controlCambiosToolStripMenuItem});
             this.adminitraciónToolStripMenuItem.Name = "adminitraciónToolStripMenuItem";
             this.adminitraciónToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.adminitraciónToolStripMenuItem.Text = "Auditoria";
@@ -138,6 +142,20 @@
             this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.bitacoraToolStripMenuItem.Text = "Bitácora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
+            // 
+            // backUpToolStripMenuItem1
+            // 
+            this.backUpToolStripMenuItem1.Name = "backUpToolStripMenuItem1";
+            this.backUpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.backUpToolStripMenuItem1.Text = "BackUp";
+            this.backUpToolStripMenuItem1.Click += new System.EventHandler(this.backUpToolStripMenuItem1_Click);
+            // 
+            // recalcularDVToolStripMenuItem
+            // 
+            this.recalcularDVToolStripMenuItem.Name = "recalcularDVToolStripMenuItem";
+            this.recalcularDVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.recalcularDVToolStripMenuItem.Text = "Recalcular DV";
+            this.recalcularDVToolStripMenuItem.Click += new System.EventHandler(this.recalcularDVToolStripMenuItem_Click);
             // 
             // idiomaToolStripMenuItem
             // 
@@ -166,12 +184,12 @@
             this.lblUsuarioLog.TabIndex = 20;
             this.lblUsuarioLog.Text = "El usuario Logueado es: ";
             // 
-            // backUpToolStripMenuItem1
+            // controlCambiosToolStripMenuItem
             // 
-            this.backUpToolStripMenuItem1.Name = "backUpToolStripMenuItem1";
-            this.backUpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.backUpToolStripMenuItem1.Text = "BackUp";
-            this.backUpToolStripMenuItem1.Click += new System.EventHandler(this.backUpToolStripMenuItem1_Click);
+            this.controlCambiosToolStripMenuItem.Name = "controlCambiosToolStripMenuItem";
+            this.controlCambiosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.controlCambiosToolStripMenuItem.Text = "ControlCambios";
+            this.controlCambiosToolStripMenuItem.Click += new System.EventHandler(this.controlCambiosToolStripMenuItem_Click);
             // 
             // frmMenú
             // 
@@ -213,5 +231,7 @@
         private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem admIdiomasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backUpToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem recalcularDVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controlCambiosToolStripMenuItem;
     }
 }

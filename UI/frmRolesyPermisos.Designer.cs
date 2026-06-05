@@ -171,14 +171,14 @@
             this.lblfrmRolyPerNombrePer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfrmRolyPerNombrePer.Location = new System.Drawing.Point(11, 86);
             this.lblfrmRolyPerNombrePer.Name = "lblfrmRolyPerNombrePer";
-            this.lblfrmRolyPerNombrePer.Size = new System.Drawing.Size(169, 23);
+            this.lblfrmRolyPerNombrePer.Size = new System.Drawing.Size(90, 23);
             this.lblfrmRolyPerNombrePer.TabIndex = 11;
-            this.lblfrmRolyPerNombrePer.Text = "Nombre Permiso:";
+            this.lblfrmRolyPerNombrePer.Text = "Nombre:";
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(178, 85);
+            this.textBox1.Location = new System.Drawing.Point(107, 81);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(214, 28);
             this.textBox1.TabIndex = 12;
@@ -187,7 +187,7 @@
             // 
             this.ChBxfrmRolyPer.AutoSize = true;
             this.ChBxfrmRolyPer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChBxfrmRolyPer.Location = new System.Drawing.Point(408, 86);
+            this.ChBxfrmRolyPer.Location = new System.Drawing.Point(374, 82);
             this.ChBxfrmRolyPer.Name = "ChBxfrmRolyPer";
             this.ChBxfrmRolyPer.Size = new System.Drawing.Size(123, 27);
             this.ChBxfrmRolyPer.TabIndex = 13;

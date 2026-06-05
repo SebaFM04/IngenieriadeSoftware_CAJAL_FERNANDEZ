@@ -30,9 +30,11 @@ namespace UI
 
             gestiónUsuariosToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Usuarios");
             gestiónProductosToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Productos");
-            adminitraciónToolStripMenuItem.Visible = usuario.TienePermiso("Administracion");
+            adminitraciónToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
             idiomaToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Idiomas");
             backUpToolStripMenuItem1.Visible = usuario.TienePermiso("BackUp");
+            recalcularDVToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
+            controlCambiosToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
         }
 
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
@@ -103,6 +105,32 @@ namespace UI
             frmBackUp_Restore.MdiParent = MdiParent;
             frmBackUp_Restore.ShowDialog();
 
+            this.Show();
+        }
+
+        private void recalcularDVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("¿Confirma que desea recalcular los dígitos verificadores?", "Recalcular DV", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                new BLL.PRODUCTO_BLL().RecalcularDV();
+                MessageBox.Show("Dígitos verificadores recalculados correctamente.","Recalcular DV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al recalcular: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void controlCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmControlCambios frm = new frmControlCambios();
+            frm.MdiParent = MdiParent;
+            frm.ShowDialog();
             this.Show();
         }
     }

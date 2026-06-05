@@ -41,10 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BACKUP_BLL.cs" />
     <Compile Include="BITACORA_BLL.cs" />
+    <Compile Include="CONTROLCAMBIOS_BLL.cs" />
     <Compile Include="DIGITOVERIFICADOR_BLL.cs" />
     <Compile Include="PERMISO_BLL.cs" />
     <Compile Include="PRODUCTO_BLL.cs" />
+    <Compile Include="RESTORE_BLL.cs" />
     <Compile Include="USUARIO_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

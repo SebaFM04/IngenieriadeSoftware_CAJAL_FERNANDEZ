@@ -51,31 +51,33 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(949, 370);
+            this.dataGridView1.Size = new System.Drawing.Size(1157, 370);
             this.dataGridView1.TabIndex = 8;
             // 
             // btnFrmBRRestaurar
             // 
             this.btnFrmBRRestaurar.BackColor = System.Drawing.Color.SandyBrown;
             this.btnFrmBRRestaurar.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFrmBRRestaurar.Location = new System.Drawing.Point(975, 73);
+            this.btnFrmBRRestaurar.Location = new System.Drawing.Point(995, 17);
             this.btnFrmBRRestaurar.Name = "btnFrmBRRestaurar";
             this.btnFrmBRRestaurar.Size = new System.Drawing.Size(178, 44);
             this.btnFrmBRRestaurar.TabIndex = 9;
             this.btnFrmBRRestaurar.Text = "Revertir Cambio";
             this.btnFrmBRRestaurar.UseVisualStyleBackColor = false;
+            this.btnFrmBRRestaurar.Click += new System.EventHandler(this.btnFrmBRRestaurar_Click);
             // 
             // frmControlCambios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(1165, 487);
+            this.ClientSize = new System.Drawing.Size(1198, 487);
             this.Controls.Add(this.btnFrmBRRestaurar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblfrmCCTitu);
             this.Name = "frmControlCambios";
             this.Text = "frmControlCambios";
+            this.Load += new System.EventHandler(this.frmControlCambios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -14,6 +14,8 @@ namespace BLL
     {
         MAPPER_DIGITOVERIFICADOR mapperDV = new MAPPER_DIGITOVERIFICADOR();
         MAPPER_PRODUCTO mapperProducto = new MAPPER_PRODUCTO();
+        MAPPER_BACKUP mapperBackup = new MAPPER_BACKUP();
+        MAPPER_RESTORE mapperRestore = new MAPPER_RESTORE();
 
         // ── DVH: suma ponderada por posición de atributo y carácter
         // Orden fijo de atributos:
@@ -53,16 +55,23 @@ namespace BLL
             return ENCRIPTADOR.Hash(suma.ToString());
         }
 
-        // ── DVV: hash de la concatenación de todos los DVH ───────
         private string CalcularDVV(List<PRODUCTO> productos)
         {
-            StringBuilder sb = new StringBuilder();
+            long suma = 0;
+            int posFila = 1;
             foreach (var p in productos)
-                sb.Append(p.DVH ?? "");
-            return ENCRIPTADOR.Hash(sb.ToString());
+            {
+                int posChar = 1;
+                foreach (char c in (p.DVH ?? ""))
+                {
+                    suma += (long)c * posChar * posFila;
+                    posChar++;
+                }
+                posFila++;
+            }
+            return ENCRIPTADOR.Hash(suma.ToString());
         }
 
-        // ── Recalcular DVH fila por fila y DVV de la tabla ───────
         public void RecalcularDV()
         {
             var productos = mapperProducto.ListarProductos();
@@ -77,6 +86,8 @@ namespace BLL
                 }
             }
 
+            // Recargar con DVH actualizados
+            productos = mapperProducto.ListarProductos();
             string dvv = CalcularDVV(productos);
             mapperDV.GuardarDVV(new DIGITOVERIFICADOR
             {
@@ -85,13 +96,11 @@ namespace BLL
             });
         }
 
-        // ── Verificar integridad ─────────────────────────────────
         public List<string> VerificarIntegridad()
         {
             var errores = new List<string>();
             var productos = mapperProducto.ListarProductos();
 
-            // Verificación horizontal
             foreach (var p in productos)
             {
                 string dvhCalculado = CalcularDVH(p);
@@ -100,7 +109,6 @@ namespace BLL
                                 $"('{p.NombreProducto}'): la fila fue alterada.");
             }
 
-            // Verificación vertical
             var dvvAlmacenado = mapperDV.ObtenerDVV("PRODUCTO");
             string dvvCalculado = CalcularDVV(productos);
 
@@ -109,6 +117,22 @@ namespace BLL
                             "quitaron o reordenaron filas fuera del sistema.");
 
             return errores;
+        }
+
+        public void HacerBackup(string ruta)
+        {
+            mapperBackup.GenerarBackup(ruta);
+        }
+
+        public void RestaurarDesdeBackup(string ruta)
+        {
+            mapperRestore.RestaurarBackup(ruta);
+            RecalcularDV();
+        }
+
+        public DateTime? ObtenerFechaUltimoBackup()
+        {
+            return null;
         }
     }
 }
