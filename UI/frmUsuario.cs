@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmUsuario : Form, IObserver
+    public partial class frmUsuario : Form
     {
         BE.USUARIO usuario = new BE.USUARIO();
         USUARIO_BLL GestorUsuario = new USUARIO_BLL();
@@ -271,20 +271,6 @@ namespace UI
             {
                 MessageBox.Show("Error al modificar el usuario: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public void ActualizarLenguaje()
-        {
-            var t = Traductor.ObtenerInstancia();
-            lblNombrefrmUsuario.Text = t.Traducir("frmUsuario", "lblNombrefrmUsuario");
-            lblApellidofrmUsuario.Text = t.Traducir("frmUsuario", "lblApellidofrmUsuario");
-            lblDnifrmUsuario.Text = t.Traducir("frmUsuario", "lblDnifrmUsuario");
-            lblCorreoElectronicofrmUsuario.Text = t.Traducir("frmUsuario", "lblCorreoElectronicofrmUsuario");
-            lblContraseñafrmUsuario.Text = t.Traducir("frmUsuario", "lblContraseñafrmUsuario");
-            btnAltafrmUsuario.Text = t.Traducir("frmUsuario", "btnAltafrmUsuario");
-            btnBajafrmUsuario.Text = t.Traducir("frmUsuario", "btnBajafrmUsuario");
-            btnModificacionfrmUsuario.Text = t.Traducir("frmUsuario", "btnModificacionfrmUsuario");
-
         }
     }
 }

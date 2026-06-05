@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using BE;
-using SERVICIO;
 
 namespace UI
 {
-    public partial class frmBitacora : Form, IObserver
+    public partial class frmBitacora : Form
     {
         BITACORA_BLL Bitacorabll = new BITACORA_BLL();
         USUARIO_BLL Usariobll = new USUARIO_BLL();
@@ -113,16 +112,6 @@ namespace UI
             dataGridView1.Rows.Clear();
              comboBox1.SelectedIndex = 0;
              dtpFechaDesde.Value = DateTime.Now;
-        }
-
-        public void ActualizarLenguaje()
-        {
-            var t = Traductor.ObtenerInstancia();
-            lblUsuarioBitacora.Text = t.Traducir("frmBitacora", "lblUsuarioBitacora");
-            lblDesdeBitacora.Text = t.Traducir("frmBitacora", "lblDesdeBitacora");
-            lblHastaBitacora.Text = t.Traducir("frmBitacora", "lblHastaBitacora");
-            btnBuscarBitacora.Text = t.Traducir("frmBitacora", "btnBuscarBitacora");
-            btnLimpiarBitacora.Text = t.Traducir("frmBitacora", "btnLimpiarBitacora");
         }
     }
 }

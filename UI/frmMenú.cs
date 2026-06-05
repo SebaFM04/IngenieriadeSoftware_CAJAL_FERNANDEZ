@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmMenú : Form, IObserver
+    public partial class frmMenú : Form
     {
         public frmMenú()
         {
@@ -104,23 +104,6 @@ namespace UI
             frmBackUp_Restore.ShowDialog();
 
             this.Show();
-        }
-
-        public void ActualizarLenguaje()
-        {
-            var t = Traductor.ObtenerInstancia();
-            btnCerrarSesionfrmMenu.Text = t.Traducir("frmMenú", "btnCerrarSesionfrmMenu");
-            gestiónUsuariosToolStripMenuItem.Text = t.Traducir("frmMenú", "gestiónUsuariosToolStripMenuItem");
-            formularioUsuariosToolStripMenuItem.Text = t.Traducir("frmMenú", "formularioUsuariosToolStripMenuItem");
-            admRolesToolStripMenuItem.Text = t.Traducir("frmMenú", "admRolesToolStripMenuItem");
-            gestiónProductosToolStripMenuItem.Text = t.Traducir("frmMenú", "gestiónProductosToolStripMenuItem");
-            formularioProductosToolStripMenuItem.Text = t.Traducir("frmMenú", "formularioProductosToolStripMenuItem");
-            adminitraciónToolStripMenuItem.Text = t.Traducir("frmMenú", "adminitraciónToolStripMenuItem");
-            bitacoraToolStripMenuItem.Text = t.Traducir("frmMenú", "bitacoraToolStripMenuItem");
-            idiomaToolStripMenuItem.Text = t.Traducir("frmMenú", "idiomaToolStripMenuItem");
-            admIdiomasToolStripMenuItem.Text = t.Traducir("frmMenú", "admIdiomasToolStripMenuItem");
-            backUpToolStripMenuItem1.Text = t.Traducir("frmMenú", "backUpToolStripMenuItem1");
-
         }
     }
 }

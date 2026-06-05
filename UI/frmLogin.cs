@@ -1,5 +1,4 @@
-﻿using SERVICIO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +11,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmLogin : Form, IObserver
+    public partial class frmLogin : Form
     {
         BE.USUARIO usuario = new BE.USUARIO();
         public frmLogin()
@@ -87,17 +86,6 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        public void ActualizarLenguaje()
-        {
-            var t = Traductor.ObtenerInstancia();
-            lblLeyendaIniciofrmLogin.Text = t.Traducir("frmLogin", "lblLeyendaIniciofrmLogin");
-            lblCorreoElectronicofrmLogin.Text = t.Traducir("frmLogin", "lblCorreoElectronicofrmLogin");
-            lblContraseñafrmLogin.Text = t.Traducir("frmLogin", "lblContraseñafrmLogin");
-            btnlniciarSesionfrmLogin.Text = t.Traducir("frmLogin", "btnlniciarSesionfrmLogin");
-            btnMostrarContraseñafrmLogIn.Text = t.Traducir("frmLogin", "btnMostrarContraseñafrmLogIn");
-
         }
     }
 }

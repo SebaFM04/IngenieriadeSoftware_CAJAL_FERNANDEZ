@@ -43,10 +43,8 @@
   <ItemGroup>
     <Compile Include="BITACORA_BLL.cs" />
     <Compile Include="DIGITOVERIFICADOR_BLL.cs" />
-    <Compile Include="IDIOMA_BLL.cs" />
     <Compile Include="PERMISO_BLL.cs" />
     <Compile Include="PRODUCTO_BLL.cs" />
-    <Compile Include="TRADUCCION_BLL.cs" />
     <Compile Include="USUARIO_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

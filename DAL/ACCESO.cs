@@ -97,14 +97,6 @@ namespace DAL
             p.DbType = DbType.String;
             return p;
         }
-        public SqlParameter CrearParametro(string nombre, bool valor)
-        {
-            SqlParameter p = new SqlParameter();
-            p.ParameterName = nombre;
-            p.Value = valor;
-            p.DbType = DbType.Boolean;
-            return p;
-        }
         public SqlParameter CrearParametro(string nombre, decimal valor)
         {
             SqlParameter p = new SqlParameter();

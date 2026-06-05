@@ -1,6 +1,5 @@
 ﻿using BE;
 using BLL;
-using SERVICIO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmProducto : Form, SERVICIO.IObserver
+    public partial class frmProducto : Form
     {
         BE.PRODUCTO producto = new BE.PRODUCTO();
         PRODUCTO_BLL GestorProducto = new PRODUCTO_BLL();
@@ -275,20 +274,6 @@ namespace UI
                 MessageBox.Show("Error al modificar el producto: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-        public void ActualizarLenguaje()
-        {
-            var t = Traductor.ObtenerInstancia();
-            lblNombrefrmProducto.Text = t.Traducir("frmProducto", "lblNombrefrmProducto");
-            lblPreciofrmProducto.Text = t.Traducir("frmProducto", "lblPreciofrmProducto");
-            lblTipofrmProducto.Text = t.Traducir("frmProducto", "lblTipofrmProducto");
-            lblDescripcionfrmProducto.Text = t.Traducir("frmProducto", "lblDescripcionfrmProducto");
-            lblCantidadfrmProducto.Text = t.Traducir("frmProducto", "lblCantidadfrmProducto");
-            label1.Text = t.Traducir("frmProducto", "label1");
-            btnAltafrmProducto.Text = t.Traducir("frmProducto", "btnAltafrmProducto");
-            btnBajafrmProducto.Text = t.Traducir("frmProducto", "btnBajafrmProducto");
-            btnModificacionfrmProducto.Text = t.Traducir("frmProducto", "btnModificacionfrmProducto");
         }
     }
 }
