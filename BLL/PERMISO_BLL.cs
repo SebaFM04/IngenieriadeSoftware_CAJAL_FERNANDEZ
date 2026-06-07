@@ -19,6 +19,12 @@ namespace BLL
 
         public void CrearPermiso(string nombre, bool esFamilia)
         {
+            if (!esFamilia)
+                throw new Exception("Solo se pueden crear roles. Los permisos están precargados en el sistema.");
+
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new Exception("El nombre del rol no puede estar vacío.");
+
             GestorPermiso.CrearPermiso(nombre, esFamilia);
         }
 

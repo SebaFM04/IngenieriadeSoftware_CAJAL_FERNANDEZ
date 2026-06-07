@@ -166,6 +166,7 @@ namespace UI
             {
                 BE.PRODUCTO p = new BE.PRODUCTO();
                 p.IdProducto = id;
+                p.NombreProducto = nombreProducto;
                 int filas = GestorProducto.EliminarProducto(p);
                 if (filas > 0)
                 {

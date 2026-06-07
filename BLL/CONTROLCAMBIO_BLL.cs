@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class CONTROLCAMBIOS_BLL
+    public class CONTROLCAMBIO_BLL
     {
-        MAPPER_CONTROLCAMBIOS mapperCambios = new MAPPER_CONTROLCAMBIOS();
+        MAPPER_CONTROLCAMBIO mapperCambios = new MAPPER_CONTROLCAMBIO();
         MAPPER_PRODUCTO mapperProducto = new MAPPER_PRODUCTO();
         DIGITOVERIFICADOR_BLL dvBLL = new DIGITOVERIFICADOR_BLL();
 
         public void RegistrarCambio(int idUsuario, int idProducto, string campo, string valorAnterior, string valorActual, string tipoOperacion)
         {
-            var cambio = new CONTROLCAMBIOS
+            var cambio = new CONTROLCAMBIO
             {
                 IdUsuario = idUsuario,
                 IdProducto = idProducto,
@@ -29,18 +29,18 @@ namespace BLL
             mapperCambios.RegistrarCambio(cambio);
         }
 
-        public List<CONTROLCAMBIOS> ListarTodos()
+        public List<CONTROLCAMBIO> ListarTodos()
         {
             return mapperCambios.ListarTodos();
         }
 
-        public List<CONTROLCAMBIOS> ListarPorProducto(int idProducto)
+        public List<CONTROLCAMBIO> ListarPorProducto(int idProducto)
         {
             return mapperCambios.ListarPorProducto(idProducto);
         }
 
         // ── Revertir un campo al valor anterior ──────────────────
-        public void RevertirCambio(CONTROLCAMBIOS cambio, int idUsuarioActual)
+        public void RevertirCambio(CONTROLCAMBIO cambio, int idUsuarioActual)
         {
             var producto = mapperProducto.ObtenerPorId(cambio.IdProducto);
             if (producto == null)
@@ -78,13 +78,7 @@ namespace BLL
             dvBLL.RecalcularDV();
 
             // Registrar el cambio de reversión
-            RegistrarCambio(
-                idUsuarioActual,
-                cambio.IdProducto,
-                cambio.CampoModificado,
-                valorActualAntesDerevertir,
-                cambio.ValorAnterior,
-                "Reversión");
+            RegistrarCambio(idUsuarioActual, cambio.IdProducto, cambio.CampoModificado, valorActualAntesDerevertir, cambio.ValorAnterior, "Reversión");
         }
     }
 }

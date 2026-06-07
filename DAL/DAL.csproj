@@ -44,7 +44,7 @@
     <Compile Include="ACCESO.cs" />
     <Compile Include="MAPPER_BACKUP.cs" />
     <Compile Include="MAPPER_BITACORA.cs" />
-    <Compile Include="MAPPER_CONTROLCAMBIOS.cs" />
+    <Compile Include="MAPPER_CONTROLCAMBIO.cs" />
     <Compile Include="MAPPER_DIGITOVERIFICADOR.cs" />
     <Compile Include="MAPPER_PERMISO.cs" />
     <Compile Include="MAPPER_PRODUCTO.cs" />

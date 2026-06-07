@@ -23,6 +23,10 @@ namespace UI
 
         private void frmRolesyPermisos_Load(object sender, EventArgs e)
         {
+            ChBxfrmRolyPer.Checked = true;
+            ChBxfrmRolyPer.Enabled = false;
+            ChBxfrmRolyPer.Text = "Rol (siempre activo)";
+
             CargarComboRoles();
             CargarArbol();
             CargarPermisosDisponibles();
@@ -68,7 +72,7 @@ namespace UI
             {
                 permisoBLL.AsignarPermisoAUsuario(usuario.IdUsuario, rol.Id);
                 MessageBox.Show(
-                    $"Rol '{rol.NombrePermiso}' asignado a '{usuario.IdUsuario}' correctamente.",
+                    $"Rol '{rol.NombrePermiso}' asignado a '{usuario.CorreoElectronico}' correctamente.",
                     "Asignación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -290,7 +294,7 @@ namespace UI
         private void LimpiarCampos()
         {
             textBox1.Text = string.Empty;
-            ChBxfrmRolyPer.Checked = false;
+            ChBxfrmRolyPer.Checked = true;//Siempre queda en TRUE
         }
     }
 }

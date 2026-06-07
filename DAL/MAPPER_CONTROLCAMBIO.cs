@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class MAPPER_CONTROLCAMBIOS
+    public class MAPPER_CONTROLCAMBIO
     {
         ACCESO acceso = new ACCESO();
 
-        public void RegistrarCambio(CONTROLCAMBIOS cambio)
+        public void RegistrarCambio(CONTROLCAMBIO cambio)
         {
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>
@@ -30,9 +30,9 @@ namespace DAL
             acceso.Cerrar();
         }
 
-        public List<CONTROLCAMBIOS> ListarTodos()
+        public List<CONTROLCAMBIO> ListarTodos()
         {
-            var lista = new List<CONTROLCAMBIOS>();
+            var lista = new List<CONTROLCAMBIO>();
             acceso.Abrir();
             DataTable tabla = acceso.Leer("ListarControlCambios");
             acceso.Cerrar();
@@ -45,9 +45,9 @@ namespace DAL
             return lista;
         }
 
-        public List<CONTROLCAMBIOS> ListarPorProducto(int idProducto)
+        public List<CONTROLCAMBIO> ListarPorProducto(int idProducto)
         {
-            var lista = new List<CONTROLCAMBIOS>();
+            var lista = new List<CONTROLCAMBIO>();
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>
             {
@@ -62,9 +62,9 @@ namespace DAL
             return lista;
         }
 
-        private CONTROLCAMBIOS MapearFila(DataRow row)
+        private CONTROLCAMBIO MapearFila(DataRow row)
         {
-            return new CONTROLCAMBIOS
+            return new CONTROLCAMBIO
             {
                 IdCambio = Convert.ToInt32(row["IdCambio"]),
                 IdUsuario = Convert.ToInt32(row["IdUsuario"]),

@@ -10,7 +10,7 @@ namespace BLL
     {
         MAPPER_PRODUCTO GestorProducto = new MAPPER_PRODUCTO();
         DIGITOVERIFICADOR_BLL dvBLL = new DIGITOVERIFICADOR_BLL();
-        CONTROLCAMBIOS_BLL cambiosBLL = new CONTROLCAMBIOS_BLL();
+        CONTROLCAMBIO_BLL cambiosBLL = new CONTROLCAMBIO_BLL();
 
         public void InsertarProducto(BE.PRODUCTO producto)
         {
@@ -18,23 +18,14 @@ namespace BLL
             GestorProducto.AltaProducto(producto);
             dvBLL.RecalcularDV();
 
-            cambiosBLL.RegistrarCambio(
-                SessionManager.Instancia.UsuarioActual.IdUsuario,
-                producto.IdProducto,
-                "ALTA", "", producto.NombreProducto, "Alta");
+            cambiosBLL.RegistrarCambio(SessionManager.Instancia.UsuarioActual.IdUsuario, producto.IdProducto, "ALTA", "", producto.NombreProducto, "Alta");
 
-            new BITACORA_BLL().RegistrarEvento(
-                SessionManager.Instancia.UsuarioActual.IdUsuario,
-                "Alta de producto",
-                $"Se agrego el producto: {producto.NombreProducto}");
+            new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Alta de producto", $"Se agrego el producto: {producto.NombreProducto}");
         }
 
         public int EliminarProducto(BE.PRODUCTO producto)
         {
-            cambiosBLL.RegistrarCambio(
-                SessionManager.Instancia.UsuarioActual.IdUsuario,
-                producto.IdProducto,
-                "BAJA", producto.NombreProducto, "", "Baja");
+            cambiosBLL.RegistrarCambio(SessionManager.Instancia.UsuarioActual.IdUsuario, producto.IdProducto,"BAJA", producto.NombreProducto, "", "Baja");
 
             int filas = GestorProducto.BajaProducto(producto);
             try

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class CONTROLCAMBIOS
+    public class CONTROLCAMBIO
     {
         private int idCambio;
         public int IdCambio

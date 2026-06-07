@@ -14,12 +14,13 @@ namespace BLL
         public void RestaurarBackup(string rutaArchivo)
         {
             if (string.IsNullOrWhiteSpace(rutaArchivo))
+            {
                 throw new System.Exception("La ruta no puede estar vacía.");
-
+            }
             if (!File.Exists(rutaArchivo))
-                throw new System.Exception(
-                    $"No se encontró el archivo en la ruta: {rutaArchivo}");
-
+            {
+                throw new System.Exception($"No se encontró el archivo en la ruta: {rutaArchivo}");
+            }
             mp_rst.RestaurarBackup(rutaArchivo);
         }
     }

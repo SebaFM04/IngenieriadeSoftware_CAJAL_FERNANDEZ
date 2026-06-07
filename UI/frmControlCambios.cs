@@ -15,7 +15,7 @@ namespace UI
 {
     public partial class frmControlCambios : Form
     {
-        CONTROLCAMBIOS_BLL gestorCambios = new CONTROLCAMBIOS_BLL();
+        CONTROLCAMBIO_BLL gestorCambios = new CONTROLCAMBIO_BLL();
         public frmControlCambios()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace UI
             }
 
             var cambio = dataGridView1.SelectedRows[0].DataBoundItem
-                         as CONTROLCAMBIOS;
+                         as CONTROLCAMBIO;
             if (cambio == null) return;
 
             if (string.IsNullOrWhiteSpace(cambio.ValorAnterior))

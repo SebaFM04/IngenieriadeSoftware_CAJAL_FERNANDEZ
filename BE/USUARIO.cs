@@ -73,7 +73,7 @@ namespace BE
 
         public override string ToString()
         {
-            return IdUsuario.ToString();
+            return CorreoElectronico.ToString();
         }
     }
 }
