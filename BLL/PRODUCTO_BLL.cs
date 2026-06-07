@@ -15,12 +15,22 @@ namespace BLL
         public void InsertarProducto(BE.PRODUCTO producto)
         {
             producto.DVH = dvBLL.CalcularDVH(producto);
-            GestorProducto.AltaProducto(producto);
+
+            // Obtener el ID real generado por la BD
+            int idGenerado = GestorProducto.AltaProducto(producto);
+            producto.IdProducto = idGenerado;
+
             dvBLL.RecalcularDV();
 
-            cambiosBLL.RegistrarCambio(SessionManager.Instancia.UsuarioActual.IdUsuario, producto.IdProducto, "ALTA", "", producto.NombreProducto, "Alta");
+            cambiosBLL.RegistrarCambio(
+                SessionManager.Instancia.UsuarioActual.IdUsuario,
+                producto.IdProducto,  // ← ahora tiene el ID real
+                "ALTA", "", producto.NombreProducto, "Alta");
 
-            new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Alta de producto", $"Se agrego el producto: {producto.NombreProducto}");
+            new BITACORA_BLL().RegistrarEvento(
+                SessionManager.Instancia.UsuarioActual.IdUsuario,
+                "Alta de producto",
+                $"Se agrego el producto: {producto.NombreProducto}");
         }
 
         public int EliminarProducto(BE.PRODUCTO producto)
