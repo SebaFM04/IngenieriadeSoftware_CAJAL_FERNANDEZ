@@ -19,7 +19,7 @@ namespace UI
         public frmMenú()
         {
             InitializeComponent();
-            //ActualizarIdioma();
+            
             SERVICIO.SessionManager Sesion = SERVICIO.SessionManager.Instancia;
             label1.Text = $"CorreoElectronico: {Sesion.UsuarioActual.CorreoElectronico}\nNombre y Apellido: {Sesion.UsuarioActual.NombreUsuario} {Sesion.UsuarioActual.ApellidoUsuario}";
         }
@@ -52,6 +52,7 @@ namespace UI
         private void frmMenú_Load(object sender, EventArgs e)
         {
             AplicarPermisos();
+            CargarComboIdiomas();
         }
 
         private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,7 +117,7 @@ namespace UI
         {
             foreach (Control ctrl in this.Controls)
             {
-                if (ctrl is TextBox || ctrl is MenuStrip) continue;
+                if (ctrl is TextBox || ctrl is MenuStrip || ctrl is ComboBox) continue;
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
 
@@ -129,6 +130,24 @@ namespace UI
             item.Text = GestorIdioma.Instancia.Traducir(item.Name);
             foreach (ToolStripMenuItem sub in item.DropDownItems.OfType<ToolStripMenuItem>())
                 TraducirMenuItem(sub);
+        }
+
+        private void CargarComboIdiomas()
+        {
+            var idiomas = new IDIOMA_BLL().ListarIdiomas();
+            comboIdiomas.DataSource = idiomas;
+            comboIdiomas.DisplayMember = "Nombre";
+            comboIdiomas.ValueMember = "IdIdioma";
+
+            // Preseleccionar el idioma activo
+            comboIdiomas.SelectedValue = GestorIdioma.Instancia.IdIdiomaActual;
+        }
+         
+        private void comboIdiomas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboIdiomas.SelectedItem == null) return;
+            var idioma = (IDIOMA)comboIdiomas.SelectedItem;
+            new IDIOMA_BLL().CambiarIdioma(idioma.IdIdioma);
         }
     }
 }

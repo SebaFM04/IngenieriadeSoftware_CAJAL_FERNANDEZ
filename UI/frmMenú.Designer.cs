@@ -199,6 +199,7 @@
             this.comboIdiomas.Name = "comboIdiomas";
             this.comboIdiomas.Size = new System.Drawing.Size(217, 21);
             this.comboIdiomas.TabIndex = 21;
+            this.comboIdiomas.SelectedIndexChanged += new System.EventHandler(this.comboIdiomas_SelectedIndexChanged);
             // 
             // frmMenú
             // 
