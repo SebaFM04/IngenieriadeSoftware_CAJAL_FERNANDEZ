@@ -79,6 +79,7 @@ namespace DAL
                 C.NombreUsuario = u["NombreUsuario"].ToString();
                 C.ApellidoUsuario = u["ApellidoUsuario"].ToString();
                 C.Dni = int.Parse(u["Dni"].ToString());
+                C.IdIdioma = u["IdIdioma"] != DBNull.Value ? (int?)int.Parse(u["IdIdioma"].ToString()) : null;
                 C.IdUsuario = int.Parse(u["IdUsuario"].ToString());
                 return C;
             }

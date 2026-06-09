@@ -58,6 +58,13 @@ namespace BE
             set { permisosAsignados = value; }
         }
 
+        private int? idIdioma;
+        public int? IdIdioma
+        {
+            get { return idIdioma; }
+            set { idIdioma = value; }
+        }
+
         public bool TienePermiso(string nombrePermiso)
         {
             if (PermisosAsignados == null) return false;

@@ -22,6 +22,9 @@ namespace BLL
             user.PermisosAsignados = new PERMISO_BLL().ListarPermisosJerarquicosPorUsuarioId(user.IdUsuario);
             
             SessionManager.Instancia.Login(user);
+            // aca inicializamos el idioma del usuario!
+            new IDIOMA_BLL().InicializarIdiomaUsuario(user.IdIdioma); //si todavia no tiene idioma, se le asigna el default q es español por ahora.
+
             new BITACORA_BLL().RegistrarEvento(user.IdUsuario, "Inicio de sesion", $"Usuario: {user.CorreoElectronico}");
             return user;
         }

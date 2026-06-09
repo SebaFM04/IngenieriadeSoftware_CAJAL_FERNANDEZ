@@ -1,6 +1,7 @@
 ﻿using BE;
 using BLL;
 using SERVICIO;
+using SERVICIO.MultiIdioma_Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmControlCambios : Form
+    public partial class frmControlCambios : Form, IObservadorIdioma
     {
         CONTROLCAMBIO_BLL gestorCambios = new CONTROLCAMBIO_BLL();
         public frmControlCambios()
@@ -97,6 +98,14 @@ namespace UI
             dataGridView1.MultiSelect = false;
         }
 
-
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
+                    continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+            }
+        }
     }
 }

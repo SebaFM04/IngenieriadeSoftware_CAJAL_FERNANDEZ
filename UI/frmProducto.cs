@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIO.MultiIdioma_Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmProducto : Form
+    public partial class frmProducto : Form , IObservadorIdioma
     {
         BE.PRODUCTO producto = new BE.PRODUCTO();
         PRODUCTO_BLL GestorProducto = new PRODUCTO_BLL();
@@ -275,6 +276,16 @@ namespace UI
                 MessageBox.Show("Error al modificar el producto: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
+                    continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+            }
         }
     }
 }
