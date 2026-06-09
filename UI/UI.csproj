@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmABMIdioma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmABMIdioma.Designer.cs">
+      <DependentUpon>frmABMIdioma.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBackUp-Restore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,8 +102,12 @@
     <Compile Include="frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestorUI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmABMIdioma.resx">
+      <DependentUpon>frmABMIdioma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBackUp-Restore.resx">
       <DependentUpon>frmBackUp-Restore.cs</DependentUpon>
     </EmbeddedResource>

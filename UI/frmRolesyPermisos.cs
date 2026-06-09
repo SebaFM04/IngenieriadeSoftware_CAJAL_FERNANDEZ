@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIO.MultiIdioma_Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmRolesyPermisos : Form
+    public partial class frmRolesyPermisos : Form, IObservadorIdioma
     {
         PERMISO_BLL permisoBLL = new PERMISO_BLL();
         USUARIO_BLL usuarioBLL = new USUARIO_BLL();
@@ -295,6 +296,16 @@ namespace UI
         {
             textBox1.Text = string.Empty;
             ChBxfrmRolyPer.Checked = true;//Siempre queda en TRUE
+        }
+
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
+                    continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+            }
         }
     }
 }

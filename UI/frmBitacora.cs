@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using BE;
+using SERVICIO.MultiIdioma_Observer;
 
 namespace UI
 {
-    public partial class frmBitacora : Form
+    public partial class frmBitacora : Form, IObservadorIdioma
     {
         BITACORA_BLL Bitacorabll = new BITACORA_BLL();
         USUARIO_BLL Usariobll = new USUARIO_BLL();
@@ -112,6 +113,16 @@ namespace UI
             dataGridView1.Rows.Clear();
              comboBox1.SelectedIndex = 0;
              dtpFechaDesde.Value = DateTime.Now;
+        }
+
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
+                    continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+            }
         }
     }
 }

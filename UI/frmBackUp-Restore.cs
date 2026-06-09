@@ -1,5 +1,6 @@
 ﻿using BLL;
 using SERVICIO;
+using SERVICIO.MultiIdioma_Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmBackUp_Restore : Form
+    public partial class frmBackUp_Restore : Form, IObservadorIdioma
     {
         BACKUP_BLL gestorBackup = new BACKUP_BLL();
         RESTORE_BLL gestorRestore = new RESTORE_BLL();
@@ -102,6 +103,16 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show("Error al recalcular: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
+                    continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
         }
     }

@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiIdioma-Observer\GestorIdioma.cs" />
+    <Compile Include="MultiIdioma-Observer\IDIOMA.cs" />
+    <Compile Include="MultiIdioma-Observer\IObservadorIdioma.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="ENCRIPTADOR.cs" />
@@ -52,5 +55,6 @@
       <Name>BE</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,9 +14,12 @@ namespace UI
     public partial class frmLogin : Form
     {
         BE.USUARIO usuario = new BE.USUARIO();
+        GestorUI gestorUI = new GestorUI();
         public frmLogin()
         {
             InitializeComponent();
+            textBox1.Text = "test@test.com";
+            textBox2.Text = "test";
         }
 
         private void btniniciarSesionfrmLogin_Click(object sender, EventArgs e)
@@ -50,10 +53,7 @@ namespace UI
                 MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 #region SALTO AL MENU PRINCIPAL
-                this.Hide();
-                frmMenú frmMenú = new frmMenú();
-                frmMenú.MdiParent = MdiParent;
-                frmMenú.ShowDialog();
+                gestorUI.AbrirForm(new frmMenú());
                 this.Close();
                 #endregion
 

@@ -1,5 +1,6 @@
 ﻿using BLL;
 using SERVICIO;
+using SERVICIO.MultiIdioma_Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +13,15 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmMenú : Form
+    public partial class frmMenú : Form, IObservadorIdioma
     {
+        GestorUI gestorUI = GestorUI.Instancia;
         public frmMenú()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            //ActualizarIdioma();
             SERVICIO.SessionManager Sesion = SERVICIO.SessionManager.Instancia;
-            label1.Text = $"CorreoElectronico: {Sesion.UsuarioActual.CorreoElectronico}\nNombre y Apellido: {Sesion.UsuarioActual.NombreUsuario} {Sesion.UsuarioActual.ApellidoUsuario}";          
+            label1.Text = $"CorreoElectronico: {Sesion.UsuarioActual.CorreoElectronico}\nNombre y Apellido: {Sesion.UsuarioActual.NombreUsuario} {Sesion.UsuarioActual.ApellidoUsuario}";
         }
         private void AplicarPermisos()
         {
@@ -42,70 +45,49 @@ namespace UI
             var result = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                BLL.USUARIO_BLL Usuario = new BLL.USUARIO_BLL();
-                Usuario.LogoutUsuario();
+                new BLL.USUARIO_BLL().LogoutUsuario();
                 this.Close();
             }
         }
-
-        private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            frmUsuario frmUsuario = new frmUsuario();
-            frmUsuario.MdiParent = MdiParent;
-            frmUsuario.ShowDialog();
-
-            this.Show();    
-        }
-
-        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            frmBitacora frmBitacora = new frmBitacora();
-            frmBitacora.MdiParent = MdiParent;
-            frmBitacora.ShowDialog();
-
-            this.Show();
-        }
-
-        private void formularioProductosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            frmProducto frmProducto = new frmProducto();
-            frmProducto.MdiParent = MdiParent;
-            frmProducto.ShowDialog();
-
-            this.Show();
-        }
-
-        private void admRolesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            frmRolesyPermisos frmRolesyPermisos = new frmRolesyPermisos();
-            frmRolesyPermisos.MdiParent = MdiParent;
-            frmRolesyPermisos.ShowDialog();
-
-            this.Show();
-        }
-
         private void frmMenú_Load(object sender, EventArgs e)
         {
             AplicarPermisos();
         }
 
+        private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            gestorUI.AbrirForm(new frmUsuario());
+
+            //this.Hide();
+
+            //frmUsuario frmUsuario = new frmUsuario();
+            //frmUsuario.MdiParent = MdiParent;
+            //frmUsuario.ShowDialog();
+
+            //this.Show();    
+        }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestorUI.AbrirForm(new frmBitacora());
+        }
+
+        private void formularioProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestorUI.AbrirForm(new frmProducto());
+        }
+
+        private void admRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestorUI.AbrirForm(new frmRolesyPermisos());
+        }
+
+
         private void backUpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            gestorUI.AbrirForm(new frmBackUp_Restore());
 
-            frmBackUp_Restore frmBackUp_Restore = new frmBackUp_Restore();
-            frmBackUp_Restore.MdiParent = MdiParent;
-            frmBackUp_Restore.ShowDialog();
-
-            this.Show();
         }
 
         private void recalcularDVToolStripMenuItem_Click(object sender, EventArgs e)
@@ -117,7 +99,7 @@ namespace UI
             try
             {
                 new BLL.PRODUCTO_BLL().RecalcularDV();
-                MessageBox.Show("Dígitos verificadores recalculados correctamente.","Recalcular DV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Dígitos verificadores recalculados correctamente.", "Recalcular DV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -127,11 +109,26 @@ namespace UI
 
         private void controlCambiosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmControlCambios frm = new frmControlCambios();
-            frm.MdiParent = MdiParent;
-            frm.ShowDialog();
-            this.Show();
+            gestorUI.AbrirForm(new frmControlCambios());
+        }
+
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is MenuStrip) continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+            }
+
+            foreach (ToolStripMenuItem item in mnstripMenu.Items)
+                TraducirMenuItem(item);
+        }
+
+        private void TraducirMenuItem(ToolStripMenuItem item)
+        {
+            item.Text = GestorIdioma.Instancia.Traducir(item.Name);
+            foreach (ToolStripMenuItem sub in item.DropDownItems.OfType<ToolStripMenuItem>())
+                TraducirMenuItem(sub);
         }
     }
 }
