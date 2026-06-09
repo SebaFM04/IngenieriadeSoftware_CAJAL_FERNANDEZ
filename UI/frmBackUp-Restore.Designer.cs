@@ -51,7 +51,7 @@
             // 
             this.btnFrmBRVerError.BackColor = System.Drawing.Color.SandyBrown;
             this.btnFrmBRVerError.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFrmBRVerError.Location = new System.Drawing.Point(193, 231);
+            this.btnFrmBRVerError.Location = new System.Drawing.Point(193, 249);
             this.btnFrmBRVerError.Name = "btnFrmBRVerError";
             this.btnFrmBRVerError.Size = new System.Drawing.Size(151, 40);
             this.btnFrmBRVerError.TabIndex = 1;
@@ -65,9 +65,9 @@
             this.btnFrmBRCrearBackUp.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFrmBRCrearBackUp.Location = new System.Drawing.Point(193, 156);
             this.btnFrmBRCrearBackUp.Name = "btnFrmBRCrearBackUp";
-            this.btnFrmBRCrearBackUp.Size = new System.Drawing.Size(151, 40);
+            this.btnFrmBRCrearBackUp.Size = new System.Drawing.Size(151, 69);
             this.btnFrmBRCrearBackUp.TabIndex = 3;
-            this.btnFrmBRCrearBackUp.Text = "Crear BackUp";
+            this.btnFrmBRCrearBackUp.Text = "Realizar BackUp";
             this.btnFrmBRCrearBackUp.UseVisualStyleBackColor = false;
             this.btnFrmBRCrearBackUp.Click += new System.EventHandler(this.btnFrmBRCrearBackUp_Click);
             // 
@@ -75,11 +75,11 @@
             // 
             this.btnFrmBRRestaurar.BackColor = System.Drawing.Color.SandyBrown;
             this.btnFrmBRRestaurar.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFrmBRRestaurar.Location = new System.Drawing.Point(193, 414);
+            this.btnFrmBRRestaurar.Location = new System.Drawing.Point(193, 413);
             this.btnFrmBRRestaurar.Name = "btnFrmBRRestaurar";
-            this.btnFrmBRRestaurar.Size = new System.Drawing.Size(151, 40);
+            this.btnFrmBRRestaurar.Size = new System.Drawing.Size(151, 69);
             this.btnFrmBRRestaurar.TabIndex = 4;
-            this.btnFrmBRRestaurar.Text = "Restaurar Base";
+            this.btnFrmBRRestaurar.Text = "Realizar Restore";
             this.btnFrmBRRestaurar.UseVisualStyleBackColor = false;
             this.btnFrmBRRestaurar.Click += new System.EventHandler(this.btnFrmBRRestaurar_Click);
             // 
@@ -87,7 +87,7 @@
             // 
             this.btnFrmBRSolucionarErrores.BackColor = System.Drawing.Color.SandyBrown;
             this.btnFrmBRSolucionarErrores.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFrmBRSolucionarErrores.Location = new System.Drawing.Point(193, 490);
+            this.btnFrmBRSolucionarErrores.Location = new System.Drawing.Point(193, 501);
             this.btnFrmBRSolucionarErrores.Name = "btnFrmBRSolucionarErrores";
             this.btnFrmBRSolucionarErrores.Size = new System.Drawing.Size(151, 55);
             this.btnFrmBRSolucionarErrores.TabIndex = 5;
