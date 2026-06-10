@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace SERVICIO.MultiIdioma_Observer
 {
-   
-    
-    public interface IObservadorIdioma
+    public interface ISujetoIdioma
     {
-
-        void ActualizarIdioma();
+        void Suscribir(IObservadorIdioma obs);
+        void Desuscribir(IObservadorIdioma obs);
     }
 }

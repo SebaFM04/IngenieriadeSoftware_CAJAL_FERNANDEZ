@@ -66,15 +66,20 @@ namespace UI
 
         private void CargarIdiomas()
         {
-            dgvIdiomas.Rows.Clear(); 
-            var idiomas = _idiomaBLL.ListarIdiomas();
+            dgvIdiomas.Rows.Clear();
+            var idiomas = new IDIOMA_BLL().ListarIdiomas();
             foreach (var i in idiomas)
-            {
                 dgvIdiomas.Rows.Add(i.IdIdioma, i.Nombre, i.IsDisponible);
+
+            // Forzar selección del primer item al cargar
+            if (dgvIdiomas.Rows.Count > 0)
+            {
+                dgvIdiomas.Rows[0].Selected = true;
+                _idIdiomaSeleccionado = Convert.ToInt32(dgvIdiomas.Rows[0].Cells["IdIdioma"].Value);
+                CargarTraducciones(_idIdiomaSeleccionado);
+                ActualizarBotonDeshabilitar(); 
             }
-            dgvTraduccion.Rows.Clear();
-            _idIdiomaSeleccionado = -1;
-            ActualizarBotonDeshabilitar();
+            CargarComboIdiomasABM();
         }
 
         private void CargarTraducciones(int idIdioma)
@@ -121,6 +126,7 @@ namespace UI
                 CargarIdiomas();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            CargarComboIdiomasABM();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -139,6 +145,7 @@ namespace UI
                 CargarIdiomas();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            CargarComboIdiomasABM();
         }
 
         private void btnDeshabilitar_Click(object sender, EventArgs e)
@@ -154,6 +161,7 @@ namespace UI
                 CargarIdiomas();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            CargarComboIdiomasABM();
         }
 
         private void btnModificacionTraduccion_Click(object sender, EventArgs e)
@@ -179,6 +187,36 @@ namespace UI
                 MessageBox.Show("Traducciones guardadas.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            
+        }
+        private void CargarComboIdiomasABM()
+        {
+            comboIdiomasABM.SelectedIndexChanged -= comboIdiomasABM_SelectedIndexChanged;
+
+            var idiomas = new IDIOMA_BLL().ListarIdiomas()
+                                          .Where(i => i.IsDisponible)
+                                          .ToList();
+            idiomas.Insert(0, new IDIOMA { IdIdioma = -1, Nombre = "-- Idioma / Language --" });
+
+            comboIdiomasABM.DataSource = null;
+            comboIdiomasABM.DataSource = idiomas;
+            comboIdiomasABM.DisplayMember = "Nombre";
+            comboIdiomasABM.ValueMember = "IdIdioma";
+
+            int idActual = GestorIdioma.Instancia.IdIdiomaActual;
+            comboIdiomasABM.SelectedValue = idiomas.Any(i => i.IdIdioma == idActual)
+                                             ? (object)idActual
+                                             : -1;
+
+            comboIdiomasABM.SelectedIndexChanged += comboIdiomasABM_SelectedIndexChanged;
+        }
+        private void comboIdiomasABM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboIdiomasABM.SelectedValue == null) return;
+            int id = Convert.ToInt32(comboIdiomasABM.SelectedValue);
+            if (id == -1) return;
+
+            new IDIOMA_BLL().CambiarIdioma(id);
         }
     }
 }

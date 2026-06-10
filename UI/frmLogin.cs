@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SERVICIO.MultiIdioma_Observer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,13 +12,14 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : Form, IObservadorIdioma
     {
         BE.USUARIO usuario = new BE.USUARIO();
         GestorUI gestorUI = new GestorUI();
         public frmLogin()
         {
             InitializeComponent();
+            GestorIdioma.Instancia.Suscribir(this);
             textBox1.Text = "test@test.com";
             textBox2.Text = "test";
         }
@@ -53,12 +55,11 @@ namespace UI
                 MessageBox.Show("El usuario fue logueado exitosamente", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 #region SALTO AL MENU PRINCIPAL
+                this.Hide();
                 gestorUI.AbrirForm(new frmMenú());
-                this.Close();
+                this.Show();
                 #endregion
 
-                textBox1.Text = "";
-                textBox2.Text = "";
             }
             catch (Exception ex)
             {
@@ -85,6 +86,15 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+        public void ActualizarIdioma()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox || ctrl is MenuStrip ) continue;
+                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+
             }
         }
     }

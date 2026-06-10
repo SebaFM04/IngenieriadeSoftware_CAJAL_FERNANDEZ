@@ -22,8 +22,7 @@ namespace UI
             GestorIdioma.Instancia.Suscribir(this);
             SERVICIO.SessionManager sesion = SERVICIO.SessionManager.Instancia;
             var g = GestorIdioma.Instancia;
-            lblEmailTag.Text = $"Correo Electrónico: {sesion.UsuarioActual.CorreoElectronico}";
-            lblNombreTag.Text = $"Nombre y Apellido: {sesion.UsuarioActual.NombreUsuario} {sesion.UsuarioActual.ApellidoUsuario}";
+            
         }
         private void AplicarPermisos()
         {
@@ -125,7 +124,7 @@ namespace UI
 
         private void controlCambiosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestorUI.AbrirForm(new frmControlCambios());
+            gestorUI.AbrirForm(new frmControlCambios());            
         }
 
         public void ActualizarIdioma()
@@ -159,7 +158,6 @@ namespace UI
 
         private void CargarComboIdiomas()
         {
-            // Desconectar el evento mientras cargamos
             comboIdiomas.SelectedIndexChanged -= comboIdiomas_SelectedIndexChanged;
 
             var idiomas = new IDIOMA_BLL().ListarIdiomas()
@@ -168,6 +166,7 @@ namespace UI
 
             idiomas.Insert(0, new IDIOMA { IdIdioma = -1, Nombre = "-- Idioma / Language --" });
 
+            comboIdiomas.DataSource = null;      
             comboIdiomas.DataSource = idiomas;
             comboIdiomas.DisplayMember = "Nombre";
             comboIdiomas.ValueMember = "IdIdioma";
@@ -176,7 +175,6 @@ namespace UI
             var existe = idiomas.Any(i => i.IdIdioma == idActual);
             comboIdiomas.SelectedValue = existe ? (object)idActual : -1;
 
-            // Reconectar el evento
             comboIdiomas.SelectedIndexChanged += comboIdiomas_SelectedIndexChanged;
         }
 
@@ -191,6 +189,7 @@ namespace UI
         private void admIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gestorUI.AbrirForm(new frmABMIdioma());
+            CargarComboIdiomas();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace UI
                 MessageBox.Show(mensaje, "Error de Integridad",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            new BLL.IDIOMA_BLL().InicializarIdiomaUsuario(1);
             Application.Run(new frmLogin());
         }
     }

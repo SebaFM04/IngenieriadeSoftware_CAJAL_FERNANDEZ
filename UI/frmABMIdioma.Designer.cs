@@ -36,6 +36,7 @@
             this.btnModificacionTraduccion = new System.Windows.Forms.Button();
             this.txtNombreIdioma = new System.Windows.Forms.TextBox();
             this.lblNombreIdioma = new System.Windows.Forms.Label();
+            this.comboIdiomasABM = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraduccion)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +73,7 @@
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.SandyBrown;
             this.btnAgregar.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(11, 264);
+            this.btnAgregar.Location = new System.Drawing.Point(11, 228);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(243, 32);
@@ -85,7 +86,7 @@
             // 
             this.btnEditar.BackColor = System.Drawing.Color.SandyBrown;
             this.btnEditar.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(11, 300);
+            this.btnEditar.Location = new System.Drawing.Point(11, 264);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(243, 32);
@@ -98,7 +99,7 @@
             // 
             this.btnDeshabilitar.BackColor = System.Drawing.Color.SandyBrown;
             this.btnDeshabilitar.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeshabilitar.Location = new System.Drawing.Point(11, 337);
+            this.btnDeshabilitar.Location = new System.Drawing.Point(11, 301);
             this.btnDeshabilitar.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeshabilitar.Name = "btnDeshabilitar";
             this.btnDeshabilitar.Size = new System.Drawing.Size(243, 32);
@@ -123,7 +124,7 @@
             // txtNombreIdioma
             // 
             this.txtNombreIdioma.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.txtNombreIdioma.Location = new System.Drawing.Point(12, 236);
+            this.txtNombreIdioma.Location = new System.Drawing.Point(12, 200);
             this.txtNombreIdioma.Name = "txtNombreIdioma";
             this.txtNombreIdioma.Size = new System.Drawing.Size(241, 23);
             this.txtNombreIdioma.TabIndex = 13;
@@ -131,11 +132,21 @@
             // lblNombreIdioma
             // 
             this.lblNombreIdioma.AutoSize = true;
-            this.lblNombreIdioma.Location = new System.Drawing.Point(11, 217);
+            this.lblNombreIdioma.Location = new System.Drawing.Point(11, 181);
             this.lblNombreIdioma.Name = "lblNombreIdioma";
             this.lblNombreIdioma.Size = new System.Drawing.Size(78, 13);
             this.lblNombreIdioma.TabIndex = 14;
             this.lblNombreIdioma.Text = "Nombre Idioma";
+            // 
+            // comboIdiomasABM
+            // 
+            this.comboIdiomasABM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.comboIdiomasABM.FormattingEnabled = true;
+            this.comboIdiomasABM.Location = new System.Drawing.Point(11, 344);
+            this.comboIdiomasABM.Name = "comboIdiomasABM";
+            this.comboIdiomasABM.Size = new System.Drawing.Size(242, 25);
+            this.comboIdiomasABM.TabIndex = 15;
+            this.comboIdiomasABM.SelectedIndexChanged += new System.EventHandler(this.comboIdiomasABM_SelectedIndexChanged);
             // 
             // frmABMIdioma
             // 
@@ -143,6 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(892, 450);
+            this.Controls.Add(this.comboIdiomasABM);
             this.Controls.Add(this.lblNombreIdioma);
             this.Controls.Add(this.txtNombreIdioma);
             this.Controls.Add(this.btnModificacionTraduccion);
@@ -171,5 +183,6 @@
         private System.Windows.Forms.Button btnModificacionTraduccion;
         private System.Windows.Forms.TextBox txtNombreIdioma;
         private System.Windows.Forms.Label lblNombreIdioma;
+        private System.Windows.Forms.ComboBox comboIdiomasABM;
     }
 }

@@ -13,9 +13,7 @@ namespace DAL
     {
         ACCESO acceso = new ACCESO();
 
-        /// <summary>
-        /// Devuelve todos los idiomas disponibles (IsDisponible = 1).
-        /// </summary>
+
         public List<IDIOMA> ListarIdiomas()
         {
             var lista = new List<IDIOMA>();
@@ -35,12 +33,6 @@ namespace DAL
             return lista;
         }
 
-        /// <summary>
-        /// Carga las traducciones para el idioma indicado.
-        /// Clave del diccionario = NombreControl (igual que ctrl.Name en WinForms),
-        /// igual al patrón del proyecto de referencia donde la clave es el nombre
-        /// del control/etiqueta y el valor es el texto traducido.
-        /// </summary>
         public Dictionary<string, string> ObtenerTraducciones(int idIdioma)
         {
             var traducciones = new Dictionary<string, string>();
@@ -63,9 +55,6 @@ namespace DAL
             return traducciones;
         }
 
-        /// <summary>
-        /// Persiste la preferencia de idioma del usuario en la BD.
-        /// </summary>
         public void ActualizarIdiomaUsuario(int idUsuario, int idIdioma)
         {
             acceso.Abrir();

@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace SERVICIO.MultiIdioma_Observer
 {
-    // Entidad que representa un idioma disponible en el sistema.
-    // Vive en SERVICIO para mantener toda la lógica Observer en esta capa.
     public class IDIOMA
     {
         public int IdIdioma { get; set; }
