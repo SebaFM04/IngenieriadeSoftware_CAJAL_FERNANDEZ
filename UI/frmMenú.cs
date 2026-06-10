@@ -19,9 +19,13 @@ namespace UI
         public frmMenú()
         {
             InitializeComponent();
-            
-            SERVICIO.SessionManager Sesion = SERVICIO.SessionManager.Instancia;
-            label1.Text = $"CorreoElectronico: {Sesion.UsuarioActual.CorreoElectronico}\nNombre y Apellido: {Sesion.UsuarioActual.NombreUsuario} {Sesion.UsuarioActual.ApellidoUsuario}";
+            GestorIdioma.Instancia.Suscribir(this);
+            SERVICIO.SessionManager sesion = SERVICIO.SessionManager.Instancia;
+            var g = GestorIdioma.Instancia;
+            lblEmailTag.Text = $"Correo Electrónico: {sesion.UsuarioActual.CorreoElectronico}";
+            lblNombreTag.Text = $"Nombre y Apellido: {sesion.UsuarioActual.NombreUsuario} {sesion.UsuarioActual.ApellidoUsuario}";
+
+
         }
         private void AplicarPermisos()
         {
@@ -42,7 +46,12 @@ namespace UI
 
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var g = GestorIdioma.Instancia;
+            var result = MessageBox.Show(
+                g.Traducir("msgCerrarSesionConfirm"),
+                g.Traducir("msgCerrarSesionTitulo"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
                 new BLL.USUARIO_BLL().LogoutUsuario();
@@ -93,18 +102,26 @@ namespace UI
 
         private void recalcularDVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("¿Confirma que desea recalcular los dígitos verificadores?", "Recalcular DV", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var g = GestorIdioma.Instancia;
+            var confirm = MessageBox.Show(
+                g.Traducir("msgRecalcularConfirm"),
+                g.Traducir("msgRecalcularTitulo"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
 
             try
             {
                 new BLL.PRODUCTO_BLL().RecalcularDV();
-                MessageBox.Show("Dígitos verificadores recalculados correctamente.", "Recalcular DV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    g.Traducir("msgRecalcularOk"),
+                    g.Traducir("msgRecalcularTitulo"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al recalcular: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al recalcular: " + ex.GetBaseException().Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -115,14 +132,19 @@ namespace UI
 
         public void ActualizarIdioma()
         {
+            var g = GestorIdioma.Instancia;
+            var sesion = SERVICIO.SessionManager.Instancia;
+
             foreach (Control ctrl in this.Controls)
             {
-                if (ctrl is TextBox || ctrl is MenuStrip || ctrl is ComboBox) continue;
-                ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
+                if (ctrl is TextBox || ctrl is MenuStrip || ctrl is ComboBox || ctrl.Name is "lblEmailTag" || ctrl.Name is "lblNombreTag") continue;
+                ctrl.Text = g.Traducir(ctrl.Name);
             }
-
             foreach (ToolStripMenuItem item in mnstripMenu.Items)
                 TraducirMenuItem(item);
+            CargarComboIdiomas();
+            lblEmailTag.Text = $"{g.Traducir("lblEmailTag")}: {sesion.UsuarioActual.CorreoElectronico}";
+            lblNombreTag.Text = $"{g.Traducir("lblNombreTag")}: {sesion.UsuarioActual.NombreUsuario} {sesion.UsuarioActual.ApellidoUsuario}";
         }
 
         private void TraducirMenuItem(ToolStripMenuItem item)
@@ -134,20 +156,38 @@ namespace UI
 
         private void CargarComboIdiomas()
         {
-            var idiomas = new IDIOMA_BLL().ListarIdiomas();
+            // Desconectar el evento mientras cargamos
+            comboIdiomas.SelectedIndexChanged -= comboIdiomas_SelectedIndexChanged;
+
+            var idiomas = new IDIOMA_BLL().ListarIdiomas()
+                              .Where(i => i.IsDisponible)
+                              .ToList();
+
+            idiomas.Insert(0, new IDIOMA { IdIdioma = -1, Nombre = "-- Idioma / Language --" });
+
             comboIdiomas.DataSource = idiomas;
             comboIdiomas.DisplayMember = "Nombre";
             comboIdiomas.ValueMember = "IdIdioma";
 
-            // Preseleccionar el idioma activo
-            comboIdiomas.SelectedValue = GestorIdioma.Instancia.IdIdiomaActual;
+            int idActual = GestorIdioma.Instancia.IdIdiomaActual;
+            var existe = idiomas.Any(i => i.IdIdioma == idActual);
+            comboIdiomas.SelectedValue = existe ? (object)idActual : -1;
+
+            // Reconectar el evento
+            comboIdiomas.SelectedIndexChanged += comboIdiomas_SelectedIndexChanged;
         }
-         
+
         private void comboIdiomas_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboIdiomas.SelectedItem == null) return;
             var idioma = (IDIOMA)comboIdiomas.SelectedItem;
+            if (idioma.IdIdioma == -1) return; // placeholder, no hacer nada
             new IDIOMA_BLL().CambiarIdioma(idioma.IdIdioma);
+        }
+
+        private void admIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestorUI.AbrirForm(new frmABMIdioma());
         }
     }
 }

@@ -119,7 +119,7 @@ namespace UI
         {
             foreach (Control ctrl in this.Controls)
             {
-                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox || ctrl is DateTimePicker)
                     continue;
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
