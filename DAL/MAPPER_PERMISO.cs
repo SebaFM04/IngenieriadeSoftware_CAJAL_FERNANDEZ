@@ -38,14 +38,17 @@ namespace DAL
 
         private PERMISOCOMPONENT ConstruirArbol(int idNodo, List<PERMISOCOMPONENT> todos, List<(int padre, int hijo)> relaciones)
         {
-            var nodo = todos.Find(p => p.Id == idNodo);
-            if (nodo == null)
+            var nodoOriginal = todos.Find(p => p.Id == idNodo);
+            if (nodoOriginal == null) return null;
+
+            if (nodoOriginal is PERMISOCOMPOSITE)
             {
-                return null;
-            }
-                
-            if (nodo is PERMISOCOMPOSITE composite)
-            {
+                // Crear clon nuevo en lugar de mutar el original
+                var composite = new PERMISOCOMPOSITE
+                {
+                    Id = nodoOriginal.Id,
+                    NombrePermiso = nodoOriginal.NombrePermiso
+                };
                 foreach (var rel in relaciones)
                 {
                     if (rel.padre == idNodo)
@@ -54,8 +57,14 @@ namespace DAL
                         if (hijo != null) composite.AgregarPermiso(hijo);
                     }
                 }
+                return composite;
             }
-            return nodo;
+
+            return new PERMISOATOMICO
+            {
+                Id = nodoOriginal.Id,
+                NombrePermiso = nodoOriginal.NombrePermiso
+            };
         }
 
         private List<(int padre, int hijo)> ObtenerRelaciones()

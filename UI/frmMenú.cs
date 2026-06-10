@@ -24,8 +24,6 @@ namespace UI
             var g = GestorIdioma.Instancia;
             lblEmailTag.Text = $"Correo Electrónico: {sesion.UsuarioActual.CorreoElectronico}";
             lblNombreTag.Text = $"Nombre y Apellido: {sesion.UsuarioActual.NombreUsuario} {sesion.UsuarioActual.ApellidoUsuario}";
-
-
         }
         private void AplicarPermisos()
         {
@@ -149,7 +147,12 @@ namespace UI
 
         private void TraducirMenuItem(ToolStripMenuItem item)
         {
-            item.Text = GestorIdioma.Instancia.Traducir(item.Name);
+            string clave = item.Name;
+            string traduccion = GestorIdioma.Instancia.Traducir(clave);
+            // Solo reemplaza si encontró una traducción real
+            if (traduccion != clave)
+                item.Text = traduccion;
+
             foreach (ToolStripMenuItem sub in item.DropDownItems.OfType<ToolStripMenuItem>())
                 TraducirMenuItem(sub);
         }
