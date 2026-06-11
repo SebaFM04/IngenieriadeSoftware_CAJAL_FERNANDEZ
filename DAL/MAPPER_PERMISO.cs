@@ -50,7 +50,6 @@ namespace DAL
 
             if (nodoOriginal.EsFamilia)
             {
-                // Crear clon nuevo en lugar de mutar el original
                 var composite = new PERMISOCOMPOSITE
                 {
                     Id = nodoOriginal.Id,
@@ -171,9 +170,20 @@ namespace DAL
             acceso.Cerrar();
         }
 
+        public void DesasignarPermisoDeUsuario(int idUsuario, int idPermiso)
+        {
+            acceso.Abrir();
+            var parametros = new List<SqlParameter>
+            {
+             acceso.CrearParametro("@IdUsuario", idUsuario),
+             acceso.CrearParametro("@IdPermiso", idPermiso)
+            };
+            acceso.Escribir("DesasignarPermisoDeUsuario", parametros);
+            acceso.Cerrar();
+        }
+
         public List<PERMISOCOMPONENT> ListarPermisosJerarquicosPorUsuarioId(int idUsuario)
         {
-            // 1. Obtener IDs de permisos del usuario
             var idsPermiso = new List<int>();
             acceso.Abrir();
             var parametros = new List<SqlParameter>
@@ -186,7 +196,6 @@ namespace DAL
             foreach (DataRow row in tabla.Rows)
                 idsPermiso.Add((int)row["IdPermiso"]);
 
-            // 2. Construir árboles para cada permiso encontrado
             var todos = ObtenerTodosLosPermisos();
             var relaciones = ObtenerRelaciones();
             var lista = new List<PERMISOCOMPONENT>();
@@ -213,7 +222,6 @@ namespace DAL
             var resultado = new List<PERMISOCOMPONENT>();
             foreach (var p in todos)
             {
-                // Solo compuestos que no son hijos de nadie
                 if (p is PERMISOCOMPOSITE && !idsHijos.Contains(p.Id))
                 {
                     resultado.Add(ConstruirArbol(p.Id, todos, relaciones));

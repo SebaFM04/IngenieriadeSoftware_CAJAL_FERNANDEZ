@@ -38,9 +38,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al cargar el formulario: " + ex.GetBaseException().Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar el formulario: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -54,7 +52,6 @@ namespace UI
                 comboBox2.SelectedIndex = 0;
         }
 
-        // ── Combo Rol a asignar ──────────────────────────────────
         private void CargarComboRolAsignar()
         {
             comboBox3.Items.Clear();
@@ -65,13 +62,11 @@ namespace UI
                 comboBox3.SelectedIndex = 0;
         }
 
-        // ── Botón Asignar Rol ────────────────────────────────────
         private void btn6frmRolyPer_Click(object sender, EventArgs e)
         {
             if (comboBox2.SelectedItem == null || comboBox3.SelectedItem == null)
             {
-                MessageBox.Show("Seleccione un usuario y un rol.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un usuario y un rol.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -81,14 +76,11 @@ namespace UI
             try
             {
                 permisoBLL.AsignarPermisoAUsuario(usuario.IdUsuario, rol.Id);
-                MessageBox.Show(
-                    $"Rol '{rol.NombrePermiso}' asignado a '{usuario.CorreoElectronico}' correctamente.",
-                    "Asignación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Rol '{rol.NombrePermiso}' asignado a '{usuario.CorreoElectronico}' correctamente.", "Asignación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.GetBaseException().Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -112,7 +104,7 @@ namespace UI
             CargarArbol();
         }
 
-        // ── TreeView izquierdo ───────────────────────────────────
+      
         private void CargarArbol()
         {
             tVfrmRolyPer.Nodes.Clear();
@@ -141,7 +133,7 @@ namespace UI
             return nodo;
         }
 
-        // ── ListBox derecho ──────────────────────────────────────
+     
         private void CargarPermisosDisponibles()
         {
             lstfrmRolyPer.Items.Clear();
@@ -152,7 +144,7 @@ namespace UI
             }
         }
 
-        // ── Selección en el TreeView → rellena TextBox ───────────
+        
         private void tVfrmRolyPer_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node?.Tag is PERMISOCOMPONENT p)
@@ -162,7 +154,7 @@ namespace UI
             }
         }
 
-        // ── Botón Agregar ────────────────────────────────────────
+        
         private void btn1frmRolyPer_Click(object sender, EventArgs e)
         {
             string nombre = textBox1.Text.Trim();
@@ -187,7 +179,7 @@ namespace UI
             }
         }
 
-        // ── Botón Modificar ──────────────────────────────────────
+      
         private void btn2frmRolyPer_Click(object sender, EventArgs e)
         {
             if (tVfrmRolyPer.SelectedNode == null)
@@ -219,7 +211,7 @@ namespace UI
             }
         }
 
-        // ── Botón Eliminar ───────────────────────────────────────
+    
         private void btn3frmRolyPer_Click(object sender, EventArgs e)
         {
             if (tVfrmRolyPer.SelectedNode == null)
@@ -245,7 +237,6 @@ namespace UI
             }
         }
 
-        // ── Botón Agregar Hijo ───────────────────────────────────
         private void btn4frmRolyPer_Click(object sender, EventArgs e)
         {
             if (tVfrmRolyPer.SelectedNode == null || lstfrmRolyPer.SelectedItem == null)
@@ -264,12 +255,11 @@ namespace UI
             }
             catch (Exception ex)
             {
-                // Muestra validaciones de la BLL (circular, no es composite, etc.)
+                
                 MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        // ── Botón Quitar Hijo ────────────────────────────────────
         private void btn5frmRolyPer_Click(object sender, EventArgs e)
         {
             if (tVfrmRolyPer.SelectedNode == null ||
@@ -305,15 +295,14 @@ namespace UI
         private void LimpiarCampos()
         {
             textBox1.Text = string.Empty;
-            ChBxfrmRolyPer.Checked = true;//Siempre queda en TRUE
+            ChBxfrmRolyPer.Checked = true;
         }
 
         public void ActualizarIdioma()
         {
             foreach (Control ctrl in this.Controls)
             {
-                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox
-                    || ctrl is TreeView || ctrl is ListBox ) continue;
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox|| ctrl is TreeView || ctrl is ListBox ) continue; 
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
         }
@@ -342,13 +331,51 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar permisos del usuario: " + ex.GetBaseException().Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar permisos del usuario: " + ex.GetBaseException().Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarPermisosDelUsuario();
+        }
+
+        private void btnfrmPermisosDesag_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccioná un usuario.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (tVPermisosUsuario.SelectedNode == null)
+            {
+                MessageBox.Show("Seleccioná un rol en el árbol del usuario.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (tVPermisosUsuario.SelectedNode.Parent != null)
+            {
+                MessageBox.Show("Solo se pueden desasignar roles asignados directamente al usuario.\n" + "Seleccioná un nodo raíz del árbol.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var usuario = (BE.USUARIO)comboBox2.SelectedItem;
+            var rol = (PERMISOCOMPONENT)tVPermisosUsuario.SelectedNode.Tag;
+
+            var confirm = MessageBox.Show($"¿Confirma desasignar el rol '{rol.NombrePermiso}' del usuario '{usuario.CorreoElectronico}'?","Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                permisoBLL.DesasignarPermisoDeUsuario(usuario.IdUsuario, rol.Id);
+                MessageBox.Show($"Rol '{rol.NombrePermiso}' desasignado correctamente.", "Desasignación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Refrescar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.GetBaseException().Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

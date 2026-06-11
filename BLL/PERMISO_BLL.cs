@@ -17,6 +17,11 @@ namespace BLL
             GestorPermiso.AsignarPermisoAUsuario(idUsuario, idPermiso);
         }
 
+        public void DesasignarPermisoDeUsuario(int idUsuario, int idPermiso)
+        {
+            GestorPermiso.DesasignarPermisoDeUsuario(idUsuario, idPermiso);
+        }
+
         public void CrearPermiso(string nombre, bool esFamilia)
         {
             if (!esFamilia)
