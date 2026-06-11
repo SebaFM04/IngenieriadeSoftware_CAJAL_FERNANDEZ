@@ -12,5 +12,7 @@ namespace BE
         {
             return new List<PERMISOCOMPONENT>();
         }
+        public override bool EsFamilia => false;
+
     }
 }

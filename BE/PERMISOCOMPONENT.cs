@@ -43,5 +43,7 @@ namespace BE
 
             return false;
         }
+        public abstract bool EsFamilia { get; }
+
     }
 }

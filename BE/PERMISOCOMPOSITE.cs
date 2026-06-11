@@ -24,5 +24,7 @@ namespace BE
         {
             return PermisosIncluidos;
         }
+        public override bool EsFamilia => true;
+
     }
 }

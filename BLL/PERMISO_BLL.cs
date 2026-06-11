@@ -88,6 +88,11 @@ namespace BLL
             return GestorPermiso.EsHijoDeAlguien(idPermiso);
         }
 
+        public List<PERMISOCOMPONENT> ObtenerTodosLosRoles()
+        {
+            return GestorPermiso.ObtenerTodosLosRoles();
+        }
+
         public int ObtenerIdPermisoPorRol(string rol)
         {
             switch (rol.ToLower().Trim())

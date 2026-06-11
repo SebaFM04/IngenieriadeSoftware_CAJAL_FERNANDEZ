@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DAL
 {
@@ -28,6 +29,12 @@ namespace DAL
             }
             return lista;
         }
+        public List<PERMISOCOMPONENT> ObtenerTodosLosRoles()
+        {
+            return ObtenerTodosLosPermisos()
+                   .Where(p => p.EsFamilia)
+                   .ToList();
+        }
 
         public PERMISOCOMPONENT ObtenerPermisoConJerarquiaPorId(int idRaiz)
         {
@@ -41,7 +48,7 @@ namespace DAL
             var nodoOriginal = todos.Find(p => p.Id == idNodo);
             if (nodoOriginal == null) return null;
 
-            if (nodoOriginal is PERMISOCOMPOSITE)
+            if (nodoOriginal.EsFamilia)
             {
                 // Crear clon nuevo en lugar de mutar el original
                 var composite = new PERMISOCOMPOSITE

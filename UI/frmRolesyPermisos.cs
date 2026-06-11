@@ -49,7 +49,7 @@ namespace UI
         private void CargarComboRolAsignar()
         {
             comboBox3.Items.Clear();
-            var roles = permisoBLL.ObtenerPermisosCompuestosRaiz();
+            var roles = permisoBLL.ObtenerTodosLosRoles(); 
             foreach (var r in roles)
                 comboBox3.Items.Add(r);
             if (comboBox3.Items.Count > 0)
@@ -86,7 +86,7 @@ namespace UI
         private void CargarComboRoles()
         {
             comboBox1.Items.Clear();
-            var roles = permisoBLL.ObtenerPermisosCompuestosRaiz();
+            var roles = permisoBLL.ObtenerTodosLosRoles();
             foreach (var r in roles)
             {
                 comboBox1.Items.Add(r);
