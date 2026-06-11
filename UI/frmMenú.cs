@@ -38,7 +38,10 @@ namespace UI
             idiomaToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Idiomas");
             backUpToolStripMenuItem1.Visible = usuario.TienePermiso("BackUp");
             recalcularDVToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
-            controlCambiosToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
+            //controlCambiosToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
+            //controlCambiosToolStripMenuItem.Visible = usuario.TienePermiso("Control Cambios");
+            //recalcularDVToolStripMenuItem.Visible = usuario.TienePermiso("Recalcular DV");
+            //admRolesToolStripMenuItem.Visible = usuario.TienePermiso("Adm Roles y Permisos");
         }
 
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
