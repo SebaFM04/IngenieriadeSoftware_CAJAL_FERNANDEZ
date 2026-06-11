@@ -28,11 +28,20 @@ namespace UI
             ChBxfrmRolyPer.Enabled = false;
             ChBxfrmRolyPer.Text = "Rol (siempre activo)";
 
-            CargarComboRoles();
-            CargarArbol();
-            CargarPermisosDisponibles();
-            CargarComboUsuarios();
-            CargarComboRolAsignar();
+            try
+            {
+                CargarComboRoles();
+                CargarArbol();
+                CargarPermisosDisponibles();
+                CargarComboUsuarios();
+                CargarComboRolAsignar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar el formulario: " + ex.GetBaseException().Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CargarComboUsuarios()
@@ -49,7 +58,7 @@ namespace UI
         private void CargarComboRolAsignar()
         {
             comboBox3.Items.Clear();
-            var roles = permisoBLL.ObtenerTodosLosRoles(); 
+            var roles = permisoBLL.ObtenerTodosLosRoles();
             foreach (var r in roles)
                 comboBox3.Items.Add(r);
             if (comboBox3.Items.Count > 0)
@@ -91,11 +100,11 @@ namespace UI
             {
                 comboBox1.Items.Add(r);
             }
-               
+
             if (comboBox1.Items.Count > 0)
             {
                 comboBox1.SelectedIndex = 0;
-            }                
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,7 +229,7 @@ namespace UI
             }
 
             var permiso = (PERMISOCOMPONENT)tVfrmRolyPer.SelectedNode.Tag;
-            var confirm = MessageBox.Show( $"¿Confirma eliminar el permiso '{permiso.NombrePermiso}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show($"¿Confirma eliminar el permiso '{permiso.NombrePermiso}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
             try
@@ -290,6 +299,7 @@ namespace UI
             CargarArbol();
             CargarPermisosDisponibles();
             CargarComboRolAsignar();
+            CargarPermisosDelUsuario();
         }
 
         private void LimpiarCampos()
@@ -302,10 +312,43 @@ namespace UI
         {
             foreach (Control ctrl in this.Controls)
             {
-                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox)
-                    continue;
+                if (ctrl is TextBox || ctrl is DataGridView || ctrl is ComboBox
+                    || ctrl is TreeView || ctrl is ListBox ) continue;
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
+        }
+        private void CargarPermisosDelUsuario()
+        {
+            tVPermisosUsuario.Nodes.Clear();
+
+            if (comboBox2.SelectedItem == null) return;
+
+            var usuario = (BE.USUARIO)comboBox2.SelectedItem;
+
+            try
+            {
+                var permisos = permisoBLL.ListarPermisosJerarquicosPorUsuarioId(usuario.IdUsuario);
+
+                if (permisos.Count == 0)
+                {
+                    tVPermisosUsuario.Nodes.Add(new TreeNode("(sin roles asignados)"));
+                    return;
+                }
+
+                foreach (var permiso in permisos)
+                    tVPermisosUsuario.Nodes.Add(CrearNodo(permiso));
+
+                tVPermisosUsuario.ExpandAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar permisos del usuario: " + ex.GetBaseException().Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarPermisosDelUsuario();
         }
     }
 }

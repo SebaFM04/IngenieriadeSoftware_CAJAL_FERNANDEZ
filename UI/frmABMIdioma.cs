@@ -155,12 +155,32 @@ namespace UI
                 MessageBox.Show("Seleccioná un idioma.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            var idiomas = _idiomaBLL.ListarIdiomas();
+            var idiomaActual = idiomas.Find(i => i.IdIdioma == _idIdiomaSeleccionado);
+
+            // Solo validar si se intenta DESHABILITAR (no habilitar)
+            if (idiomaActual != null && idiomaActual.IsDisponible)
+            {
+                int disponibles = idiomas.Count(i => i.IsDisponible);
+                if (disponibles <= 1)
+                {
+                    MessageBox.Show(
+                        "No se puede deshabilitar el único idioma disponible.",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             try
             {
                 _idiomaBLL.ToggleDisponibilidad(_idIdiomaSeleccionado);
                 CargarIdiomas();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             CargarComboIdiomasABM();
         }
 

@@ -94,12 +94,13 @@ namespace DAL
         public int AgregarIdioma(string nombre)
         {
             acceso.Abrir();
-            var parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@Nombre", nombre)
-    };
+            var parametros = new List<SqlParameter> { acceso.CrearParametro("@Nombre", nombre) };
             DataTable tabla = acceso.Leer("AgregarIdioma", parametros);
             acceso.Cerrar();
+
+            if (tabla.Rows.Count == 0)
+                throw new Exception("No se pudo crear el idioma. El procedimiento no devolvió el ID.");
+
             return Convert.ToInt32(tabla.Rows[0]["IdIdioma"]);
         }
 

@@ -175,7 +175,7 @@
             // admIdiomasToolStripMenuItem
             // 
             this.admIdiomasToolStripMenuItem.Name = "admIdiomasToolStripMenuItem";
-            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.admIdiomasToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.admIdiomasToolStripMenuItem.Text = "Adm Idiomas";
             this.admIdiomasToolStripMenuItem.Click += new System.EventHandler(this.admIdiomasToolStripMenuItem_Click);
             // 
@@ -215,6 +215,7 @@
             this.Name = "frmMenú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenú";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenú_FormClosing);
             this.Load += new System.EventHandler(this.frmMenú_Load);
             this.mnstripMenu.ResumeLayout(false);
             this.mnstripMenu.PerformLayout();

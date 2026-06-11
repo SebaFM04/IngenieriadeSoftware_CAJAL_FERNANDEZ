@@ -164,6 +164,7 @@
             this.Controls.Add(this.dgvTraduccion);
             this.Controls.Add(this.dgvIdiomas);
             this.Name = "frmABMIdioma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmABMIdioma";
             this.Load += new System.EventHandler(this.frmABMIdioma_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).EndInit();

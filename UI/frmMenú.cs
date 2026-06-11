@@ -143,8 +143,11 @@ namespace UI
             foreach (ToolStripMenuItem item in mnstripMenu.Items)
                 TraducirMenuItem(item);
             CargarComboIdiomas();
-            lblEmailTag.Text = $"{g.Traducir("lblEmailTag")}: {sesion.UsuarioActual.CorreoElectronico}";
-            lblNombreTag.Text = $"{g.Traducir("lblNombreTag")}: {sesion.UsuarioActual.NombreUsuario} {sesion.UsuarioActual.ApellidoUsuario}";
+            if (sesion.IsLogged())
+            {
+                lblEmailTag.Text = $"{g.Traducir("lblEmailTag")}: {sesion.UsuarioActual.CorreoElectronico}";
+                lblNombreTag.Text = $"{g.Traducir("lblNombreTag")}: {sesion.UsuarioActual.NombreUsuario} {sesion.UsuarioActual.ApellidoUsuario}";
+            }
         }
 
         private void TraducirMenuItem(ToolStripMenuItem item)
@@ -193,6 +196,14 @@ namespace UI
         {
             gestorUI.AbrirForm(new frmABMIdioma());
             CargarComboIdiomas();
+        }
+
+        private void frmMenú_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (SERVICIO.SessionManager.Instancia.IsLogged())
+            {
+                new BLL.USUARIO_BLL().LogoutUsuario();
+            }
         }
     }
 }

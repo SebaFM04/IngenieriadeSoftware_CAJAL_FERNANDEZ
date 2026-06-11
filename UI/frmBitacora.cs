@@ -111,8 +111,9 @@ namespace UI
         private void btnLimpiarBitacora_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-             comboBox1.SelectedIndex = 0;
-             dtpFechaDesde.Value = DateTime.Now;
+            if (comboBox1.Items.Count > 0)
+                comboBox1.SelectedIndex = 0;
+            dtpFechaDesde.Value = DateTime.Now;
         }
 
         public void ActualizarIdioma()

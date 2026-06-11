@@ -19,17 +19,27 @@ namespace UI
 
 
             // Verificar integridad ANTES del login
-            var errores = new BLL.PRODUCTO_BLL().VerificarIntegridad();
-            if (errores.Count > 0)
+            try
             {
-                string mensaje = "Se detectaron errores de integridad:\n\n" +
-                                 string.Join("\n", errores) +
-                                 "\n\nContacte al administrador.";
-                MessageBox.Show(mensaje, "Error de Integridad",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var errores = new BLL.PRODUCTO_BLL().VerificarIntegridad();
+                if (errores.Count > 0)
+                {
+                    MessageBox.Show(
+                        "Se detectaron errores de integridad:\n\n" + string.Join("\n", errores),
+                        "Error de Integridad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                new BLL.IDIOMA_BLL().InicializarIdiomaUsuario(1);
             }
-            new BLL.IDIOMA_BLL().InicializarIdiomaUsuario(1);
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "No se pudo conectar a la base de datos:\n" + ex.GetBaseException().Message,
+                    "Error crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Application.Run(new frmLogin());
+
+
+
         }
     }
 }
