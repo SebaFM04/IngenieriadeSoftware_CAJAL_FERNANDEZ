@@ -283,5 +283,17 @@ namespace UI
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return;
+
+            var row = dataGridView1.SelectedRows[0];
+            textBox1.Text = row.Cells["Nombre"].Value?.ToString() ?? "";
+            textBox2.Text = row.Cells["Apellido"].Value?.ToString() ?? "";
+            textBox3.Text = row.Cells["Dni"].Value?.ToString() ?? "";
+            textBox4.Text = row.Cells["CorreoElectronico"].Value?.ToString() ?? "";
+            textBox5.Text = ""; // Contraseña siempre vacía por seguridad
+        }
     }
 }
