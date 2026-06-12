@@ -101,9 +101,9 @@ namespace UI
             }
             var idioma = _idiomaBLL.ListarIdiomas().Find(i => i.IdIdioma == _idIdiomaSeleccionado);
             if (idioma != null)
-                btnDeshabilitar.Text = idioma.IsDisponible
-                    ? GestorIdioma.Instancia.Traducir("btnDeshabilitar")
-                    : GestorIdioma.Instancia.Traducir("btnHabilitar");
+            {
+                btnDeshabilitar.Text = idioma.IsDisponible ? GestorIdioma.Instancia.Traducir("btnDeshabilitar") : GestorIdioma.Instancia.Traducir("btnHabilitar");
+            }
         }
 
         private void dgvIdiomas_SelectionChanged(object sender, EventArgs e)
@@ -165,13 +165,10 @@ namespace UI
                 int disponibles = idiomas.Count(i => i.IsDisponible);
                 if (disponibles <= 1)
                 {
-                    MessageBox.Show(
-                        "No se puede deshabilitar el único idioma disponible.",
-                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se puede deshabilitar el único idioma disponible.","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
-
             try
             {
                 _idiomaBLL.ToggleDisponibilidad(_idIdiomaSeleccionado);
@@ -227,7 +224,6 @@ namespace UI
             comboIdiomasABM.SelectedValue = idiomas.Any(i => i.IdIdioma == idActual)
                                              ? (object)idActual
                                              : -1;
-
             comboIdiomasABM.SelectedIndexChanged += comboIdiomasABM_SelectedIndexChanged;
         }
         private void comboIdiomasABM_SelectedIndexChanged(object sender, EventArgs e)

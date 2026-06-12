@@ -5,12 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SERVICIO.MultiIdioma_Observer
-{
-   
-    
+{   
     public interface IObservadorIdioma
     {
-
         void ActualizarIdioma();
     }
 }

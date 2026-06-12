@@ -14,8 +14,9 @@ namespace BLL
         public void GenerarBackup(string ruta)
         {
             if (string.IsNullOrWhiteSpace(ruta))
+            {
                 throw new System.Exception("La ruta no puede estar vacía.");
-
+            }
             mp_bkp.GenerarBackup(ruta);
         }
     }

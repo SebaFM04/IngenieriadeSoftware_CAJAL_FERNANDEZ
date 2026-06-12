@@ -10,12 +10,10 @@ namespace SERVICIO
     public class Sesion
     {
         public USUARIO UsuarioLogueado { get; private set; }
-
         public void Login(USUARIO usuario)
         {
             UsuarioLogueado = usuario;
         }
-
         public void Logout()
         {
             UsuarioLogueado = null;

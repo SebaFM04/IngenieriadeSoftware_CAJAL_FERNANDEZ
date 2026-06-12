@@ -11,7 +11,6 @@ namespace DAL
     public class MAPPER_BITACORA
     {
         ACCESO acceso = new ACCESO();
-
         public void GuardarRegistro(BITACORA registro)
         {
             string NombreSp = "InsertarBitacora";
@@ -29,27 +28,41 @@ namespace DAL
             var registros = new List<BITACORA>();
             string NombreSp = "ObtenerBitacora";
             acceso.Abrir();
-            // Prepare parameters, using DBNull.Value for nulls
             List<SqlParameter> parametros = new List<SqlParameter>();
             if (idUsuario.HasValue)
+            {
                 parametros.Add(acceso.CrearParametro("@IdUsuario", idUsuario.Value));
+            }
             else
+            {
                 parametros.Add(new SqlParameter("@IdUsuario", DBNull.Value));
-
+            }
             if (string.IsNullOrEmpty(actividad))
+            {
                 parametros.Add(new SqlParameter("@Actividad", DBNull.Value));
+            }
             else
+            {
                 parametros.Add(new SqlParameter("@Actividad", actividad));
+            }
 
             if (fechaDesde.HasValue)
+            {
                 parametros.Add(acceso.CrearParametro("@FechaDesde", fechaDesde.Value));
+            }
             else
+            {
                 parametros.Add(new SqlParameter("@FechaDesde", DBNull.Value));
+            }
 
             if (fechaHasta.HasValue)
+            {
                 parametros.Add(acceso.CrearParametro("@FechaHasta", fechaHasta.Value));
+            }
             else
+            {
                 parametros.Add(new SqlParameter("@FechaHasta", DBNull.Value));
+            }
 
             using (SqlCommand cmd = acceso.CrearComando(NombreSp, parametros))
             {

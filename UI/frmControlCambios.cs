@@ -26,56 +26,40 @@ namespace UI
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un cambio para revertir.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un cambio para revertir.", "Aviso",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var cambio = dataGridView1.SelectedRows[0].DataBoundItem
-                         as CONTROLCAMBIO;
+            var cambio = dataGridView1.SelectedRows[0].DataBoundItem as CONTROLCAMBIO;
             if (cambio == null) return;
 
             if (string.IsNullOrWhiteSpace(cambio.ValorAnterior))
             {
-                MessageBox.Show("Este registro no tiene valor anterior para revertir.",
-                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Este registro no tiene valor anterior para revertir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (cambio.TipoOperacion == "Alta" || cambio.TipoOperacion == "Baja")
             {
-                MessageBox.Show("No se pueden revertir operaciones de Alta o Baja.",
-                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se pueden revertir operaciones de Alta o Baja.","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var confirm = MessageBox.Show(
-                $"¿Confirma revertir el campo '{cambio.CampoModificado}' " +
-                $"del producto ID {cambio.IdProducto}?\n\n" +
-                $"Valor actual:   {cambio.ValorActual}\n" +
-                $"Valor anterior: {cambio.ValorAnterior}",
-                "Confirmar Reversión",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show($"¿Confirma revertir el campo '{cambio.CampoModificado}' " + $"del producto ID {cambio.IdProducto}?\n\n" + $"Valor actual:   {cambio.ValorActual}\n" + $"Valor anterior: {cambio.ValorAnterior}","Confirmar Reversión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
 
             try
             {
-                gestorCambios.RevertirCambio(
-                    cambio,
-                    SessionManager.Instancia.UsuarioActual.IdUsuario);
+                gestorCambios.RevertirCambio(cambio,SessionManager.Instancia.UsuarioActual.IdUsuario);
 
-                MessageBox.Show("Cambio revertido correctamente.",
-                    "Reversión", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Cambio revertido correctamente.","Reversión", MessageBoxButtons.OK,MessageBoxIcon.Information);
 
                 CargarCambios();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al revertir: " +
-                    ex.GetBaseException().Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al revertir: " + ex.GetBaseException().Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,13 +72,11 @@ namespace UI
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = gestorCambios.ListarTodos();
-            dataGridView1.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
         }
 

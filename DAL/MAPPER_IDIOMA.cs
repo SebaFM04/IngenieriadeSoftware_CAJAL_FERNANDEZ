@@ -12,8 +12,6 @@ namespace DAL
     public class MAPPER_IDIOMA
     {
         ACCESO acceso = new ACCESO();
-
-
         public List<IDIOMA> ListarIdiomas()
         {
             var lista = new List<IDIOMA>();
@@ -47,8 +45,6 @@ namespace DAL
 
             foreach (DataRow row in tabla.Rows)
             {
-                // Clave simple = NombreControl → igual que ctrl.Name
-                // El SP ya filtra por idioma con fallback a Español
                 string clave = row["NombreControl"].ToString();
                 traducciones[clave] = row["TextoTraducido"].ToString();
             }
@@ -72,9 +68,9 @@ namespace DAL
             var lista = new List<TRADUCCION_DETALLE>();
             acceso.Abrir();
             var parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@IdIdioma", idIdioma)
-    };
+            {
+                acceso.CrearParametro("@IdIdioma", idIdioma)
+            };
             DataTable tabla = acceso.Leer("ObtenerTraduccionesConDetalle", parametros);
             acceso.Cerrar();
 
@@ -90,7 +86,6 @@ namespace DAL
             }
             return lista;
         }
-
         public int AgregarIdioma(string nombre)
         {
             acceso.Abrir();
@@ -99,8 +94,9 @@ namespace DAL
             acceso.Cerrar();
 
             if (tabla.Rows.Count == 0)
+            {
                 throw new Exception("No se pudo crear el idioma. El procedimiento no devolvió el ID.");
-
+            }
             return Convert.ToInt32(tabla.Rows[0]["IdIdioma"]);
         }
 
@@ -108,10 +104,10 @@ namespace DAL
         {
             acceso.Abrir();
             var parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@IdIdioma", idIdioma),
-        acceso.CrearParametro("@Nombre",   nombre)
-    };
+            {
+                acceso.CrearParametro("@IdIdioma", idIdioma),
+                acceso.CrearParametro("@Nombre", nombre)
+            };
             acceso.Escribir("ModificarNombreIdioma", parametros);
             acceso.Cerrar();
         }
@@ -120,9 +116,9 @@ namespace DAL
         {
             acceso.Abrir();
             var parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@IdIdioma", idIdioma)
-    };
+            {
+                acceso.CrearParametro("@IdIdioma", idIdioma)
+            };
             DataTable tabla = acceso.Leer("ToggleDisponibilidadIdioma", parametros);
             acceso.Cerrar();
             return Convert.ToBoolean(tabla.Rows[0]["IsDisponible"]);
@@ -132,11 +128,11 @@ namespace DAL
         {
             acceso.Abrir();
             var parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@IdControl",      idControl),
-        acceso.CrearParametro("@IdIdioma",        idIdioma),
-        acceso.CrearParametro("@TextoTraducido",  texto)
-    };
+            {
+                acceso.CrearParametro("@IdControl", idControl),
+                acceso.CrearParametro("@IdIdioma", idIdioma),
+                acceso.CrearParametro("@TextoTraducido", texto)
+            };
             acceso.Escribir("ModificarTraduccion", parametros);
             acceso.Cerrar();
         }

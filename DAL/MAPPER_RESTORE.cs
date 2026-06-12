@@ -29,10 +29,10 @@ namespace DAL
             DataTable tabla = acceso.Leer("ObtenerFechaUltimoBackup");
             acceso.Cerrar();
 
-            if (tabla.Rows.Count > 0 &&
-                tabla.Rows[0]["FechaUltimoBackup"] != DBNull.Value)
+            if (tabla.Rows.Count > 0 && tabla.Rows[0]["FechaUltimoBackup"] != DBNull.Value)
+            {
                 return Convert.ToDateTime(tabla.Rows[0]["FechaUltimoBackup"]);
-
+            }
             return null;
         }
     }

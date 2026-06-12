@@ -13,20 +13,11 @@ namespace BLL
     {
         private readonly MAPPER_IDIOMA _mapper = new MAPPER_IDIOMA();
 
-        /// <summary>
-        /// Devuelve la lista de idiomas disponibles para poblar combos.
-        /// </summary>
         public List<IDIOMA> ListarIdiomas()
         {
             return _mapper.ListarIdiomas();
         }
 
-        /// <summary>
-        /// Carga las traducciones del idioma indicado desde la BD,
-        /// se las entrega a GestorIdioma y éste notifica a todos los
-        /// formularios suscritos.
-        /// Si el usuario tiene sesión activa, también persiste su preferencia.
-        /// </summary>
         public void CambiarIdioma(int idIdioma)
         {
             Dictionary<string, string> traducciones = _mapper.ObtenerTraducciones(idIdioma);
@@ -40,10 +31,6 @@ namespace BLL
             }
         }
 
-        /// <summary>
-        /// Inicializa el idioma al arrancar la sesión: usa la preferencia
-        /// guardada del usuario; si no tiene (NULL), usa Español (id=1).
-        /// </summary>
         public void InicializarIdiomaUsuario(int? idIdioma)
         {
             int id = (idIdioma.HasValue && idIdioma.Value > 0) ? idIdioma.Value : 1;
@@ -59,19 +46,23 @@ namespace BLL
         public void AgregarIdioma(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
+            {
                 throw new Exception("El nombre del idioma no puede estar vacío.");
+            }
 
             if (_mapper.ListarIdiomas().Any(i => i.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)))
+            {
                 throw new Exception($"El idioma '{nombre}' ya existe.");
-
+            }
             _mapper.AgregarIdioma(nombre);
         }
 
         public void EditarNombreIdioma(int idIdioma, string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
+            {
                 throw new Exception("El nombre del idioma no puede estar vacío.");
-
+            }
             _mapper.ModificarNombreIdioma(idIdioma, nombre);
         }
 
@@ -83,14 +74,15 @@ namespace BLL
         public void ModificarTraducciones(int idIdioma, List<TRADUCCION_DETALLE> traducciones)
         {
             foreach (var t in traducciones)
+            {
                 _mapper.ModificarTraduccion(t.IdControl, idIdioma, t.TextoTraducido);
+            }
 
             // Si el idioma está activo, recargar el GestorIdioma
             if (GestorIdioma.Instancia.IdIdiomaActual == idIdioma)
+            {
                 CambiarIdioma(idIdioma);
+            }
         }
-
-
-
     }
 }

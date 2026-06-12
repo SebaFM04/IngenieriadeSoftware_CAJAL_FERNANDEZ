@@ -22,15 +22,9 @@ namespace BLL
 
             dvBLL.RecalcularDV();
 
-            cambiosBLL.RegistrarCambio(
-                SessionManager.Instancia.UsuarioActual.IdUsuario,
-                producto.IdProducto,  // ← ahora tiene el ID real
-                "ALTA", "", producto.NombreProducto, "Alta");
+            cambiosBLL.RegistrarCambio(SessionManager.Instancia.UsuarioActual.IdUsuario, producto.IdProducto,  "ALTA", "", producto.NombreProducto, "Alta");
 
-            new BITACORA_BLL().RegistrarEvento(
-                SessionManager.Instancia.UsuarioActual.IdUsuario,
-                "Alta de producto",
-                $"Se agrego el producto: {producto.NombreProducto}");
+            new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario,"Alta de producto",$"Se agrego el producto: {producto.NombreProducto}");
         }
 
         public int EliminarProducto(BE.PRODUCTO producto)
@@ -42,7 +36,9 @@ namespace BLL
             {
                 dvBLL.RecalcularDV();
                 if (SessionManager.Instancia != null && SessionManager.Instancia.IsLogged())
-                new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario,"Baja de producto",$"Se eliminó el producto: {producto.NombreProducto}");
+                {
+                    new BITACORA_BLL().RegistrarEvento(SessionManager.Instancia.UsuarioActual.IdUsuario, "Baja de producto", $"Se eliminó el producto: {producto.NombreProducto}");
+                }
             }
             catch { }
             return filas;

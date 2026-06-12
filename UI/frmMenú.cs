@@ -21,8 +21,7 @@ namespace UI
             InitializeComponent();
             GestorIdioma.Instancia.Suscribir(this);
             SERVICIO.SessionManager sesion = SERVICIO.SessionManager.Instancia;
-            var g = GestorIdioma.Instancia;
-            
+            var g = GestorIdioma.Instancia;           
         }
         private void AplicarPermisos()
         {
@@ -38,19 +37,12 @@ namespace UI
             idiomaToolStripMenuItem.Visible = usuario.TienePermiso("Gestion Idiomas");
             backUpToolStripMenuItem1.Visible = usuario.TienePermiso("BackUp");
             recalcularDVToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
-            //controlCambiosToolStripMenuItem.Visible = usuario.TienePermiso("Auditoria");
-            //controlCambiosToolStripMenuItem.Visible = usuario.TienePermiso("Control Cambios");
-            //recalcularDVToolStripMenuItem.Visible = usuario.TienePermiso("Recalcular DV");
-            //admRolesToolStripMenuItem.Visible = usuario.TienePermiso("Adm Roles y Permisos");
         }
 
         private void btnCerrarSesionfrmMenu_Click(object sender, EventArgs e)
         {
             var g = GestorIdioma.Instancia;
-            var result = MessageBox.Show(
-                g.Traducir("msgCerrarSesionConfirm"),
-                g.Traducir("msgCerrarSesionTitulo"),
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(g.Traducir("msgCerrarSesionConfirm"),g.Traducir("msgCerrarSesionTitulo"),MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -63,10 +55,8 @@ namespace UI
             AplicarPermisos();
             CargarComboIdiomas();
         }
-
         private void formularioUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             gestorUI.AbrirForm(new frmUsuario());
 
             //this.Hide();
@@ -92,36 +82,26 @@ namespace UI
         {
             gestorUI.AbrirForm(new frmRolesyPermisos());
         }
-
-
         private void backUpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             gestorUI.AbrirForm(new frmBackUp_Restore());
-
         }
 
         private void recalcularDVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var g = GestorIdioma.Instancia;
-            var confirm = MessageBox.Show(
-                g.Traducir("msgRecalcularConfirm"),
-                g.Traducir("msgRecalcularTitulo"),
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show(g.Traducir("msgRecalcularConfirm"), g.Traducir("msgRecalcularTitulo"),MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
 
             try
             {
                 new BLL.PRODUCTO_BLL().RecalcularDV();
-                MessageBox.Show(
-                    g.Traducir("msgRecalcularOk"),
-                    g.Traducir("msgRecalcularTitulo"),
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show( g.Traducir("msgRecalcularOk"),g.Traducir("msgRecalcularTitulo"),MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al recalcular: " + ex.GetBaseException().Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al recalcular: " + ex.GetBaseException().Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

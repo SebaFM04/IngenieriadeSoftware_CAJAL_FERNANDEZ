@@ -52,13 +52,7 @@ namespace UI
                                        ? dictUsuarios[registro.IdUsuario]
                                        : "Desconocido";
 
-                dataGridView1.Rows.Add(
-                    registro.IdBitacora,
-                    nombreUsuario,
-                    registro.Actividad,
-                    registro.FechaHora,
-                    registro.InformacionAsociada
-                );
+                dataGridView1.Rows.Add(registro.IdBitacora,nombreUsuario,registro.Actividad,registro.FechaHora,registro.InformacionAsociada);
             }
         }
 
@@ -99,8 +93,6 @@ namespace UI
 
                 var registros = Bitacorabll.BuscarRegistros(idUsuario, actividad, fechaDesde, fechaHasta);
                 CargarBitacora(registros);
-
-
             }
             catch (Exception ex )
             {

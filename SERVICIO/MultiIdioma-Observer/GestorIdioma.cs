@@ -32,11 +32,9 @@ namespace SERVICIO.MultiIdioma_Observer
         private int _idIdiomaActual;
         private Dictionary<string, string> _traduccionesActuales;
         private readonly List<IObservadorIdioma> _observadores;
-
         public int IdIdiomaActual => _idIdiomaActual;
 
         //Traducción
-      
         public string Traducir(string nombreControl)
         {
             try { return _traduccionesActuales[nombreControl]; }
@@ -48,17 +46,23 @@ namespace SERVICIO.MultiIdioma_Observer
         {
             if (observador == null) return;
             if (!_observadores.Contains(observador))
+            {
                 _observadores.Add(observador);
+            }
 
             // Notificación inmediata si ya hay traducciones
             if (_traduccionesActuales.Count > 0)
+            {
                 observador.ActualizarIdioma();
+            }
         }
 
         public void Desuscribir(IObservadorIdioma observador)
         {
             if (observador != null)
+            {
                 _observadores.Remove(observador);
+            }
         }
 
         //  Cambio de idioma 

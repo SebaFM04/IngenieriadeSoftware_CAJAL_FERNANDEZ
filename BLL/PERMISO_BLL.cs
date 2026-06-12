@@ -25,10 +25,14 @@ namespace BLL
         public void CrearPermiso(string nombre, bool esFamilia)
         {
             if (!esFamilia)
+            {
                 throw new Exception("Solo se pueden crear roles. Los permisos están precargados en el sistema.");
+            }
 
             if (string.IsNullOrWhiteSpace(nombre))
-                throw new Exception("El nombre del rol no puede estar vacío.");
+            { 
+                throw new Exception("El nombre del rol no puede estar vacío."); 
+            }
 
             GestorPermiso.CrearPermiso(nombre, esFamilia);
         }
@@ -42,7 +46,7 @@ namespace BLL
         {
             GestorPermiso.ModificarPermiso(id, nuevoNombre, esFamilia);
         }
-
+        /*Como estaba antes (Entrega 2)
         public void AgregarRelacion(int idPadre, int idHijo)
         {
             PERMISOCOMPONENT padre = GestorPermiso.ObtenerPermisoConJerarquiaPorId(idPadre);
@@ -77,7 +81,54 @@ namespace BLL
             }
             GestorPermiso.AgregarRelacion(idPadre, idHijo);
         }
+        */
+        public string MensajeDuplicados { get; private set; }
 
+        public void AgregarRelacion(int idPadre, int idHijo)
+        {
+            PERMISOCOMPONENT padre = GestorPermiso.ObtenerPermisoConJerarquiaPorId(idPadre);
+            PERMISOCOMPONENT hijo = GestorPermiso.ObtenerPermisoConJerarquiaPorId(idHijo);
+
+            if (padre == null)
+                throw new Exception($"El permiso padre con ID {idPadre} no existe.");
+            if (hijo == null)
+                throw new Exception($"El permiso hijo con ID {idHijo} no existe.");
+            if (idPadre == idHijo)
+                throw new Exception("Un permiso no puede ser hijo de sí mismo.");
+            if (!padre.EsFamilia)
+                throw new Exception($"El permiso '{padre.NombrePermiso}' (ID: {idPadre}) no es un rol compuesto y no puede tener hijos.");
+            if (hijo.ContienePermiso(padre.NombrePermiso))
+                throw new Exception($"No se admite Referencia circular! No se puede asignar '{hijo.NombrePermiso}' a '{padre.NombrePermiso}' porque '{hijo.NombrePermiso}' ya contiene a '{padre.NombrePermiso}' en su jerarquía.");
+            if (padre.ContienePermiso(hijo.NombrePermiso))
+            {
+                Console.WriteLine($"Advertencia: El rol '{padre.NombrePermiso}' ya contiene a '{hijo.NombrePermiso}'. No se realizará la asignación duplicada.");
+                return;
+            }
+
+            // Detectar permisos duplicados
+            var permisosPadre = ObtenerPermisosAtomicos(padre);
+            var permisosHijo = ObtenerPermisosAtomicos(hijo);
+            var duplicados = permisosHijo
+                .Where(h => permisosPadre.Any(p => p.NombrePermiso == h.NombrePermiso))
+                .Select(p => p.NombrePermiso)
+                .ToList();
+
+            MensajeDuplicados = duplicados.Count > 0 ? $"'{hijo.NombrePermiso}' tiene {duplicados.Count} permiso(s) que '{padre.NombrePermiso}' ya posee: {string.Join(", ", duplicados)}." : null;
+            GestorPermiso.AgregarRelacion(idPadre, idHijo);
+        }
+
+        private List<PERMISOCOMPONENT> ObtenerPermisosAtomicos(PERMISOCOMPONENT nodo)
+        {
+            var lista = new List<PERMISOCOMPONENT>();
+            foreach (var hijo in nodo.ListarPermisosHijos())
+            {
+                if (!hijo.EsFamilia)
+                    lista.Add(hijo);
+                else
+                    lista.AddRange(ObtenerPermisosAtomicos(hijo));
+            }
+            return lista;
+        }
         public void QuitarRelacion(int idPadre, int idHijo)
         {
             GestorPermiso.QuitarRelacion(idPadre, idHijo);

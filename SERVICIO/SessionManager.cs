@@ -10,7 +10,6 @@ namespace SERVICIO
 {
     public class SessionManager
     {
-
         private static SessionManager _instancia;
         private Sesion _sesion;
 
@@ -43,8 +42,6 @@ namespace SERVICIO
         {
             return _sesion.IsLogged();
         }
-
         public USUARIO UsuarioActual => _sesion.UsuarioLogueado;
-
     }
 }

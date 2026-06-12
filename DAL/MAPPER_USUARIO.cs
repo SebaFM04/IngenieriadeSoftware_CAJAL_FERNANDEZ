@@ -30,8 +30,7 @@ namespace DAL
             acceso.Cerrar();
             return filas;
         }
-
-        
+  
         public int BajaUsuario(BE.USUARIO Usuario)
         {
             string NombreSp = "BajaUsuario";
@@ -59,8 +58,7 @@ namespace DAL
             acceso.Cerrar();
             return filas;
         }
-        
-
+       
         public BE.USUARIO BuscarUsuario(string CorreoElectronico, string ContraseñaUsuario)
         {
             acceso.Abrir();
@@ -89,7 +87,6 @@ namespace DAL
             }
         }
 
-
         public List<BE.USUARIO> ListarUsuarios()
         {
             List<BE.USUARIO> listaUsuarios = new List<BE.USUARIO>();
@@ -113,6 +110,5 @@ namespace DAL
             }
             return  listaUsuarios;
         }
-
     }
 }

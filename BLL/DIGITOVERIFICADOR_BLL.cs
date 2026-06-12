@@ -105,17 +105,18 @@ namespace BLL
             {
                 string dvhCalculado = CalcularDVH(p);
                 if (p.DVH != dvhCalculado)
-                    errores.Add($"Error horizontal en producto ID {p.IdProducto} " +
-                                $"('{p.NombreProducto}'): la fila fue alterada.");
+                {
+                    errores.Add($"Error horizontal en producto ID {p.IdProducto} " + $"('{p.NombreProducto}'): la fila fue alterada.");
+                }          
             }
 
             var dvvAlmacenado = mapperDV.ObtenerDVV("PRODUCTO");
             string dvvCalculado = CalcularDVV(productos);
 
             if (dvvAlmacenado == null || dvvAlmacenado.DVV != dvvCalculado)
-                errores.Add("Error vertical en PRODUCTO: se agregaron, " +
-                            "quitaron o reordenaron filas fuera del sistema.");
-
+            {
+                errores.Add("Error vertical en PRODUCTO: se agregaron, " + "quitaron o reordenaron filas fuera del sistema.");
+            }          
             return errores;
         }
 

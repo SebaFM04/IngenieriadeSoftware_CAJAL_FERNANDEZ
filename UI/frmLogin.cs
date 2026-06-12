@@ -59,7 +59,6 @@ namespace UI
                 gestorUI.AbrirForm(new frmMenú());
                 this.Show();
                 #endregion
-
             }
             catch (Exception ex)
             {
@@ -94,7 +93,6 @@ namespace UI
             {
                 if (ctrl is TextBox || ctrl is MenuStrip ) continue;
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
-
             }
         }
     }

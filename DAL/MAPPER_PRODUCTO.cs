@@ -26,16 +26,15 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
             parametros.Add(acceso.CrearParametro("@DVH", Producto.DVH));
 
-            // Usar Leer en lugar de Escribir para obtener el ID devuelto
             DataTable tabla = acceso.Leer("AltaProducto", parametros);
             acceso.Cerrar();
 
             if (tabla.Rows.Count > 0)
+            {
                 return Convert.ToInt32(tabla.Rows[0]["IdProducto"]);
-
+            }
             return 0;
         }
-
 
         public int BajaProducto(BE.PRODUCTO Producto)
         {
@@ -108,9 +107,9 @@ namespace DAL
         {
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@IdProducto", idProducto)
-    };
+            {
+                acceso.CrearParametro("@IdProducto", idProducto)
+            };
             DataTable tabla = acceso.Leer("ObtenerProductoPorId", parametros);
             acceso.Cerrar();
 

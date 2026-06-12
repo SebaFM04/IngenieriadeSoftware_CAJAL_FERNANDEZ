@@ -187,9 +187,9 @@ namespace DAL
             var idsPermiso = new List<int>();
             acceso.Abrir();
             var parametros = new List<SqlParameter>
-    {
-        acceso.CrearParametro("@IdUsuario", idUsuario)
-    };
+            {
+                acceso.CrearParametro("@IdUsuario", idUsuario)
+            };
             DataTable tabla = acceso.Leer("ListarPermisosPorUsuario", parametros);
             acceso.Cerrar();
 

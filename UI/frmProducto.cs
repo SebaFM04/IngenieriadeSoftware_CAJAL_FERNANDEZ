@@ -52,15 +52,7 @@ namespace UI
 
                 foreach (var p in productos)
                 {
-                    dataGridView1.Rows.Add(
-                        p.IdProducto,
-                        p.NombreProducto,
-                        p.PrecioProducto.ToString("0.00"),
-                        p.TipoProducto,
-                        p.Descripcion,
-                        p.CodigoProducto,
-                        p.Cantidad
-                    );
+                    dataGridView1.Rows.Add(p.IdProducto,p.NombreProducto, p.PrecioProducto.ToString("0.00"), p.TipoProducto, p.Descripcion, p.CodigoProducto,p.Cantidad);
                 }
             }
             catch (Exception ex)
@@ -203,7 +195,6 @@ namespace UI
                 MessageBox.Show("ID de producto inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             #region VALIDACIONES DE CAMPOS
             // Recolectar y normalizar valores
             string nombre = textBox1.Text?.Trim();
@@ -275,7 +266,6 @@ namespace UI
             {
                 MessageBox.Show("Error al modificar el producto: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         public void ActualizarIdioma()

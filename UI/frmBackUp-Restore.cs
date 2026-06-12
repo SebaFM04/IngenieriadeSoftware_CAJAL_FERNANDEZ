@@ -18,7 +18,6 @@ namespace UI
         BACKUP_BLL gestorBackup = new BACKUP_BLL();
         RESTORE_BLL gestorRestore = new RESTORE_BLL();
         PRODUCTO_BLL gestorProducto = new PRODUCTO_BLL();
-
         public frmBackUp_Restore()
         {
             InitializeComponent();
