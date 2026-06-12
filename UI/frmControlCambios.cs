@@ -89,5 +89,43 @@ namespace UI
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
         }
+        //Nuevo Entrega 3
+        private void btnRevertirTodo_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un registro del producto a revertir.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var cambio = dataGridView1.SelectedRows[0].DataBoundItem as CONTROLCAMBIO;
+            if (cambio == null) return;
+
+            var confirm = MessageBox.Show(
+                $"¿Confirma revertir TODOS los cambios del producto ID {cambio.IdProducto}?\n\n" +
+                "El producto volverá al estado en que fue creado.",
+                "Confirmar Reversión Total",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                gestorCambios.RevertirTodo(
+                    cambio.IdProducto,
+                    SessionManager.Instancia.UsuarioActual.IdUsuario);
+
+                MessageBox.Show("Todos los cambios del producto fueron revertidos correctamente.",
+                    "Reversión Total", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarCambios();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al revertir: " + ex.GetBaseException().Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

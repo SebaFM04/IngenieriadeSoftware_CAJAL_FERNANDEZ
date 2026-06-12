@@ -80,5 +80,53 @@ namespace BLL
             // Registrar el cambio de reversión
             RegistrarCambio(idUsuarioActual, cambio.IdProducto, cambio.CampoModificado, valorActualAntesDerevertir, cambio.ValorAnterior, "Reversión");
         }
+        //Nuevo Entrega 3
+        public void RevertirTodo(int idProducto, int idUsuarioActual)
+        {
+            var cambios = mapperCambios.ListarPorProducto(idProducto)
+                .Where(c => c.TipoOperacion == "Modificación")
+                .OrderByDescending(c => c.IdCambio)
+                .ToList();
+
+            if (cambios.Count == 0)
+                throw new Exception("No hay cambios de modificación para revertir.");
+
+            var producto = mapperProducto.ObtenerPorId(idProducto);
+            if (producto == null)
+                throw new Exception($"No se encontró el producto ID {idProducto}.");
+
+            // Para cada campo tomar SOLO el cambio más reciente y aplicar su ValorAnterior
+            var camposARevertir = cambios
+                .GroupBy(c => c.CampoModificado)
+                .Select(g => g.First()) // First() = más reciente porque ya está ordenado DESC
+                .ToList();
+
+            foreach (var cambio in camposARevertir)
+            {
+                switch (cambio.CampoModificado)
+                {
+                    case "NombreProducto":
+                        producto.NombreProducto = cambio.ValorAnterior; break;
+                    case "PrecioProducto":
+                        producto.PrecioProducto = decimal.Parse(cambio.ValorAnterior); break;
+                    case "TipoProducto":
+                        producto.TipoProducto = cambio.ValorAnterior; break;
+                    case "Descripcion":
+                        producto.Descripcion = cambio.ValorAnterior; break;
+                    case "Cantidad":
+                        producto.Cantidad = int.Parse(cambio.ValorAnterior); break;
+                    case "CodigoProducto":
+                        producto.CodigoProducto = int.Parse(cambio.ValorAnterior); break;
+                }
+            }
+
+            producto.DVH = dvBLL.CalcularDVH(producto);
+            mapperProducto.EditarProducto(producto);
+            dvBLL.RecalcularDV();
+
+            RegistrarCambio(idUsuarioActual, idProducto,
+                "Reversión Total", "Múltiples campos",
+                "Estado anterior restaurado", "Reversión Total");
+        }
     }
 }
