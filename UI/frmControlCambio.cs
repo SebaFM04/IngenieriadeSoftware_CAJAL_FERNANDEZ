@@ -14,10 +14,10 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class frmControlCambios : Form, IObservadorIdioma
+    public partial class frmControlCambio : Form, IObservadorIdioma
     {
         CONTROLCAMBIO_BLL gestorCambios = new CONTROLCAMBIO_BLL();
-        public frmControlCambios()
+        public frmControlCambio()
         {
             InitializeComponent();
         }

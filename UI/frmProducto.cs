@@ -240,6 +240,9 @@ namespace UI
             }
             #endregion
 
+            var confirm = MessageBox.Show("¿Confirma la modificación del producto?", "Confirmar Modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
             try
             {
                 BE.PRODUCTO producto = new BE.PRODUCTO();

@@ -247,6 +247,9 @@ namespace UI
                 return;
             }
 
+            var confirm = MessageBox.Show("¿Confirma la modificación del usuario?", "Confirmar Modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
             try
             {
                 BE.USUARIO usuario = new BE.USUARIO();

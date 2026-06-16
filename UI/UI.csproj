@@ -66,11 +66,11 @@
     <Compile Include="frmBitacora.Designer.cs">
       <DependentUpon>frmBitacora.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmControlCambios.cs">
+    <Compile Include="frmControlCambio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmControlCambios.Designer.cs">
-      <DependentUpon>frmControlCambios.cs</DependentUpon>
+    <Compile Include="frmControlCambio.Designer.cs">
+      <DependentUpon>frmControlCambio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -114,8 +114,8 @@
     <EmbeddedResource Include="frmBitacora.resx">
       <DependentUpon>frmBitacora.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmControlCambios.resx">
-      <DependentUpon>frmControlCambios.cs</DependentUpon>
+    <EmbeddedResource Include="frmControlCambio.resx">
+      <DependentUpon>frmControlCambio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

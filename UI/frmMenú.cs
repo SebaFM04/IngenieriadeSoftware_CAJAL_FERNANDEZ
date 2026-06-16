@@ -107,7 +107,7 @@ namespace UI
 
         private void controlCambiosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestorUI.AbrirForm(new frmControlCambios());            
+            gestorUI.AbrirForm(new frmControlCambio());            
         }
 
         public void ActualizarIdioma()

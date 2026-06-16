@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class frmControlCambios
+    partial class frmControlCambio
     {
         /// <summary>
         /// Required designer variable.
