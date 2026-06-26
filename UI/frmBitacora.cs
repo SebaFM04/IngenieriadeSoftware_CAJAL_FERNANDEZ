@@ -81,7 +81,9 @@ namespace UI
                 {
                     idUsuario = Convert.ToInt32(comboBox1.SelectedValue);
                 }
-
+                //MEJORA A FUTURO
+                //Aca podria agregar un TextBox para que el usuario ingrese la actividad que desea buscar, y luego obtener el valor de ese TextBox en lugar de usar una cadena vacía.
+                //Para ello tendria que agregar un TextBox en el diseñador y luego obtener su valor en este metodo.
                 string actividad = "";
                 if (string.IsNullOrEmpty(actividad))
                 {

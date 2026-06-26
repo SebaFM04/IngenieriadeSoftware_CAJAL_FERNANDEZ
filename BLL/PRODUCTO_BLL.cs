@@ -14,11 +14,11 @@ namespace BLL
 
         public void InsertarProducto(BE.PRODUCTO producto)
         {
-            producto.DVH = dvBLL.CalcularDVH(producto);
-
             // Obtener el ID real generado por la BD
             int idGenerado = GestorProducto.AltaProducto(producto);
             producto.IdProducto = idGenerado;
+            producto.DVH = dvBLL.CalcularDVH(producto);
+            GestorProducto.ActualizarDVH(producto.IdProducto, producto.DVH); // actualizar en BD
 
             dvBLL.RecalcularDV();
 

@@ -37,7 +37,6 @@ namespace UI
             dataGridView1.Columns.Add("Apellido", "Apellido");
             dataGridView1.Columns.Add("Dni", "Dni");
             dataGridView1.Columns.Add("CorreoElectronico", "Correo Electronico");
-            dataGridView1.Columns.Add("ContraseñaUsuario", "Contraseña");
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -61,8 +60,7 @@ namespace UI
                     nombreUsuario,
                     registro.ApellidoUsuario,
                     registro.Dni,
-                    registro.CorreoElectronico,
-                    registro.ContraseñaUsuario  
+                    registro.CorreoElectronico  
                 );
             }
         }
