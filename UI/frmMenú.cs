@@ -15,7 +15,7 @@ namespace UI
 {
     public partial class frmMenú : Form, IObservadorIdioma
     {
-        GestorUI gestorUI = GestorUI.Instancia;
+        GUIManager gestorUI = GUIManager.Instancia;
         public frmMenú()
         {
             InitializeComponent();

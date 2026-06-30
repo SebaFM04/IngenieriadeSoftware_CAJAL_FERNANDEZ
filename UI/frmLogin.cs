@@ -15,7 +15,8 @@ namespace UI
     public partial class frmLogin : Form, IObservadorIdioma
     {
         BE.USUARIO usuario = new BE.USUARIO();
-        GestorUI gestorUI = new GestorUI();
+        GUIManager gestorUI = new GUIManager();
+        BLL.USUARIO_BLL GestorUsuario = new BLL.USUARIO_BLL();
         public frmLogin()
         {
             InitializeComponent();
@@ -48,7 +49,6 @@ namespace UI
                 }
                 #endregion
 
-                BLL.USUARIO_BLL GestorUsuario = new BLL.USUARIO_BLL();
                 // Iniciar sesión y guardar el usuario de la sesión actual!!
                 BE.USUARIO UserfromBd = GestorUsuario.LoginUsuario(email, password);
 
@@ -91,7 +91,7 @@ namespace UI
         {
             foreach (Control ctrl in this.Controls)
             {
-                if (ctrl is TextBox || ctrl is MenuStrip ) continue;
+                if (ctrl is TextBox || ctrl is MenuStrip) continue;
                 ctrl.Text = GestorIdioma.Instancia.Traducir(ctrl.Name);
             }
         }

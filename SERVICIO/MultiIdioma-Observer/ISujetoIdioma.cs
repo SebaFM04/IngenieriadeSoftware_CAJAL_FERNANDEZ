@@ -10,5 +10,7 @@ namespace SERVICIO.MultiIdioma_Observer
     {
         void Suscribir(IObservadorIdioma obs);
         void Desuscribir(IObservadorIdioma obs);
+
+        void Notificar();
     }
 }

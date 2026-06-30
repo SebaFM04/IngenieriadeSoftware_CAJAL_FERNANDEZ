@@ -9,7 +9,7 @@ namespace SERVICIO.MultiIdioma_Observer
 {
     public class GestorIdioma : ISujetoIdioma
     {
-        // ── Singleton 
+        // Singleton 
         private static GestorIdioma _instancia;
         public static GestorIdioma Instancia
         {
@@ -24,20 +24,20 @@ namespace SERVICIO.MultiIdioma_Observer
         private GestorIdioma()
         {
             _idIdiomaActual = 2; // Inglés por defecto
-            _traduccionesActuales = new Dictionary<string, string>();
-            _observadores = new List<IObservadorIdioma>();
+            traducciones = new Dictionary<string, string>();
+            observadores = new List<IObservadorIdioma>();
         }
 
         //  Estado 
         private int _idIdiomaActual;
-        private Dictionary<string, string> _traduccionesActuales;
-        private readonly List<IObservadorIdioma> _observadores;
+        private Dictionary<string, string> traducciones;
+        private readonly List<IObservadorIdioma> observadores;
         public int IdIdiomaActual => _idIdiomaActual;
 
         //Traducción
         public string Traducir(string nombreControl)
         {
-            try { return _traduccionesActuales[nombreControl]; }
+            try { return traducciones[nombreControl]; }
             catch { return nombreControl; }
         }
 
@@ -45,13 +45,13 @@ namespace SERVICIO.MultiIdioma_Observer
         public void Suscribir(IObservadorIdioma observador)
         {
             if (observador == null) return;
-            if (!_observadores.Contains(observador))
+            if (!observadores.Contains(observador))
             {
-                _observadores.Add(observador);
+                observadores.Add(observador);
             }
 
             // Notificación inmediata si ya hay traducciones
-            if (_traduccionesActuales.Count > 0)
+            if (traducciones.Count > 0)
             {
                 observador.ActualizarIdioma();
             }
@@ -61,25 +61,28 @@ namespace SERVICIO.MultiIdioma_Observer
         {
             if (observador != null)
             {
-                _observadores.Remove(observador);
+                observadores.Remove(observador);
             }
         }
+        
 
         //  Cambio de idioma 
         public void CambiarIdioma(int idIdioma, Dictionary<string, string> traducciones)
         {
             _idIdiomaActual = idIdioma;
-            _traduccionesActuales = traducciones ?? new Dictionary<string, string>();
+            this.traducciones = traducciones ?? new Dictionary<string, string>();
             Notificar();
         }
 
         private void Notificar()
         {
-            foreach (var obs in new List<IObservadorIdioma>(_observadores))
+            foreach (var obs in new List<IObservadorIdioma>(observadores))
             {
                 try { obs.ActualizarIdioma(); }
                 catch { /* No interrumpir al resto si un form ya fue cerrado */ }
             }
         }
+
+        void ISujetoIdioma.Notificar() => Notificar();
     }
 }

@@ -8,15 +8,15 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public class GestorUI
+    public class GUIManager
     {
-        private static GestorUI _instancia;
-        public static GestorUI Instancia
+        private static GUIManager _instancia;
+        public static GUIManager Instancia
         {
             get
             {
                 if (_instancia == null)
-                    _instancia = new GestorUI();
+                    _instancia = new GUIManager();
                 return _instancia;
             }
         }
