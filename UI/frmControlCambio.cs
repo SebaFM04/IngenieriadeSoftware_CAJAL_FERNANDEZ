@@ -104,7 +104,7 @@ namespace UI
 
             var confirm = MessageBox.Show(
                 $"¿Confirma revertir TODOS los cambios del producto ID {cambio.IdProducto}?\n\n" +
-                "El producto volverá al estado en que fue creado.",
+                "El producto volverá a su estado anterior.",
                 "Confirmar Reversión Total",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 

@@ -95,30 +95,49 @@ namespace BLL
             if (producto == null)
                 throw new Exception($"No se encontró el producto ID {idProducto}.");
 
-            // Para cada campo tomar SOLO el cambio más reciente y aplicar su ValorAnterior
             var camposARevertir = cambios
                 .GroupBy(c => c.CampoModificado)
-                .Select(g => g.First()) // First() = más reciente porque ya está ordenado DESC
+                .Select(g => g.First())
                 .ToList();
+
+            bool huboCambiosReales = false;
 
             foreach (var cambio in camposARevertir)
             {
                 switch (cambio.CampoModificado)
                 {
                     case "NombreProducto":
-                        producto.NombreProducto = cambio.ValorAnterior; break;
+                        if (producto.NombreProducto != cambio.ValorAnterior)
+                        { producto.NombreProducto = cambio.ValorAnterior; huboCambiosReales = true; }
+                        break;
                     case "PrecioProducto":
-                        producto.PrecioProducto = decimal.Parse(cambio.ValorAnterior); break;
+                        var precioAnterior = decimal.Parse(cambio.ValorAnterior);
+                        if (producto.PrecioProducto != precioAnterior)
+                        { producto.PrecioProducto = precioAnterior; huboCambiosReales = true; }
+                        break;
                     case "TipoProducto":
-                        producto.TipoProducto = cambio.ValorAnterior; break;
+                        if (producto.TipoProducto != cambio.ValorAnterior)
+                        { producto.TipoProducto = cambio.ValorAnterior; huboCambiosReales = true; }
+                        break;
                     case "Descripcion":
-                        producto.Descripcion = cambio.ValorAnterior; break;
+                        if (producto.Descripcion != cambio.ValorAnterior)
+                        { producto.Descripcion = cambio.ValorAnterior; huboCambiosReales = true; }
+                        break;
                     case "Cantidad":
-                        producto.Cantidad = int.Parse(cambio.ValorAnterior); break;
+                        var cantidadAnterior = int.Parse(cambio.ValorAnterior);
+                        if (producto.Cantidad != cantidadAnterior)
+                        { producto.Cantidad = cantidadAnterior; huboCambiosReales = true; }
+                        break;
                     case "CodigoProducto":
-                        producto.CodigoProducto = int.Parse(cambio.ValorAnterior); break;
+                        var codigoAnterior = int.Parse(cambio.ValorAnterior);
+                        if (producto.CodigoProducto != codigoAnterior)
+                        { producto.CodigoProducto = codigoAnterior; huboCambiosReales = true; }
+                        break;
                 }
             }
+
+            if (!huboCambiosReales)
+                throw new Exception("No hay cambios nuevos que revertir: el producto ya está en su estado anterior.");
 
             producto.DVH = dvBLL.CalcularDVH(producto);
             mapperProducto.EditarProducto(producto);

@@ -15,6 +15,7 @@ namespace BLL
         public void InsertarProducto(BE.PRODUCTO producto)
         {
             // Obtener el ID real generado por la BD
+            producto.DVH = "PENDIENTE";
             int idGenerado = GestorProducto.AltaProducto(producto);
             producto.IdProducto = idGenerado;
             producto.DVH = dvBLL.CalcularDVH(producto);

@@ -21,7 +21,7 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@NombreProducto", Producto.NombreProducto));
             parametros.Add(acceso.CrearParametro("@PrecioProducto", Producto.PrecioProducto));
             parametros.Add(acceso.CrearParametro("@TipoProducto", Producto.TipoProducto));
-            parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad.ToString()));
+            parametros.Add(acceso.CrearParametro("@Cantidad", Producto.Cantidad));
             parametros.Add(acceso.CrearParametro("@Descripcion", Producto.Descripcion));
             parametros.Add(acceso.CrearParametro("@CodigoProducto", Producto.CodigoProducto));
             parametros.Add(acceso.CrearParametro("@DVH", Producto.DVH));
